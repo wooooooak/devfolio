@@ -1,0 +1,136 @@
+@import 'utils';
+::selection {
+  background: #f00;
+  color: #fff;
+}
+
+.modalBox {
+  list-style: none;
+  font-family:'Bree Serif','Nanum Gothic', sans-serif;
+  text-align: center;
+  font-size:1.2rem;
+  color: white;
+  height: 200px;
+  background-color: #24333C;
+  position: absolute;
+  &:focus{
+    outline: none;
+  }
+  top: 50%;  /* position the top  edge of the element at the middle of the parent */
+  left: 50%; /* position the left edge of the element at the middle of the parent */
+  /* This is a shorthand of translateX(-50%) and translateY(-50%) */
+  box-shadow: 1px 3px 5px gray;
+  width: 500px;
+  height: 430px;
+  padding : 20px 20px;
+  animation: showModals 0.5s 0s 1 linear forwards;
+  .dateSelector {
+    border-color: transparent;
+    display: flex;
+    justify-content: center;
+    color: #666;
+    .startDatePicker {
+      color: #8CD790;
+      background-color: transparent;
+      border-color: transparent;
+      text-align: center;
+      width: 100px;
+      cursor: pointer;
+      // color: transparent;
+      &:focus{
+        outline: none;
+        color: transparent;
+        text-shadow: 0px 0px 0px #666;
+      }
+    }
+    
+    .endDatePicker {
+      color: #8CD790;
+      text-align: center;
+      background-color: transparent;
+      width: 100px;
+      border-color: transparent;
+      cursor: pointer;
+      &:focus{
+        outline: none;
+        color: transparent;
+        text-shadow: 0px 0px 0px #666;
+      }
+    }
+  }
+}
+.tagsClass{
+  width: 480px;
+  overflow: hidden;
+  margin-right:5px;
+  list-style: none;
+    .tagInputClass{
+      text-align: center;
+      width: 200px;
+      background-color: transparent;
+      border-color: transparent;
+      margin: 0;
+    }
+    .selectedClass{
+      overflow-wrap: break-word;
+      width: 480px;
+      text-align: center;
+      margin: 0;
+      .tagClass{
+        overflow-wrap: break-word;
+        margin-right:7px;
+        color:#8CD790;
+        list-style-type: none;
+      }
+      .tagInputFieldClass{
+        font-size: 1rem;
+        text-align: center;
+        color: #8CD790;
+        background-color: transparent;
+        border-color: transparent;
+        &:focus {
+          outline: none;
+        }
+      }
+    }
+    .suggestionsClass {
+      font-size: 1rem;
+      background-color: #282c37;
+      ul {
+        text-align: center;
+        list-style-type: none;
+      }
+      li{
+        mark{
+          text-decoration: underline;
+          background: none;
+          font-weight: 400;
+          color:#8CD790;
+        }
+      }
+    }
+    .activeSuggestionClass{
+      color: #F16B6F;
+      background-color: transparent;
+    }
+}
+
+
+@keyframes showModals {
+  0%{
+    opacity: 0;
+    transform: translate(-50%, -50%);
+  }
+  30%{
+    opacity: 0.3;
+  }
+	50% {
+    opacity: 0.5;
+    // transform: translate(-50%, -50%);
+    // transform: scale(0.5);
+  }
+	100% {
+    transform: translate(-50%, -50%);
+    opacity: 1;
+  }
+}

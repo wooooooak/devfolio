@@ -1,0 +1,31 @@
+@import 'utils';
+
+.logo{
+  font-family: 'Maven Pro', sans-serif;
+  font-size: 2rem;
+  color: white;
+  user-select: none;
+  cursor: pointer;
+  padding-left: 8rem;
+  @include media("<=medium") {
+    animation: logoLeft 0.5s 0s 1 linear forwards;
+  }
+  @include media("<=small") {
+    padding-left: 1rem;
+  }
+}
+
+a{
+  text-decoration: none;
+  &:visited{
+    text-decoration: whitesmoke
+  }
+}
+
+
+@keyframes logoLeft {
+  100%{
+    // transform: scale(-0.5);
+    padding-left: 3rem;
+  }
+}

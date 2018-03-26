@@ -1,0 +1,26 @@
+//공통적으로 적용할 scss 변수나 문장을 넣자.
+// 문장은 mixin이다
+
+@import '~open-color/open-color';
+@import '~include-media/dist/include-media';
+@import '~animate-sass/animate';
+@import '~pretty-checkbox/src/pretty-checkbox.scss';
+@import './animation.scss';
+
+//  경로에 ~ 이 들어간다는 것은, node_modules 내부의 디렉토리를 사용한다는 것
+
+
+//4개로 구성해야되겠다
+$breakpoints: (
+  small: 320px, //phone
+  medium: 768px, //tablet
+  large: 1024px, //desktop
+  huge: 1200px
+);
+
+@mixin gradient($direction, $list) { 
+  background: -webkit-linear-gradient($direction, $list);
+  background: -moz-linear-gradient($direction, $list);
+  background: -o-linear-gradient($direction, $list);
+  background: linear-gradient($direction, $list);  
+}

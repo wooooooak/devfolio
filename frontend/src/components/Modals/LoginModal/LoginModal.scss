@@ -1,0 +1,60 @@
+@import 'utils';
+
+.content {
+  position: absolute;
+  top: 50%;  /* position the top  edge of the element at the middle of the parent */
+  left: 50%; /* position the left edge of the element at the middle of the parent */
+  /* This is a shorthand of translateX(-50%) and translateY(-50%) */
+  transform: translate(-50%, -50%);
+  width: 400px;
+  height: 430px;
+  padding : 20px 20px;
+  background-color: $oc-gray-8;
+  box-shadow: 3px 5px 10px $oc-gray-6;
+  display: flex;
+  flex-direction: column;
+  @include media("<=small") {
+    width: 100vw;
+    height: 100vh;
+  }
+  border-top: 10px solid $oc-violet-9;
+
+  .closeBtn{
+    align-self : flex-end;
+    background-color: transparent;
+    border: none;
+    cursor:pointer;
+    overflow: hidden;
+  }
+  
+  .LoginBox{
+    display: flex;
+    flex-direction: column;
+    background-color: tomato;
+    justify-content: center;
+    align-items: center;
+    margin-top: 100px;
+    
+    .googleLogin{
+      height: 2rem;
+      background-color: $oc-red-7;
+      border: none;
+    }
+    
+    .facebookLogin {
+      height: 2rem;
+      background-color: $oc-blue-7;
+      border: none;
+    }
+  }
+}
+
+
+
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+}

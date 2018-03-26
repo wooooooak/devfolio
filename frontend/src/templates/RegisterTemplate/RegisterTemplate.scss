@@ -1,0 +1,41 @@
+@import 'utils';
+
+.register-template {
+    position: relative;
+    height: 100vh; // 페이지에서 헤더를 제외한 영역 모두 채우기
+    background:url('https://images.pexels.com/photos/29435/landscape-sky-night-stars-29435.jpg');
+    background-size:cover;
+    margin-top: 40px;
+    // padding-top: 100px;
+}
+
+.register-box {
+    display: flex;
+    flex-direction: column;
+    padding: 2rem;
+    width: 760px;
+    height: 680px;
+    background-color: $oc-gray-0;
+    margin-top: 130px;
+    position: absolute;
+    top: 35%;  /* position the top  edge of the element at the middle of the parent */
+    left: 50%; /* position the left edge of the element at the middle of the parent */
+    /* This is a shorthand of translateX(-50%) and translateY(-50%) */
+    transform: translate(-50%, -50%);
+    box-shadow: 10px 8px 25px $oc-gray-9;
+    @include media("<=medium") {
+        width: 100%;
+        height: auto;
+        // overflow-wrap: break-word;
+        margin-top: 200px;
+        word-wrap: break-word;
+    }
+    @include media("<=small") {
+        width: 95vw;
+        // margin-top: 450px;
+    }
+
+    h1{
+    }
+
+}

@@ -1,0 +1,54 @@
+@import 'utils';
+
+.registerFormBox {
+  display: flex;
+  flex-direction: column;
+
+  @include media("<=medium") {
+    weight: 100vw;
+    height: auto;
+    word-wrap: break-word;
+  }
+
+  .nameLabel {
+    font-size: 1.5rem;
+    color: rgb(15, 19, 19);
+    margin-bottom: 20px;
+  }
+  .nameInput {
+    width: 50%;
+    height: 30px;
+    border-color: beige
+  }
+
+  .checkboxs{
+    display: inline;
+    align-self: center;
+    .checkboxLabel{
+      display: inline-block;
+      width: 170px;
+      margin-right: 20px;
+      @include media("<=medium") {
+        margin-right: 10px;
+      }
+      @include media("<=small") {
+        margin-right: 3px;
+      }
+    }
+    .checkbox{
+      margin-right: 20px;
+      @include media("<=medium") {
+      margin-right: 10px;
+      }
+      @include media("<=small") {
+        margin-right: 3px;
+      }
+    }
+  }
+  .submitBtn{
+    margin-top: 50px;
+    height: 30px;
+    width: 100px;
+    align-self: flex-end;
+  }
+}

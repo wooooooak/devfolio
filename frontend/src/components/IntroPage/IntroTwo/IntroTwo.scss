@@ -1,0 +1,25 @@
+@import 'utils';
+
+.content{
+    position: relative;
+    height: 100vh; // 페이지에서 헤더를 제외한 영역 모두 채우기
+    // background-color: aquamarine;
+    background:url('http://localhost:8082/images/two.jpg');
+    margin-top: -40px;
+}
+
+.text {
+  font-size: 50px;
+  color: crimson;
+  $use-fadeIn: true;
+  padding: 1rem;
+  padding-top: 20rem;
+  text-align:center;
+  //단어 줄바꿈에 관한 속성들
+  word-break:keep-all;
+  word-wrap:break-word;
+  
+  @include media("<=medium") {
+    font-size: 2em;
+  }
+}

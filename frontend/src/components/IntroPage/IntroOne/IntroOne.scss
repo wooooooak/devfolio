@@ -1,0 +1,29 @@
+@import 'utils';
+
+.content{
+    position: relative;
+    height: 101vh; // 페이지에서 헤더를 제외한 영역 모두 채우기
+    background:url('http://localhost:8082/images/three.jpg');
+    background-attachment: fixed;
+    background-size:cover;
+
+    @include media("<=medium") {
+      height: 102vh;
+    }
+
+}
+
+.text {
+  font-size: 50px;
+  color: white;
+  padding: 1rem;
+  padding-top: 20rem;
+  text-align:center;
+  //단어 줄바꿈에 관한 속성들
+  word-break:keep-all;
+  word-wrap:break-word;
+  
+  @include media("<=medium") {
+    font-size: 2em;
+  }
+}

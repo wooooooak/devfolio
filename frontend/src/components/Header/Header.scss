@@ -1,0 +1,151 @@
+@import 'utils';
+
+header {
+    font-family: 'Yantramanav', sans-serif;
+    position: fixed;
+    width: 100vw;
+    z-index: 10;
+    height: 4rem;
+    padding-right: 10rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 2rem;
+    font-weight: 400; 
+
+    .header-wrapper{
+      ul {
+        list-style: none;
+        color: white;
+        li{
+          display: inline-flex;
+          padding:0.3em;
+          margin-right: 2.5rem;
+          font-size: 1.5rem;
+          a{
+            &:visited {
+              color: white;
+            }
+          }
+        }
+      }
+
+    .hamberger{
+      display: none;
+    }
+
+    .userBtn {
+      cursor: pointer;
+      color: white;
+      box-sizing: border-box;
+      font-size: 1rem;
+      background-color: Transparent;
+      background-repeat:no-repeat;
+      height: 30px;
+      border-color: rgb(255, 255, 255);
+      border-width: 2px;
+      cursor: pointer;
+      overflow: hidden;
+      outline:none;
+      &:hover {
+        color: $oc-orange-5;
+        // animation: hoverNameBtn 0.4s 0s 1 linear;
+      }
+    }
+
+    .loginBtn{
+      border: 2px solid whitesmoke;
+      &:hover{
+        background-color: white;
+        color: $oc-gray-8;
+      }
+    }
+   
+    @include media("<=medium") {
+      margin-right: -9rem;
+      ul{
+        right: 0px;
+        li{
+          display: none;
+        }
+        .hamberger{
+          display: flex;
+          cursor: pointer;
+          animation: pulse 2s 5s 3 ;
+        }
+      }
+      font-size: 1rem;
+    }
+    
+    @include media("<=large") {
+      // margin-right: -10rem;
+      animation: as 1s 0s 1 linear forwards;
+    }
+    
+    @keyframes as {
+      100%{
+        margin-right: -10rem;
+      }
+    }
+
+  }
+
+  //사이드 메뉴 바
+  .sideBar {
+    position: absolute;
+    top: 0%;  /* position the top  edge of the element at the middle of the parent */
+    right: -30%; /* position the left edge of the element at the middle of the parent */
+    background-color: white;
+    width: 30vw;
+    height: 102vh;
+    animation: showSideBar 0.2s 0s 1 linear forwards;
+    box-shadow: -5px -0px 4px rgb(51, 49, 49);
+
+    .hideSideBarBtn {
+      background-color: transparent;
+      animation: jello 1s 0.5s 1;
+      transform-origin: center
+    }
+    @include media("<=medium") {
+      width: 90vw;
+      overflow: scroll;
+      font-size: 1.5rem;
+    }
+  }
+}
+
+.showBG {
+  background: $oc-blue-5;
+  -webkit-animation: headerShowing 1s 0s 1 linear forwards;
+  -moz-animation: headerShowing 1s 0s 1 linear forwards;
+  -ms-animation: headerShowing 1s 0s 1 linear forwards;
+  -o-animation: headerShowing 1s 0s 1 linear forwards;
+  animation: headerShowing 1s 0s 1 linear forwards;
+}
+
+@keyframes showSideBar {
+  0% {
+  }
+  100% {
+    right: 0%
+  }
+}
+
+@keyframes headerShowing {
+  50%{
+    box-shadow: 0px 1px 3px rgb(41, 39, 39);
+  }
+  100%{
+    box-shadow: 0px 3px 7px rgb(32, 31, 31);
+    background-color: $oc-blue-9
+  }
+}
+
+@keyframes hoverNameBtn {
+  50%{
+    transform: scale(2)
+  }
+  100%{
+    // box-shadow: 0px 4px 15px rgb(32, 31, 31);
+  }
+}
