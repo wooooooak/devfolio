@@ -5,25 +5,24 @@
 }
 
 .modalBox {
-  list-style: none;
+  position: absolute;
+  top: 50%;  /* position the top  edge of the element at the middle of the parent */
+  left: 50%; /* position the left edge of the element at the middle of the parent */
   font-family:'Bree Serif','Nanum Gothic', sans-serif;
+  width: 550px;
+  height: 490px;
+  color: white;
+  border-radius : 10px;
   text-align: center;
   font-size:1.2rem;
-  color: white;
-  height: 200px;
   background-color: #24333C;
-  position: absolute;
+  box-shadow: 1px 3px 5px gray;
+  padding : 20px 20px;
+  animation: showModals 0.5s 0s 1 linear forwards;
+  overflow-wrap: break-word;
   &:focus{
     outline: none;
   }
-  top: 50%;  /* position the top  edge of the element at the middle of the parent */
-  left: 50%; /* position the left edge of the element at the middle of the parent */
-  /* This is a shorthand of translateX(-50%) and translateY(-50%) */
-  box-shadow: 1px 3px 5px gray;
-  width: 500px;
-  height: 430px;
-  padding : 20px 20px;
-  animation: showModals 0.5s 0s 1 linear forwards;
   .dateSelector {
     border-color: transparent;
     display: flex;
@@ -43,7 +42,6 @@
         text-shadow: 0px 0px 0px #666;
       }
     }
-    
     .endDatePicker {
       color: #8CD790;
       text-align: center;
@@ -58,6 +56,24 @@
       }
     }
   }
+
+  .linkText{
+    margin-bottom:-4px;
+  }
+
+  .sourceInput{
+    border-radius: 3px;
+    margin-bottom: 10px;
+    width: 200px;
+    &:focus{
+      outline: none;
+    }
+  }
+
+  .checkIcon {
+    cursor : pointer;
+  }
+
 }
 .tagsClass{
   width: 480px;

@@ -3,25 +3,23 @@ import Modal from "react-modal"
 import styles from "./StoryInfoModal.scss"
 import classNames from "classnames/bind"
 import DatePicker from "react-datepicker"
+import MicrolinkCard from 'react-microlink'
 import { WithContext as ReactTags } from 'react-tag-input'
-
+import CheckIcon from "react-icons/lib/fa/check"
 
 const cx = classNames.bind(styles)
-// class StoryInfoModal extends Component {
 const StoryInfoModal = ({
-                        showModal,onClickCloseModal,onChangeStartDate,
-                        onChangeEndDate, startDate, endDate, tags,
-                        suggestions,tagHandleDelete,tagHandleAddition,
-                        tagHandleDrag,tagHandleTagClick
+                          showModal,onClickCloseModal,onChangeStartDate,
+                          onChangeEndDate, startDate, endDate, tags,
+                          suggestions,tagHandleDelete,tagHandleAddition,
+                          tagHandleDrag,tagHandleTagClick,addLink,sourceLink
                         }) => {
-
     return(
       <div>
         <Modal
           isOpen={showModal}
           onRequestClose={onClickCloseModal}
           className={cx('modalBox')}
-          contentLabel="Minimal Modal Example"
           style={cx('Modal')}
           >
           <div>프로젝트 기간이 어떻게 되나요?</div>
@@ -65,8 +63,14 @@ const StoryInfoModal = ({
               activeSuggestion: cx('activeSuggestionClass')
             }}
           />
-          <p>소스 링크를 걸어주세요!</p>
-
+          <p className={cx('linkText')}>소스 링크를 걸어주세요!</p>
+          <input className={cx('sourceInput')} type="text"
+                  onChange={addLink}
+                  />
+          {sourceLink ? <MicrolinkCard round target='_blank' url={sourceLink} /> : null}
+          <p>
+            <CheckIcon onClick={onClickCloseModal} className={cx('checkIcon')} size={30}/>
+          </p>
         </Modal>
       </div>
     )

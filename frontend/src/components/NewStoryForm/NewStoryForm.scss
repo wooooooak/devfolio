@@ -4,6 +4,15 @@
 
 }
 
+.infoInputBtn{
+  background-color: transparent;
+  border-color: transparent;
+  cursor: pointer;
+  &:focus {
+    outline: none;
+  }
+}
+
 .dateSelector {
   margin-top:50px;
   display: flex;
@@ -47,7 +56,6 @@
   font-weight: bold;
   height: 50px;
   width: 100%;
-  border-color: black;
   border-color: transparent;
   &:focus{
     outline: none;
@@ -55,7 +63,6 @@
   &:before {
     width: 20px;
     height: 20px;
-    background-color: yello;
     content: 'aa';
   }
 }

@@ -15,6 +15,7 @@ const divStyle = {
   border: '5px solid white',
 };
 
+const suggestions = TAGS
 
 class NewStoryContainer extends Component {
   constructor (props) {
@@ -25,9 +26,9 @@ class NewStoryContainer extends Component {
       content : null,
       startDate: null,
       endDate : null,
-      showModal:true,
+      showModal: false,
       tags: [],
-      suggestions: TAGS
+      sourceLink: null
     }
   }
   _tagHandleDelete = (i) => {
@@ -98,13 +99,19 @@ class NewStoryContainer extends Component {
       showModal: false
     })
   }
+  _onAddLink = (link) => {
+    this.setState({
+      ...this.state,
+      sourceLink: link.target.value
+    })
+  }
 
   _saveStory = () => {
     console.log(this.state)
   }
 
   render(){
-    // console.log(this.state)
+    console.log(this.state)
     return(
           <div style={divStyle}>
             <NewStoryForm 
@@ -126,11 +133,13 @@ class NewStoryContainer extends Component {
               startDate={this.state.startDate}
               endDate={this.state.endDate}
               tags={this.state.tags}
-              suggestions={this.state.suggestions}
+              suggestions={suggestions}
               tagHandleDelete={this._tagHandleDelete}
               tagHandleAddition={this._tagHandleAddition}
               tagHandleDrag={this._tagHandleDrag}
               tagHandleTagClick={this._tagHandleTagClick}
+              addLink = {this._onAddLink}
+              sourceLink = {this.state.sourceLink}
             />
           </div>
     )

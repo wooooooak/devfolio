@@ -64,7 +64,9 @@ const cx = classNames.bind(styles)
       <p>Drop an image or click to select a file to upload.</p>
     </DropZone> */}
         {/* <h3>img and name</h3> */}
-        <button onClick={this.props.onClickshowModal}>adsf</button>
+        <button 
+          className = {cx('infoInputBtn')}
+          onClick={this.props.onClickshowModal}>project info</button>
         <input
           className={cx('inputTitle')} 
           onKeyPress={this._handleKeyPress}
