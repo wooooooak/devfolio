@@ -6,8 +6,8 @@ import { Form, Text, Checkbox } from "react-form"
 const cx = classNames.bind(styles)
 
 const spaceArr = [
-  "Web_frontend","Web_backtend","App","Database","Game",
-  "Mobile_game","Network","AI","DevOps","Linux","Git","Algorithm"
+  "web_frontend","web_backend","app","database","game",
+  "mobile_game","network","AI","devOps","linux","git","algorithm"
 ]
 
 const languageArr = [

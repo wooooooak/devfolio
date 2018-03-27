@@ -7,12 +7,14 @@ import IntroTwo from "components/IntroPage/IntroTwo"
 const About = ({location, match}) => {
     // const query = queryString.parse(location.search)
     return (
-        <PageTemplate
-                header={<HeaderContainer/>}
-                pageRenderingAni = {true}
-                >
-                <IntroTwo />
-        </PageTemplate> 
+        <div>
+        <HeaderContainer showMenuBg={false} bgColorTransParent={false} isAlwaysShowing={false}/>
+            <PageTemplate
+                    pageRenderingAni = {true}
+                    >
+                    <IntroTwo />
+            </PageTemplate> 
+        </div>
     )
 }
 

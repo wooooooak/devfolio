@@ -5,9 +5,18 @@
 }
 
 .infoInputBtn{
-  background-color: transparent;
-  border-color: transparent;
+  background-color: #353866;
+  border:none;
+  border-radius: 40px;
+  color: white;
+  height: 30px;
+  width: 120px;
+  margin-top:20px;
   cursor: pointer;
+   &:hover {
+    color:white;
+    background: #6E7783;
+  }
   &:focus {
     outline: none;
   }
@@ -57,6 +66,7 @@
   height: 50px;
   width: 100%;
   border-color: transparent;
+  margin-top:50px;
   &:focus{
     outline: none;
   }

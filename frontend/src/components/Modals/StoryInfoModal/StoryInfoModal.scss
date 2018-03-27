@@ -1,6 +1,6 @@
 @import 'utils';
 ::selection {
-  background: #f00;
+  background: rgb(0, 0, 0);
   color: #fff;
 }
 
@@ -20,6 +20,11 @@
   padding : 20px 20px;
   animation: showModals 0.5s 0s 1 linear forwards;
   overflow-wrap: break-word;
+
+  @include media("<=small") {
+    width : 100vw;
+  }
+
   &:focus{
     outline: none;
   }
@@ -77,12 +82,17 @@
 }
 .tagsClass{
   width: 480px;
-  overflow: hidden;
+  overflow-wrap: break-word;
   margin-right:5px;
   list-style: none;
+  @include media("<=small") {
+    width : 100vw;
+    overflow-wrap: break-word;
+  }
     .tagInputClass{
+      overflow-wrap: break-word;
       text-align: center;
-      width: 200px;
+      // width: 200px;
       background-color: transparent;
       border-color: transparent;
       margin: 0;
@@ -92,6 +102,11 @@
       width: 480px;
       text-align: center;
       margin: 0;
+      @include media("<=small") {
+        margin-left: -15px;
+        width : 100vw;
+        overflow-wrap: break-word;
+      }
       .tagClass{
         overflow-wrap: break-word;
         margin-right:7px;

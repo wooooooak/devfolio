@@ -4,14 +4,17 @@ import { HeaderContainer, RegisterContainer }  from "containers"
 
 const Register = () => {
   return (
+    <div>
+      <HeaderContainer showMenuBg={false} bgColorTransParent={false}/>
     <PageTemplate
-          header = {<HeaderContainer />}
+          // header = {<HeaderContainer />}
           pageRenderingAni = {false}
           >
           <RegisterTemplate>
             <RegisterContainer />
           </RegisterTemplate>
     </PageTemplate>
+    </div>
   )
 }
 

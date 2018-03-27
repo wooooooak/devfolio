@@ -4,14 +4,16 @@ const User = require('db/model/user')
 
 
 exports.register = async (req, res) => {
-  const { email, username, displayName, space, language } = req.body
+  const { email, username, displayName, space, language, picture } = req.body
+  console.log('displayName is ', displayName)
   let newUser = null
+  console.log('register() ------------------------------')
   console.log(req.body)
   const create = (user) => {
     if(user) {
       throw new Error('username exists')
     } else {
-      return User.create(email, username, displayName, space, language)
+      return User.create(email, username, displayName, space, language, picture)
     }
   }
   
@@ -19,11 +21,6 @@ exports.register = async (req, res) => {
   const onError = (error) => {
     throw new Error('register error')
   }
-  
-  // check username duplication
-  // User.findOneByEmail(email)
-  // .then(create)
-  // .catch(onError)
   
   try {
     if (!email){
@@ -46,10 +43,7 @@ exports.register = async (req, res) => {
         })
     onError(error)
   }
-
-    
 }
-
 
 exports.login = async (req, res) => {
   console.log('login 라우터 실행')
@@ -81,11 +75,17 @@ exports.login = async (req, res) => {
 
   // respond the token 
   const respond = (token,user) => {
+    console.log(chalk.white(user));
     res.json({
         message: 'logged in successfully',
         token: token,
         isUser : true,
-        displayName: user.displayName
+        displayName: user.displayName,
+        email: user.email,
+        picture: user.picture,
+        space: user.space,
+        language: user.language,
+        stories: user.stories
     })
   }
 
@@ -101,6 +101,7 @@ exports.login = async (req, res) => {
       // user = await User.create(email, username)
     }
     const p = await responseToken(user)
+    // console.log('response 직전에 에러')
     await respond(p,user)
   } catch (error) {
       res.status(403).json({
@@ -108,3 +109,4 @@ exports.login = async (req, res) => {
     })
   }
 }
+

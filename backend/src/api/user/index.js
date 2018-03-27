@@ -2,6 +2,6 @@ const user = require('express').Router()
 
 const userCtrl = require('./user.ctrl')
 
-// auth.get('/',userCtrl.get)
+user.get('/getUserData',userCtrl.getUserData)
 
 module.exports = user

@@ -15,10 +15,16 @@ class HeaderContainer extends Component {
     this.state = {
       isLogin : localStorage.displayName ? true : false,
       isLoginButtonClicked : false,
-      showMenuBg : this.props.showMenuBg,
-      userName : localStorage.displayName ? localStorage.displayName : null,
-      showSideBar : false
-    } 
+      showMenuBg : this.props.isAlwaysShowing ? true : this.props.showMenuBg,
+      userName : this.props.user.displayName,
+      showSideBar : false,
+      bgColorTransParent : this.props.bgColorTransParent,
+      isLogout : null
+      // renderHome : false
+    }
+    
+    console.log('HeaderContainer CONSTRUCTOR')
+    console.log(this.props)
   }
 
   online = (session) => {
@@ -32,38 +38,37 @@ class HeaderContainer extends Component {
 
   _showModal = () => {
     this.setState({
-      isLoginButtonClicked : true
+      isLoginButtonClicked : !this.state.isLoginButtonClicked
     })
   }
 
   _onClickModalCancel = () => {
     this.setState({
-      isLoginButtonClicked : false
+      isLoginButtonClicked : !this.state.isLoginButtonClicked
     })
   }
 
   _handleScroll = () => {
+    if(this.state.bgColorTransParent) {
+      return
+    }
     if (!this.state.showMenuBg && window.pageYOffset !== 0) {
       this.setState({
         showMenuBg : true
       })
     } else if (window.pageYOffset === 0) {
+      if(this.props.isAlwaysShowing){
+        return
+      }
       this.setState({
         showMenuBg : false,
         isLoginButtonClicked : false,
       })
     }
   }
-
-  _clickNickname = (showSideBar) => {
-    this.setState({
-      ...this.state,
-      showSideBar: !this.state.showSideBar
-    })
-  }
-
-  _loginSuccess = (email, name) => {
-    this.props.doLogin(email, name)
+  
+  _loginSuccess = (email, name, picture, space, language) => {
+    this.props.doLogin(email, name, picture, space, language)
     this.setState({
       ...this.state,
       userName: localStorage.displayName
@@ -77,22 +82,44 @@ class HeaderContainer extends Component {
       userName : nextProps.user.displayName
     })
   }
-
+  
   shouldComponentUpdate(nextProps,nextState) {
     return true
+  }
+
+  _clickNickname = (showSideBar) => {
+    this.setState({
+      ...this.state,
+      // renderHome: false,
+      showSideBar: !this.state.showSideBar
+    })
+  }
+
+  _onClickLogout = () => {
+    localStorage.clear()
+    this.setState({
+      ...this.state,
+      // renderHome: true,
+      isLogout: true,
+      showSideBar: !this.state.showSideBar
+    })
+    this.props.doLogout()
+    this.props.redirectHomeTrue()
   }
   
   render() {
     return (
       <Header
         isLogin = {this.state.isLogin}
-        userName = {this.state.userName}
+        isLogout = {this.state.isLogout}
         isLoginButtonClicked = {this.state.isLoginButtonClicked}
+        userName = {this.state.userName}
         showMenuBg = {this.state.showMenuBg}
-        loginSuccess = {this._loginSuccess}
         showModal = {this._showModal}
-        onClickModalCancel = {this._onClickModalCancel}
+        loginSuccess = {this._loginSuccess}
+        onClickLogout = {this._onClickLogout}
         clickNickname = {this._clickNickname}
+        onClickModalCancel = {this._onClickModalCancel}
         showSideBar = {this.state.showSideBar}
         />
     )
@@ -100,15 +127,19 @@ class HeaderContainer extends Component {
 }
 
 const mapStateToProps = (state) => {
-  const { user } = state
+  const { user, devfolio } = state
   return {
-    user
+    user,
+    devfolio
   }
 }
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    doLogin : bindActionCreators(action.user.do_login, dispatch)
+    doLogin : bindActionCreators(action.user.do_login, dispatch),
+    doLogout : bindActionCreators(action.user.do_logout, dispatch),
+    redirectHomeTrue : bindActionCreators(action.devfolio.redirect_true, dispatch),
+    redirectHomeFalse : bindActionCreators(action.devfolio.redirect_false, dispatch)
   }
 }
 

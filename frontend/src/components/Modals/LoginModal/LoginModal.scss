@@ -1,7 +1,110 @@
 @import 'utils';
 
-.content {
+body{
+  margin : 0;
+  padding : 0;
+  background-position: center;
+  font-family : sans-serif;
+}
+
+.loginbox {
+  width : 320px;
+  height : 420px;
+  background: #000;
+  color : #fff;
+  top : 50%;
+  left : 50%;
+  position : absolute;
+  transform : translate(-50%,-50%);
+  box-sizing : border-box;
+  padding : 70px 30px;
+  background-image: url('https://t4.ftcdn.net/jpg/01/06/38/05/240_F_106380549_JbyCOsSJ8F9X6qaVw9JXUMLoPpjItCr2.jpg');
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin-top : 100px;
+  border-radius: 30px;
+  height : 10rem; 
+}
+
+.avatar{
+  width : 100px;
+  height : 100px;
+  border-radius : 50%;
+  position : absolute;
+  top : -50px;
+  left : calc(50% - 50px);
+}
+
+h1 {
+  margin : 0;
+  padding : 0 0 20px;
+  text-align : center;
+  font-size : 30px;
+  font-family: 'Maven Pro';
+}
+
+h2 {
+  font-weight:bold;
+  font-family: 'Maven Pro';
+}
+
+p {
+  text-align : center;
+}
+
+.loginbox input {
+  width : 100%;
+  margin-bottom : 20px;
+}
+
+.inputype // 로그인창 스타일
+{
+  border : none;
+  border-bottom : 1px solid #fff;
+  background: transparent;
+  background-position: center;
+  text-align : center;
+  outline : none;
+  height : 40px;
+  color : #fff;
+  font-size : 16px;
+  font-family: 'Maven Pro';
+}
+
+.submitB // 로그인 버튼
+{
+  border : none;
+  outline : none;
+  height : 40px;
+  width : 150px;
+  background: #f02525;
+  color : #fff;
+  font-size: 15px;
+  border-radius : 20px;
+  font-family: 'Maven Pro';
+}
+
+.loginbox a{
+  text-decoration : none;
+  font-size : 12px;
+  line-height : 20px;
+  color : darkgrey;
+}
+
+.loginbox a:hover
+{
+  color : #ffc107;
+}
+
+/*밑에는 기존것*/
+
+.content { // 로그인 큰틀
   position: absolute;
+  &:focus{
+    outline: none;
+  }
   top: 50%;  /* position the top  edge of the element at the middle of the parent */
   left: 50%; /* position the left edge of the element at the middle of the parent */
   /* This is a shorthand of translateX(-50%) and translateY(-50%) */
@@ -9,46 +112,85 @@
   width: 400px;
   height: 430px;
   padding : 20px 20px;
-  background-color: $oc-gray-8;
+  box-shadow: 3px 5px 10px $oc-gray-6;
+  background-color: #e0e0c0;
+  background-image {
+    transition : all 1s; 
+  }
+
+  background-image : hover {
+    -webkit-filter : grayscale(100%) blur(1px);
+    -o-filter: grayscale(100%) blur(1px);
+    filter: grayscale(100%) blur(1px);
+  }
   box-shadow: 3px 5px 10px $oc-gray-6;
   display: flex;
   flex-direction: column;
+  /*slidein Animation Section*/
+  animation-name: slidein;
+  animation-duration: 0.8s;
+  animation-fill-mode : both;
+  
+  @keyframes slidein {
+    from {
+    margin-left: 50%;
+    }
+  
+    to {
+    margin-left: 0%;
+    }
+  }
+
   @include media("<=small") {
     width: 100vw;
     height: 100vh;
   }
-  border-top: 10px solid $oc-violet-9;
+  border-top: 1px solid #fff;
+  border-radius: 30px;
 
-  .closeBtn{
+  .closeBtn{ // X버튼
+    position : absolute;
     align-self : flex-end;
     background-color: transparent;
     border: none;
-    cursor:pointer;
+    cursor : pointer;
     overflow: hidden;
   }
-  
-  .LoginBox{
-    display: flex;
-    flex-direction: column;
-    background-color: tomato;
-    justify-content: center;
-    align-items: center;
-    margin-top: 100px;
-    
-    .googleLogin{
-      height: 2rem;
-      background-color: $oc-red-7;
+
+.googleLogin{
+      height: 2.5rem;
+      background-color: #db3236;
       border: none;
-    }
+      width : 11rem; // 이미지파일넣어야하기에
+      background-size : contain;
+      background-repeat: no-repeat;
+      cursor : pointer;
+      border-radius:30px;
+      font-family: 'Maven Pro';
+      font-weight : bold;
+      color : white;
+        }
     
-    .facebookLogin {
-      height: 2rem;
-      background-color: $oc-blue-7;
-      border: none;
-    }
+  .facebookLogin {
+        height: 2.5rem;
+        background-color: #0e1f56;
+        border: none;
+        width : 11rem;
+        background-size : cover;
+        background-repeat: no-repeat;
+        //background-image : url('http://cfile8.uf.tistory.com/image/235D344A55CC86DF2D9A49');
+        border-radius : 30px;
+        font-family: 'Maven Pro';
+        font-weight : bold;
+        color : white;
+        cursor : pointer;
+        //text-transform: uppercase; 대문자
+        // .facebookLogin:hover {
+        //       color: rgba(255, 255, 255, 0.85);
+        //       box-shadow: rgba(30, 22, 54, 0.7) 0 0px 0px 40px inset;
+        //}
   }
 }
-
 
 
 .overlay {
@@ -57,4 +199,91 @@
   left: 0;
   right: 0;
   bottom: 0;
+  }
+
+  /*Animation*/
+  /*
+   Animation example, for spinners
+*/
+.animate-spin {
+  -moz-animation: spin 2s infinite linear;
+  -o-animation: spin 2s infinite linear;
+  -webkit-animation: spin 2s infinite linear;
+  animation: spin 2s infinite linear;
+  display: inline-block;
+}
+@-moz-keyframes spin {
+  0% {
+    -moz-transform: rotate(0deg);
+    -o-transform: rotate(0deg);
+    -webkit-transform: rotate(0deg);
+    transform: rotate(0deg);
+  }
+
+  100% {
+    -moz-transform: rotate(359deg);
+    -o-transform: rotate(359deg);
+    -webkit-transform: rotate(359deg);
+    transform: rotate(359deg);
+  }
+}
+@-webkit-keyframes spin {
+  0% {
+    -moz-transform: rotate(0deg);
+    -o-transform: rotate(0deg);
+    -webkit-transform: rotate(0deg);
+    transform: rotate(0deg);
+  }
+
+  100% {
+    -moz-transform: rotate(359deg);
+    -o-transform: rotate(359deg);
+    -webkit-transform: rotate(359deg);
+    transform: rotate(359deg);
+  }
+}
+@-o-keyframes spin {
+  0% {
+    -moz-transform: rotate(0deg);
+    -o-transform: rotate(0deg);
+    -webkit-transform: rotate(0deg);
+    transform: rotate(0deg);
+  }
+
+  100% {
+    -moz-transform: rotate(359deg);
+    -o-transform: rotate(359deg);
+    -webkit-transform: rotate(359deg);
+    transform: rotate(359deg);
+  }
+}
+@-ms-keyframes spin {
+  0% {
+    -moz-transform: rotate(0deg);
+    -o-transform: rotate(0deg);
+    -webkit-transform: rotate(0deg);
+    transform: rotate(0deg);
+  }
+
+  100% {
+    -moz-transform: rotate(359deg);
+    -o-transform: rotate(359deg);
+    -webkit-transform: rotate(359deg);
+    transform: rotate(359deg);
+  }
+}
+@keyframes spin {
+  0% {
+    -moz-transform: rotate(0deg);
+    -o-transform: rotate(0deg);
+    -webkit-transform: rotate(0deg);
+    transform: rotate(0deg);
+  }
+
+  100% {
+    -moz-transform: rotate(359deg);
+    -o-transform: rotate(359deg);
+    -webkit-transform: rotate(359deg);
+    transform: rotate(359deg);
+  }
 }

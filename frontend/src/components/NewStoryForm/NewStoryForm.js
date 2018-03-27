@@ -44,7 +44,6 @@ const cx = classNames.bind(styles)
   }
   _handleKeyPressContent = (e) => {
     if (e.key === 'Enter') {
-      console.log("dursdlurdrll")
       console.dir(e.target)
       // this.props.onChangeContent('</br>')
       // e.target.nextSibling.focus()
@@ -127,11 +126,6 @@ const cx = classNames.bind(styles)
             placeholderText="end date"
           />
         </div>
-        <ThumbsOk
-          onClick = {this.props.saveStory}
-          className={cx('ThumbsOkIcon')}
-          size={50} 
-        />
         <ThumbsOk
           onClick = {this.props.saveStory}
           className={cx('ThumbsOkIcon')}

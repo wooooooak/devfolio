@@ -4,14 +4,17 @@ import { HeaderContainer, NewStoryContainer } from "containers"
 
 const NewStory = () => {
   return (
-    <PageTemplate
-          header = {<HeaderContainer showMenuBg={true}/>}
-          pageRenderingAni = {true}
-          >
-          <NewStoryTemplate>
-            <NewStoryContainer />
-          </NewStoryTemplate>
-    </PageTemplate>
+    <div>
+      <HeaderContainer showMenuBg={true} bgColorTransParent={false} isAlwaysShowing/>
+      <PageTemplate
+            // header = {<HeaderContainer showMenuBg={true}/>}
+            pageRenderingAni = {true}
+            >
+            <NewStoryTemplate>
+              <NewStoryContainer />
+            </NewStoryTemplate>
+      </PageTemplate>
+    </div>
   )
 }
 

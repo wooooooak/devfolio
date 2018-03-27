@@ -6,9 +6,9 @@ import action from "action"
 import NewStoryForm from "components/NewStoryForm"
 import StoryInfoModal from "components/Modals/StoryInfoModal/StoryInfoModal"
 import { WithContext as ReactTags } from 'react-tag-input'
-import {TAGS} from "tags"
-
 import axios from 'axios'
+
+import {TAGS} from "tags"
 
 const divStyle = {
   width:'768px', // 디바이스가 줄어듦에따라 반응형으로 줄이자
@@ -21,14 +21,14 @@ class NewStoryContainer extends Component {
   constructor (props) {
     super(props)
     this.state = {
-      registerSuccess: false,
       title: null,
       content : null,
       startDate: null,
       endDate : null,
       showModal: false,
       tags: [],
-      sourceLink: null
+      sourceLink: null,
+      redirectMyStory: false
     }
   }
   _tagHandleDelete = (i) => {
@@ -87,7 +87,6 @@ class NewStoryContainer extends Component {
   }
   
   _showModal = () => {
-    console.log('showModal()')
     this.setState({
       ...this.state,
       showModal: true
@@ -106,12 +105,30 @@ class NewStoryContainer extends Component {
     })
   }
 
-  _saveStory = () => {
-    console.log(this.state)
+  _saveStory = async () => {
+    const data = await axios({
+      method: 'POST',
+      url: 'http://localhost:8082/api/story/addStory',
+      headers: {'x-access-token':localStorage.devfolio_token},
+      data: {
+        storyInfo : this.state
+      }
+    })
+    if (data.status === 200) {
+      this.setState({
+        ...this.state,
+        redirectMyStory: true
+      })
+    }
+    console.log(data)
   }
 
   render(){
-    console.log(this.state)
+    console.log(JSON.stringify(this.state))
+    if (this.state.redirectMyStory) {
+      <Redirect path="/myStory" />
+    }
+
     return(
           <div style={divStyle}>
             <NewStoryForm 

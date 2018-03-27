@@ -5,22 +5,25 @@ const User = new Schema({
   displayName: String,
   email: String,
   username: String,
+  picture: String,
   space:{},
   language:{},
   createdAt: {
     type: Date,
     default: Date.now
   },
+  stories:[{type: mongoose.Schema.Types.ObjectId}]
 })
 
 // create new User document
-User.statics.create = function(email,username,displayName,space,language) {
+User.statics.create = function(email,username,displayName,space,language,picture) {
   const user = new this({
       email,
       username,
       displayName,
       space,
-      language
+      language,
+      picture
   })
 
   // return the Promise

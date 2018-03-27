@@ -4,9 +4,9 @@ import classNames from 'classnames/bind'
 
 const cx = classNames.bind(styles)
 
-const PageTemplate = ({ header, pageRenderingAni, children }) => (
+const PageTemplate = ({pageRenderingAni, children }) => (
   <div className={cx('page-template',{pageRenderingAni:pageRenderingAni})}>
-    {header}
+    {/* {header} */}
     <main>
         {children}
     </main>

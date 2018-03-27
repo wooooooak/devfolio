@@ -3,16 +3,17 @@ import { PageTemplate, IntroTemplate } from 'templates'
 import { HeaderContainer, IntroContainer } from "containers"
 
 const Home = () => {
-  console.log('/')
     return (
-      <PageTemplate
-         header={<HeaderContainer/>}
-         pageRenderingAni = {false}
-         >
-        <IntroTemplate>
-          <IntroContainer />
-        </IntroTemplate>
-      </PageTemplate>
+      <div>
+        <HeaderContainer showMenuBg={false} bgColorTransParent={false}/>
+        <PageTemplate
+          pageRenderingAni = {true}
+          >
+          <IntroTemplate>
+            <IntroContainer />
+          </IntroTemplate>
+        </PageTemplate>
+      </div>
     )
 }
 
