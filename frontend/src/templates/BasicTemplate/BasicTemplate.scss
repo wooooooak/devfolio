@@ -1,0 +1,12 @@
+@import 'utils';
+
+
+//여기의 정보는 introOne에서 덮어씌워진다.
+
+.basic-template {
+    position: relative;
+    height: 100vh; // 페이지에서 헤더를 제외한 영역 모두 채우기
+    background-size:cover;
+    margin-top: 45px;
+    padding-top: 70px;
+}

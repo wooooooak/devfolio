@@ -1,0 +1,12 @@
+@import 'utils';
+
+.profile_img_box {
+  margin-top: 50px;
+  text-align: center;
+  .profile_img{
+    width: 150px;
+    height: 150px;
+    border-radius: 50px;
+  }
+
+}

@@ -1,0 +1,69 @@
+@import 'utils';
+
+.content {
+  margin-top: -75px;
+  display: flex;
+  display: -webkit-flex;
+  flex-direction: row;
+  height: 100vh;
+  .aboutMe{
+    padding-top: 80px;
+    -webkit-flex: initial;
+    flex: initial;
+    width: 25vw;
+    height: 100vh;
+    min-width: 220px;
+    background-color: #383A3F;
+    
+    @include media("<=large"){
+      // margin-top: 50px;
+    }
+
+    @include media("<=medium"){
+     display : none
+    }
+    
+    .displayName{
+      font-family: 'Yantramanav', sans-serif;
+      text-align: center;
+      color : #FFFFFC;
+      font-size: 1.8rem;
+    }
+
+    .spacesBox{
+      font-family:'Nunito Sans', sans-serif;
+      font-weight: 200;
+      text-align: center;
+      color : white;
+      .space{
+        margin-bottom: -15px;
+      }
+    }
+
+    .languagesBox{
+      margin-top: 35px;
+      font-family:'Nunito Sans', sans-serif;
+      font-weight: 200;
+      text-align: center;
+      color : white;
+      .language{
+        margin-bottom: -15px;
+      }
+    }
+    
+    .email{
+      text-align: center;
+      color : #FFFFF3;
+      font-family:'Nunito Sans', sans-serif;
+      font-size: 1rem;
+      margin-top: 60px;
+    }
+
+  }
+  .aboutPortfolio{
+    padding-top: 80px;
+    -webkit-flex: 1;
+    flex: 1;
+    background-color: #FFFFFC;
+  }
+}
