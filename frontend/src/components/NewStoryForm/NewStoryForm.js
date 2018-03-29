@@ -11,10 +11,6 @@ import 'react-datepicker/dist/react-datepicker.css'
 
 require('medium-editor/dist/css/medium-editor.css')
 require('medium-editor/dist/css/themes/beagle.css')
-const editorBtns = [
-  'bold', 'italic', 'underline','anchor','h2','h3',
-  'quote','strikethrough','pre'
-]
 
 const cx = classNames.bind(styles)
   class NewStoryForm extends Component {

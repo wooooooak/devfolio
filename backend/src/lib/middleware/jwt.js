@@ -4,7 +4,6 @@ const authMiddleware = async (req, res, next) => {
   //read the token from header or url
   const token = req.headers['x-access-token'] || req.query.token
   console.log('authMiddleWare start: token is')
-  console.log(token)
   //token does not exist
   if(!token) {
     console.log('헤더에 토큰이 없습니다.')
@@ -27,8 +26,6 @@ const authMiddleware = async (req, res, next) => {
   try {
     const decoded = await p
     req.decoded = decoded //다음 라우터에서 req.decoded하면 정보가 나온다
-    console.log('decoded = ')
-    console.log(decoded)
     next()
   } catch (error) {
     res.status(403).json({

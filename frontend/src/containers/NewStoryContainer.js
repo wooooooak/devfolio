@@ -59,7 +59,7 @@ class NewStoryContainer extends Component {
 
 
   _onChangeTitle = (title) => {
-    console.dir(title)
+    // console.dir(title)
     this.setState({
       ...this.state,
       title: title
@@ -124,7 +124,7 @@ class NewStoryContainer extends Component {
   }
 
   render(){
-    console.log(JSON.stringify(this.state))
+    // console.log(JSON.stringify(this.state))
     if (this.state.redirectMyStory) {
       <Redirect path="/myStory" />
     }

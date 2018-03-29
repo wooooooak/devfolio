@@ -6,21 +6,41 @@
   display: -webkit-flex;
   flex-direction: row;
   height: 100vh;
+
+  .fakeAboutMe{
+    flex: initial;
+    -webkit-flex: initial;
+    width: 25vw;
+    height: 100vh;
+    @include media("<=small"){
+      font-size: 1rem;
+    }
+    
+    @include media("<=medium"){
+      display : none;
+      width: 0;
+    }
+  }
+  
   .aboutMe{
     padding-top: 80px;
-    -webkit-flex: initial;
-    flex: initial;
+    position: fixed;
+    top:0%;
+    left: 0;
     width: 25vw;
     height: 100vh;
     min-width: 220px;
     background-color: #383A3F;
+    overflow-x: hidden;
     
-    @include media("<=large"){
+    @include media("<=small"){
+      font-size: 1rem;
       // margin-top: 50px;
     }
-
+    
     @include media("<=medium"){
-     display : none
+      display : none;
+      width: 0;
     }
     
     .displayName{
@@ -60,10 +80,5 @@
     }
 
   }
-  .aboutPortfolio{
-    padding-top: 80px;
-    -webkit-flex: 1;
-    flex: 1;
-    background-color: #FFFFFC;
-  }
+
 }

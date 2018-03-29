@@ -1,0 +1,37 @@
+@import 'utils';
+
+
+.listContainer {
+  padding-top: 80px;
+  -webkit-flex: 1;
+  flex: 1;
+  background-color: #FFFFFC;
+  @include media("<=small"){
+
+  }
+
+  @include media("<=medium"){
+    text-align: start;
+  }
+}
+
+.story {
+  height: 50vh;
+  padding-left: 50px;
+  border-bottom-color: black;
+  border-bottom-width: 1px;
+  border-bottom-style: solid;
+  .title{
+    font-size: 3.6rem;
+  }
+  @include media("<=small"){
+    padding-left: 25px;
+    font-size: 1rem;
+    height: 50vh;
+    overflow-wrap: break-word;
+    .title {
+      overflow-wrap: break-word;
+      font-size: 2.7rem;
+    }
+  }
+}

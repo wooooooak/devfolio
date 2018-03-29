@@ -21,3 +21,25 @@ exports.addStory = async (req,res) => {
     })
   }
 }
+
+exports.getStories = async (req,res) => {
+  const email = req.query.email
+  try {
+    const stories = await Story.find({author:email})
+    // const user = await User.findOne({email:email}).populate('stories')
+    console.log(chalk.yellow(email))
+
+
+    res.status(200).json(stories)
+  } catch (error) {
+    console.log(error)
+    res.status(500).json({
+      message : 'get story failed.....'
+    })
+  }
+}
+
+exports.getStory = async (req,res) => {
+  console.log(req.query.storyId)
+  console.log('getStory')
+}

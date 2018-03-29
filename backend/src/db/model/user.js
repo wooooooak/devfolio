@@ -12,7 +12,7 @@ const User = new Schema({
     type: Date,
     default: Date.now
   },
-  stories:[{type: mongoose.Schema.Types.ObjectId}]
+  stories:[{type: mongoose.Schema.Types.ObjectId, ref: "Story"}]
 })
 
 // create new User document

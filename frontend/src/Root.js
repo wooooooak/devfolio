@@ -4,10 +4,32 @@ import { Provider } from 'react-redux'
 import reducer from './reducer/index'
 import { BrowserRouter } from "react-router-dom"
 import configureStore  from './store/index'
+import axios from 'axios'
 
 const store = configureStore(reducer)
 
 class Root extends Component {
+  constructor(props) {
+    super(props)
+    if (!store.getState().user.isLogin && localStorage.devfolio_token) {
+      const _fetchUserData = async () => {
+        const { data } = await axios({
+          method : 'GET',
+          url : "http://localhost:8082/api/user/getUserData",
+          headers: {'x-access-token' : localStorage.devfolio_token}
+        })
+        if (data) {
+          store.dispatch({
+            type:'DO_LOGIN',
+            payload: data
+          })
+          console.log('root에서 로그인')
+        }
+      }
+      _fetchUserData()
+    }
+  }
+
   render() {
     return (
       <Provider store={store}>

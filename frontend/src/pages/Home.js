@@ -3,6 +3,7 @@ import { PageTemplate, IntroTemplate } from 'templates'
 import { HeaderContainer, IntroContainer } from "containers"
 
 const Home = () => {
+  console.log()
     return (
       <div>
         <HeaderContainer showMenuBg={false} bgColorTransParent={false}/>

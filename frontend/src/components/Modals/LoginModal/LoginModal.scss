@@ -1,12 +1,5 @@
 @import 'utils';
 
-body{
-  margin : 0;
-  padding : 0;
-  background-position: center;
-  font-family : sans-serif;
-}
-
 .loginbox {
   width : 320px;
   height : 420px;
@@ -26,77 +19,69 @@ body{
   margin-top : 100px;
   border-radius: 30px;
   height : 10rem; 
+
+  h1 {
+    margin : 0;
+    padding : 0 0 20px;
+    text-align : center;
+    font-size : 30px;
+    font-family: 'Maven Pro';
+  }
+  
+  h2 {
+    font-weight:bold;
+    font-family: 'Maven Pro';
+  }
+  
+  p {
+    // text-align : center;
+  }
+
+  input {
+    width : 100%;
+    margin-bottom : 20px;
+  }
+
+  a:hover
+  {
+    color : #ffc107;
+  }
+
+  .inputype // 로그인창 스타일
+  {
+    border : none;
+    border-bottom : 1px solid #fff;
+    background: transparent;
+    background-position: center;
+    text-align : center;
+    outline : none;
+    height : 40px;
+    color : #fff;
+    font-size : 16px;
+    font-family: 'Maven Pro';
+  }
+
+  .submitB // 로그인 버튼
+  {
+    border : none;
+    outline : none;
+    height : 40px;
+    width : 150px;
+    background: #f02525;
+    color : #fff;
+    font-size: 15px;
+    border-radius : 20px;
+    font-family: 'Maven Pro';
+  }
+  a {
+    text-decoration : none;
+    font-size : 12px;
+    line-height : 20px;
+    color : darkgrey;
+  }
+
 }
 
-.avatar{
-  width : 100px;
-  height : 100px;
-  border-radius : 50%;
-  position : absolute;
-  top : -50px;
-  left : calc(50% - 50px);
-}
-
-h1 {
-  margin : 0;
-  padding : 0 0 20px;
-  text-align : center;
-  font-size : 30px;
-  font-family: 'Maven Pro';
-}
-
-h2 {
-  font-weight:bold;
-  font-family: 'Maven Pro';
-}
-
-p {
-  text-align : center;
-}
-
-.loginbox input {
-  width : 100%;
-  margin-bottom : 20px;
-}
-
-.inputype // 로그인창 스타일
-{
-  border : none;
-  border-bottom : 1px solid #fff;
-  background: transparent;
-  background-position: center;
-  text-align : center;
-  outline : none;
-  height : 40px;
-  color : #fff;
-  font-size : 16px;
-  font-family: 'Maven Pro';
-}
-
-.submitB // 로그인 버튼
-{
-  border : none;
-  outline : none;
-  height : 40px;
-  width : 150px;
-  background: #f02525;
-  color : #fff;
-  font-size: 15px;
-  border-radius : 20px;
-  font-family: 'Maven Pro';
-}
-
-.loginbox a{
-  text-decoration : none;
-  font-size : 12px;
-  line-height : 20px;
-  color : darkgrey;
-}
-
-.loginbox a:hover
-{
-  color : #ffc107;
-}
 
 /*밑에는 기존것*/
 

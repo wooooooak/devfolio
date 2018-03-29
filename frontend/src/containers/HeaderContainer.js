@@ -24,7 +24,6 @@ class HeaderContainer extends Component {
     }
     
     console.log('HeaderContainer CONSTRUCTOR')
-    console.log(this.props)
   }
 
   online = (session) => {

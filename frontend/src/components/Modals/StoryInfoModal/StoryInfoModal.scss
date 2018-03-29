@@ -23,6 +23,7 @@
 
   @include media("<=small") {
     width : 100vw;
+    height: 130vh;
   }
 
   &:focus{

@@ -1,22 +1,20 @@
 import React from 'react'
 import { PageTemplate, NewStoryTemplate } from 'templates'
-import { HeaderContainer, NewStoryContainer } from "containers"
+import { HeaderContainer, StoryContainer } from "containers"
 
-const NewStory = ({match}) => {
-  console.log(match.params.id)
+const Story = ({match}) => {
   return (
     <div>
       <HeaderContainer showMenuBg={true} bgColorTransParent={false} isAlwaysShowing/>
       <PageTemplate
-            // header = {<HeaderContainer showMenuBg={true}/>}
             pageRenderingAni = {true}
             >
             <NewStoryTemplate>
-              <NewStoryContainer />
+              <StoryContainer storyId = {match.params.id}/>
             </NewStoryTemplate>
       </PageTemplate>
     </div>
   )
 }
 
-export default NewStory
+export default Story

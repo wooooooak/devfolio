@@ -14,4 +14,7 @@
     @include media("<=large") {
         margin-top: 46px;
     }
+    @include media("<=small") {
+        width: 100vh;
+    }
 }

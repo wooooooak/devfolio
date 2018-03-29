@@ -2,7 +2,7 @@
 
 .content{
     position: relative;
-    margin-top:-40px;
+    margin-top:-43px;
     height: 100vh; // 페이지에서 헤더를 제외한 영역 모두 채우기
     background:url('http://localhost:8082/images/three.jpg');
     background-attachment: fixed;
@@ -16,7 +16,7 @@
 
 .text {
   font-size: 50px;
-  color: white;
+  color: white; 
   padding: 1rem;
   padding-top: 20rem;
   text-align:center;
@@ -24,7 +24,7 @@
   word-break:keep-all;
   word-wrap:break-word;
   
-  @include media("<=medium") {
+  @include media ("<=medium") {
     font-size: 2em;
   }
 }

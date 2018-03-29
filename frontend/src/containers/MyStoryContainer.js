@@ -1,38 +1,50 @@
 import React, {Component} from 'react'
 import { connect } from 'react-redux'
 import { bindActionCreators } from "redux"
-import { Redirect } from "react-router-dom"
 import action from "action"
 import MyStories from "components/MyStories"
 import axios from "axios"
-import { config } from 'rx';
 
 class NewStoryContainer extends Component {
   constructor(props) {
     super(props)
-    console.log('NewStoryContainer CONSTRUCTOR')
+    this.state = {
+      stories : null
+    }
   }
-
+  
   componentDidMount() {
-    console.log(this.props.user)
+    const { email } = this.props.user
+    console.log(email)
+    const fetchUserStories = async () => {
+       const {data} = await axios({
+         method: "GET",
+         url : "http://localhost:8082/api/story/getStories",
+         params: {
+           email: this.props.user.email
+         },
+         responseType: 'json'
+       })
+       this.setState({
+         stories: data
+       })
+     } 
+     fetchUserStories()
   }
 
-  _fetchUserData = async () => {
-    const {data} = axios({
-      method: "get",
-      url : "http://localhost:8082/api/story/mystory",
-      responseType: 'json',
-      params: {
-        email: this.props.user.email
-      }
-  })
-  console.log(data)
-} 
+  shouldComponentUpdate(nextProps,nextState) {
+    return true
+  }
+
 
   render() {
+    console.log(this.props.user)
+    console.log(this.state.stories)
+
     return (
       <MyStories 
           userData = {this.props.user}
+          stories = {this.state.stories}
         />
     )
   }

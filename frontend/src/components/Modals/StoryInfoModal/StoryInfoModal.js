@@ -1,4 +1,4 @@
-import React, { Component } from 'react'
+import React from 'react'
 import Modal from "react-modal"
 import styles from "./StoryInfoModal.scss"
 import classNames from "classnames/bind"

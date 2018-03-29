@@ -46,16 +46,19 @@ const Header = ({isLogin, loginSuccess, isLoginButtonClicked, userName,
       <div>
           <header className={cx('base','header',{showBG : showMenuBg})}>
             <div><Logo /></div>
-            <div className={cx('sideBar')}>
-              <button className={cx('hideSideBarBtn')} onClick={clickNickname}>x</button>
-              <button onClick={onClickLogout}> logout </button>
+            <div className={cx('sideBarBG')}>
 
-              <p>search</p>
-              -------------------------------------------------
-              <p><Link exact to="/">Home</Link></p>
-              <p><Link exact to="/myStories">your stories</Link></p>
-              <p><Link exact to="/newStory">new story</Link></p>
-              <p><Link exact to="/profile">profile</Link></p>
+              <div className={cx('sideBar')}>
+                <button className={cx('hideSideBarBtn')} onClick={clickNickname}>x</button>
+                <button onClick={onClickLogout}> logout </button>
+
+                <p>search</p>
+                -------------------------------------------------
+                <p><Link exact to="/">Home</Link></p>
+                <p><Link exact to="/myStories">your stories</Link></p>
+                <p><Link exact to="/newStory">new story</Link></p>
+                <p><Link exact to="/profile">profile</Link></p>
+              </div>
             </div>
           </header>
           

@@ -1,27 +1,34 @@
-import React, { Component } from 'react'
+import React from 'react'
 import styles from './MyStories.scss'
 import classNames from 'classnames/bind'
 import ProfileImg from 'components/ProfileImg'
+import StoryList from 'components/StoryList'
 
 const cx = classNames.bind(styles)
 
-const MyStories = ({userData}) => {
+const MyStories = ({userData,stories}) => {
   const spaces = userData.space
   const languages = userData.language
   let Sarr = []
   let Larr = []
-  for (const key of Object.keys(spaces)) {
-    if(spaces[key]) Sarr.push(key)
+  if (spaces) {
+    for (const key of Object.keys(spaces)) {
+      if(spaces[key]) Sarr.push(key)
+    }
   }
-  for(const key of Object.keys(languages)) {
-    if(languages[key]) Larr.push(key)
+  if (languages) {
+    for(const key of Object.keys(languages)) {
+      if(languages[key]) Larr.push(key)
+    }
   }
   let spaceArr = Sarr.map((el)=>{
     return <p className={cx('space')}>{el}</p>
   })
+  
   let languageArr = Larr.map((el)=>{
     return <p className={cx('language')}>{el}</p>
   })
+
     return (
       <div className={cx('content')}>
 
@@ -36,11 +43,8 @@ const MyStories = ({userData}) => {
           </div>
           <p className={cx('email')}>{userData.email}</p>
         </div>
-
-        <div className={cx('aboutPortfolio')}>
-          
-        </div>
-
+        <div className={cx('fakeAboutMe')}></div>
+        <StoryList stories={stories}/>
       </div>
     )
 }
