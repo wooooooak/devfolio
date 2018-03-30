@@ -14,32 +14,26 @@ class NewStoryContainer extends Component {
   }
   
   componentDidMount() {
-    const { email } = this.props.user
-    console.log(email)
     const fetchUserStories = async () => {
        const {data} = await axios({
          method: "GET",
          url : "http://localhost:8082/api/story/getStories",
          params: {
-           email: this.props.user.email
+          displayName: this.props.user.displayName
          },
          responseType: 'json'
        })
+       console.log(data)
        this.setState({
          stories: data
        })
-     } 
+     }
      fetchUserStories()
   }
-
-  shouldComponentUpdate(nextProps,nextState) {
-    return true
-  }
-
-
+  
   render() {
-    console.log(this.props.user)
-    console.log(this.state.stories)
+    //displayName으로 찾자!
+    console.log(this.props.displayName)
 
     return (
       <MyStories 

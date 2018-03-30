@@ -14,12 +14,13 @@ class App extends Component {
           <Route path="/register" component={Register}/>
           <Route exact path="/Story/:id" component={Story}/>
           <Route path="/newStory" component={NewStory}/>
-          <Route path="/myStories" component={MyStory}/>
+          <Route exact path="/myStories/:displayName" component={MyStory}/>
         </Switch>
       </div>
     )
   }
 }
+
 
 export default App
 

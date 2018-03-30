@@ -17,10 +17,9 @@ const IntroOne = ({onClickDownBtn}) => {
                     <p>단, code를 열람할 수 있는 링크가 필요합니다.</p>
          </p>
       </div>
-      <div className={cx('sampleBox')}>
-        <button onClick={onClickDownBtn}>down</button>
+      {/* <div className={cx('sampleBox')}>
         
-      </div>
+      </div> */}
     </div>
   )
 }

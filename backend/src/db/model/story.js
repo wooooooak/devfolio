@@ -8,10 +8,11 @@ const Story = new Schema({
   endDate: Date,
   sourceLink: String,
   tags:[{}],
-  author:{type: String}
+  author:{type: String},
+  displayName:{type: String}
 })
 
-Story.statics.create = function(storyInfo, author) {
+Story.statics.create = function(storyInfo, author, displayName) {
   const { title, content, startDate, endDate, sourceLink, tags } = storyInfo
   const story = new this({
     title : title,
@@ -20,7 +21,8 @@ Story.statics.create = function(storyInfo, author) {
     endDate, 
     sourceLink, 
     tags, 
-    author
+    author,
+    displayName
   })
 
   return story.save()

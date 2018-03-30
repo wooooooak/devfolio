@@ -101,7 +101,7 @@ const cx = classNames.bind(styles)
             }
           }
         />
-        <div className={cx('dateSelector')}>
+        {/* <div className={cx('dateSelector')}>
           <DatePicker 
             className={cx('startDatePicker')}
             selected={this.props.startDate}
@@ -121,7 +121,7 @@ const cx = classNames.bind(styles)
             onChange={(e)=>this.props.onChangeEndDate(e)}
             placeholderText="end date"
           />
-        </div>
+        </div> */}
         <ThumbsOk
           onClick = {this.props.saveStory}
           className={cx('ThumbsOkIcon')}

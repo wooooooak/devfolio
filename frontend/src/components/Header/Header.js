@@ -23,7 +23,6 @@ const Header = ({isLogin, loginSuccess, isLoginButtonClicked, userName,
                 <li><Link exact to="/about">what</Link></li>
                 {isLogin
                  ? <li><button onClick={clickNickname} className={cx('userBtn')}>{userName}</button>
-                    {/* <li><button onClick={()=>{localStorage.clear()}}> logout </button></li> */}
                     </li>
                  : <li className={cx('loginBtn')} onClick={showModal}>Login</li>}
                 <li className={cx("hamberger")}><HambergerIcon onClick={clickNickname} size={38}/></li>
@@ -55,7 +54,7 @@ const Header = ({isLogin, loginSuccess, isLoginButtonClicked, userName,
                 <p>search</p>
                 -------------------------------------------------
                 <p><Link exact to="/">Home</Link></p>
-                <p><Link exact to="/myStories">your stories</Link></p>
+                <p><Link exact to={`/myStories/${userName}`}>your stories</Link></p>
                 <p><Link exact to="/newStory">new story</Link></p>
                 <p><Link exact to="/profile">profile</Link></p>
               </div>

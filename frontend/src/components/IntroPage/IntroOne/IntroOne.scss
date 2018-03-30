@@ -3,14 +3,14 @@
 .content{
   display: flex;
   position: relative;
-  height: 85vh; // 페이지에서 헤더를 제외한 영역 모두 채우기
-  // background:url('http://localhost:8082/images/six.jpg');
-  // background-repeat: no-repeat;
-  // background-attachment: fixed;
-  background: #485563;  /* fallback for old browsers */
-  background: -webkit-linear-gradient(to bottom, #3d72b4, #525252);  /* Chrome 10-25, Safari 5.1-6 */
-  background: linear-gradient(to bottom, #3d72b4, #525252); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
-  // background-size:cover;
+  height: 101vh; // 페이지에서 헤더를 제외한 영역 모두 채우기
+  background:url('http://localhost:8082/images/two.jpg');
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  // background: #485563;  /* fallback for old browsers */
+  // background: -webkit-linear-gradient(to bottom, #304352, #c0bcb6);  /* Chrome 10-25, Safari 5.1-6 */
+  // background: linear-gradient(to bottom, #304352, #c0bcb6); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+  background-size:cover;
 
   @include media("<=medium") {
     height: 95vh;
@@ -24,8 +24,6 @@
     @include media(">huge") {
       margin-left: 10vw;
       margin-top: 5vh;
-      // margin-right: 5vw;
-      // width: 90vw;
     }
     @include media("<=medium") {
       margin-left: 0px;
@@ -33,14 +31,16 @@
     }
     .textTitle {
       flex: 4;
-      font-size: 50px;
+      // font-size: 50px;
+      font-size:4rem;
       color: white;
       padding-left: 1rem;
       padding-top: 10rem;
       //단어 줄바꿈에 관한 속성들
       word-break:keep-all;
       word-wrap:break-word;
-      
+      @include media(">huge") {
+      }
     }
     .text {
       color: white;
@@ -54,6 +54,10 @@
       p{
         font-size: 1.2rem;
       }
+      @include media("<=large") {
+        padding-left: -1rem;
+        font-size: 1.2em;
+      }
       @include media("<=medium") {
         padding-left: -1rem;
         font-size: 1.3em;
@@ -62,7 +66,14 @@
   }
   
   .sampleBox {
-    padding-top: 50px;
+    border-radius: 20px;
+    box-shadow: -5px 5px 5px rgb(41, 41, 41);
+    background:url('http://localhost:8082/images/intro1.jpg');
+    background-repeat: no-repeat;
+    margin-top: 100px;
+    margin-left: 30px;
+    background-size: cover;
+    height: 70vh;
     flex: 5;
     @include media("<=medium") {
       display: none;

@@ -11,6 +11,7 @@ const StoryList = ({stories}) => {
   let arr = []
   if (stories) {
     arr = stories.map((el)=>{
+      console.log(el)
       let url = `/story/${el._id}`
       return(
         <div className={cx('story')}>
@@ -25,7 +26,7 @@ const StoryList = ({stories}) => {
             </Moment>
           </div>
           
-          <div>{renderHTML(el.content)}</div>
+          <div>{el.content ? renderHTML(el.content) : null}</div>
           <Link to={url}> {url} </Link>
         </div>
       )

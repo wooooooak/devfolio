@@ -3,10 +3,9 @@
 .content{
     position: relative;
     height: 100vh; // 페이지에서 헤더를 제외한 영역 모두 채우기
-    // background-color: $oc-gray-9;
     background: #485563;  /* fallback for old browsers */
-background: -webkit-linear-gradient(to bottom, #525252, #242222);  /* Chrome 10-25, Safari 5.1-6 */
-background: linear-gradient(to bottom, #525252, #242222); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+    background: -webkit-linear-gradient(to bottom, #ffffff, #f7f7f7);  /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(to bottom, #ffffff, #f7f7f7); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
 
     // background:url('http://localhost:8082/images/two.jpg');
     margin-top: -42px;
@@ -31,7 +30,7 @@ background: linear-gradient(to bottom, #525252, #242222); /* W3C, IE 10+/ Edge, 
       position: absolute;
       left: 50%;
       top: 50%;
-      // transform: translate(-50%,-50%);
+      transform: translate(-50%,-50%);
       display: flex;
       justify-content: center;
       align-items: center;

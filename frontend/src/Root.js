@@ -31,6 +31,7 @@ class Root extends Component {
   }
 
   render() {
+    console.log('root render')
     return (
       <Provider store={store}>
         <BrowserRouter>
