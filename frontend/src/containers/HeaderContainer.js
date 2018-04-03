@@ -3,11 +3,6 @@ import Header from "components/Header"
 import { connect } from 'react-redux'
 import { bindActionCreators } from "redux"
 import action from "action"
-import hellojs from "hellojs"
-
-hellojs.init({
-  facebook : 1611729235527991
-}, {redirect_uri: '/redirect.html'})
 
 class HeaderContainer extends Component {
   constructor (props) {
@@ -22,8 +17,6 @@ class HeaderContainer extends Component {
       isLogout : null
       // renderHome : false
     }
-    
-    console.log('HeaderContainer CONSTRUCTOR')
   }
 
   online = (session) => {
@@ -98,7 +91,6 @@ class HeaderContainer extends Component {
     localStorage.clear()
     this.setState({
       ...this.state,
-      // renderHome: true,
       isLogout: true,
       showSideBar: !this.state.showSideBar
     })

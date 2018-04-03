@@ -11,13 +11,16 @@ const store = configureStore(reducer)
 class Root extends Component {
   constructor(props) {
     super(props)
-    if (!store.getState().user.isLogin && localStorage.devfolio_token) {
+    if (!store.getState().user.isLogin && localStorage.displayName) {
       const _fetchUserData = async () => {
         const { data } = await axios({
           method : 'GET',
           url : "http://localhost:8082/api/user/getUserData",
-          headers: {'x-access-token' : localStorage.devfolio_token}
+          params: {
+            displayName: localStorage.displayName
+          }
         })
+        // console.log(data)
         if (data) {
           store.dispatch({
             type:'DO_LOGIN',

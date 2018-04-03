@@ -1,24 +1,24 @@
 @import 'utils';
 
-.story {
-
-}
-
-.infoInputBtn{
-  background-color: #353866;
-  border:none;
-  border-radius: 40px;
-  color: white;
-  height: 30px;
-  width: 120px;
-  margin-top:20px;
-  cursor: pointer;
-   &:hover {
-    color:white;
-    background: #6E7783;
-  }
-  &:focus {
-    outline: none;
+.infoInputBtnContainer{
+  text-align: center;
+  .infoInputBtn{
+    text-align: center;
+    background-color: #353866;
+    border:none;
+    border-radius: 40px;
+    color: white;
+    height: 30px;
+    width: 120px;
+    margin-top:20px;
+    cursor: pointer;
+     &:hover {
+      color:white;
+      background: #6E7783;
+    }
+    &:focus {
+      outline: none;
+    }
   }
 }
 
@@ -32,7 +32,6 @@
     text-align: center;
     width: 100px;
     cursor: pointer;
-    // color: transparent;
     &:focus{
       outline: none;
       color: transparent;
@@ -63,36 +62,28 @@
   color: rgb(0, 0, 0);
   font-size: 3.3em;
   font-weight: bold;
-  height: 50px;
+  height: 70px;
   width: 100%;
   border-color: transparent;
   margin-top:50px;
   &:focus{
     outline: none;
   }
-  &:before {
-    width: 20px;
-    height: 20px;
-    content: 'aa';
-  }
 }
 
 .editor {
-  font-family: 'Roboto Condensed','Nanum Gothic', sans-serif;
   margin-top: 30px;
-  color: rgb(7, 7, 7);
-  font-size: 1.7em;
   &:focus{
     outline: none;
   }
-  text-align: start;
 }
 
-.codePart {
-  font-size: 1.2rem;
-  color: blanchedalmond;
-  font-family: 'Nanum Gothic Coding', monospace;
-  background: $oc-gray-9;
-  // height: 100%;
-  margin-bottom: -1.3rem;
+
+.FroalaEditorA {
+
+  font-family: 'Roboto Condensed','Nanum Gothic', sans-serif;
+  text-align: start;
+  font-size: 1.6em;
+  margin-top: 15px;
+  color: rgb(7, 7, 7);
 }

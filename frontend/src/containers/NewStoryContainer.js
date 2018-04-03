@@ -6,7 +6,10 @@ import action from "action"
 import NewStoryForm from "components/NewStoryForm"
 import StoryInfoModal from "components/Modals/StoryInfoModal/StoryInfoModal"
 import { WithContext as ReactTags } from 'react-tag-input'
+import moment from 'moment'
+
 import axios from 'axios'
+import config from 'jsconfig.json'
 
 import {TAGS} from "tags"
 
@@ -20,6 +23,9 @@ const suggestions = TAGS
 class NewStoryContainer extends Component {
   constructor (props) {
     super(props)
+    if(this.props.storyId){
+      console.log(this.props.storyId)
+    }
     this.state = {
       title: null,
       content : null,
@@ -28,9 +34,41 @@ class NewStoryContainer extends Component {
       showModal: false,
       tags: [],
       sourceLink: null,
-      redirectMyStory: false
+      redirectMyStory: false,
+      images : []
     }
   }
+
+  componentDidMount () {
+    if (this.props.storyId) {
+      const fectchStoryById = async () => {
+        try {
+          const { data } = await axios({
+            method : 'GET',
+            url: config.serverURL + '/story/getStory',
+            params: { 
+              storyId: this.props.storyId
+            }
+          })
+          this.setState({
+            ...this.state,
+            title : data.title,
+            content : data.content,
+            startDate: moment(data.startDate),
+            endDate: moment(data.endDate),
+            tags : data.tags,
+            sourceLink : data.sourceLink,
+            images: data.images
+          })
+          // console.log(data)
+        } catch (error) {
+          console.log(error)
+        }
+      }
+      fectchStoryById()
+    }
+  }
+
   _tagHandleDelete = (i) => {
     this.setState({
       tags: this.state.tags.filter((tag, index) => index !== i),
@@ -57,9 +95,19 @@ class NewStoryContainer extends Component {
     console.log('The tag at index ' + index + ' was clicked')
   }
 
+  _addImage = (link) => {
+    console.log(link)
+    console.log(this.state.images);
+    let arr = this.state.images
+    arr.push(link)
+
+    this.setState({
+      ...this.state,
+      images : arr
+    })
+  }
 
   _onChangeTitle = (title) => {
-    // console.dir(title)
     this.setState({
       ...this.state,
       title: title
@@ -67,6 +115,7 @@ class NewStoryContainer extends Component {
   }
 
   _onChangeContent = (content) => {
+    console.log(content)
     this.setState({
       ...this.state,
       content: content
@@ -108,7 +157,7 @@ class NewStoryContainer extends Component {
   _saveStory = async () => {
     const data = await axios({
       method: 'POST',
-      url: 'http://localhost:8082/api/story/addStory',
+      url: config.serverURL+'/story/addStory',
       headers: {'x-access-token':localStorage.devfolio_token},
       data: {
         storyInfo : this.state
@@ -124,7 +173,7 @@ class NewStoryContainer extends Component {
   }
 
   render(){
-    // console.log(JSON.stringify(this.state))
+    console.log(this.props.storyId)
     if (this.state.redirectMyStory) {
       <Redirect path="/myStory" />
     }
@@ -140,6 +189,10 @@ class NewStoryContainer extends Component {
               startDate={this.state.startDate}
               endDate={this.state.endDate}
               onClickshowModal = {this._showModal}
+              addImage = {this._addImage}
+              model = {this.state.content}
+              title = {this.state.title}
+              isModify = {this.props.storyId ? true : false}
               />
 
             <StoryInfoModal

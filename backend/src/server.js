@@ -6,6 +6,7 @@ const http = require('http')
 const path = require('path')
 const cors = require('cors')
 const mongoose = require('mongoose')
+
 // const socketio = require('socket.io')
 
 const config = require('config')
@@ -15,10 +16,10 @@ const api = require('api')
 
 const app = express()
 app.use(cors())
-
+global.__basedir = __dirname;
 app.use(logger('dev'))
 app.use(bodyParser.json())
-app.use(bodyParser.urlencoded({ extended: true }))
+app.use(bodyParser.urlencoded({ extended: true,limit: '4MB' }))
 
 // set the secret key variable for jwt
 app.set('jwt-secret', config.secret)

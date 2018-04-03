@@ -1,0 +1,20 @@
+@import 'utils';
+
+.showBox {
+  width: 768px;
+  .title {
+    font-family: 'Bree Serif','Nanum Gothic', sans-serif;
+    font-size: 3.3em;
+    font-weight: bold;
+    height: 70px;
+    width: 100%;
+  }
+  .FroalaViewerA {
+    font-family: 'Roboto Condensed','Nanum Gothic', sans-serif;
+    text-align: start;
+    font-size: 1.6em;
+    margin-top: 15px;
+    color: rgb(7, 7, 7);
+  }
+
+}

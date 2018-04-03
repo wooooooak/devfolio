@@ -9,11 +9,12 @@ const Story = new Schema({
   sourceLink: String,
   tags:[{}],
   author:{type: String},
-  displayName:{type: String}
+  displayName:{type: String},
+  images : []
 })
 
 Story.statics.create = function(storyInfo, author, displayName) {
-  const { title, content, startDate, endDate, sourceLink, tags } = storyInfo
+  const { title, content, startDate, endDate, sourceLink, tags, images } = storyInfo
   const story = new this({
     title : title,
     content, 
@@ -22,7 +23,8 @@ Story.statics.create = function(storyInfo, author, displayName) {
     sourceLink, 
     tags, 
     author,
-    displayName
+    displayName,
+    images
   })
 
   return story.save()

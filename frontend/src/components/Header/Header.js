@@ -55,8 +55,8 @@ const Header = ({isLogin, loginSuccess, isLoginButtonClicked, userName,
                 -------------------------------------------------
                 <p><Link exact to="/">Home</Link></p>
                 <p><Link exact to={`/myStories/${userName}`}>your stories</Link></p>
-                <p><Link exact to="/newStory">new story</Link></p>
-                <p><Link exact to="/profile">profile</Link></p>
+                <p><Link exact to="/addStory">new story</Link></p>
+                <p><Link exact to="/editProfile">profile</Link></p>
               </div>
             </div>
           </header>

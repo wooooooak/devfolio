@@ -10,6 +10,7 @@ const ProfileImg = ({src}) => {
       <img src={src}
           className={cx('profile_img')}
             />
+      <div>팔로우</div>
     </div>
   )
 }

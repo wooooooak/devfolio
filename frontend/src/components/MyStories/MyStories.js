@@ -31,7 +31,7 @@ const MyStories = ({userData,stories}) => {
 
     return (
       <div className={cx('content')}>
-
+        
         <div className={cx('aboutMe')}>
           <ProfileImg src={userData.picture}/>
           <p className={cx('displayName')}>{userData.displayName}</p>
@@ -43,6 +43,8 @@ const MyStories = ({userData,stories}) => {
           </div>
           <p className={cx('email')}>{userData.email}</p>
         </div>
+
+        {/* 반응형을 위한 가짜 공간 */}
         <div className={cx('fakeAboutMe')}></div>
         <StoryList stories={stories}/>
       </div>

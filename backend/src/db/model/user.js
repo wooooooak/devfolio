@@ -12,7 +12,8 @@ const User = new Schema({
     type: Date,
     default: Date.now
   },
-  stories:[{type: mongoose.Schema.Types.ObjectId, ref: "Story"}]
+  stories:[{type: mongoose.Schema.Types.ObjectId, ref: "Story"}],
+  follower: [{type: mongoose.Schema.Types.ObjectId, ref: "User"}]
 })
 
 // create new User document
@@ -23,7 +24,8 @@ User.statics.create = function(email,username,displayName,space,language,picture
       displayName,
       space,
       language,
-      picture
+      picture,
+      follower:[]
   })
 
   // return the Promise

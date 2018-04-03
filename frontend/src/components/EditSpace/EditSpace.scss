@@ -1,0 +1,67 @@
+@import 'utils';
+
+.tagsClass{
+  width: 480px;
+  overflow-wrap: break-word;
+  margin-right:5px;
+  list-style: none;
+  @include media("<=small") {
+    width : 100vw;
+    overflow-wrap: break-word;
+  }
+    .tagInputClass{
+      overflow-wrap: break-word;
+      text-align: center;
+      // width: 200px;
+      background-color: transparent;
+      border-color: transparent;
+      margin: 0;
+    }
+    .selectedClass{
+      overflow-wrap: break-word;
+      width: 480px;
+      text-align: center;
+      margin: 0;
+      @include media("<=small") {
+        margin-left: -15px;
+        width : 100vw;
+        overflow-wrap: break-word;
+      }
+      .tagClass{
+        overflow-wrap: break-word;
+        margin-right:7px;
+        color:#8CD790;
+        list-style-type: none;
+      }
+      .tagInputFieldClass{
+        font-size: 1rem;
+        text-align: center;
+        color: #8CD790;
+        background-color: transparent;
+        border-color: transparent;
+        &:focus {
+          outline: none;
+        }
+      }
+    }
+    .suggestionsClass {
+      font-size: 1rem;
+      background-color: #282c37;
+      ul {
+        text-align: center;
+        list-style-type: none;
+      }
+      li{
+        mark{
+          text-decoration: underline;
+          background: none;
+          font-weight: 400;
+          color:#8CD790;
+        }
+      }
+    }
+    .activeSuggestionClass{
+      color: #F16B6F;
+      background-color: transparent;
+    }
+}

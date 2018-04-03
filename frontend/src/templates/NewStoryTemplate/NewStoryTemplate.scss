@@ -9,12 +9,12 @@
     padding-top: 70px;
     word-break:keep-all;
     word-wrap:break-word;
-    text-align:center;
+    // text-align:center;
     
     @include media("<=large") {
         margin-top: 46px;
     }
     @include media("<=small") {
-        width: 100vh;
+        // width: 100vh;
     }
 }

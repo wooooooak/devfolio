@@ -14,6 +14,7 @@ const StoryInfoModal = ({
                           suggestions,tagHandleDelete,tagHandleAddition,
                           tagHandleDrag,tagHandleTagClick,addLink,sourceLink
                         }) => {
+    console.log(showModal)
     return(
       <div>
         <Modal

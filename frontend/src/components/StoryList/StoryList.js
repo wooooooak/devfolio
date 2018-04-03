@@ -1,7 +1,6 @@
 import React from 'react'
 import styles from './StoryList.scss'
 import classNames from 'classnames/bind'
-import renderHTML from 'react-render-html'
 import { Link } from "react-router-dom"
 import Moment from 'react-moment'
 
@@ -11,7 +10,7 @@ const StoryList = ({stories}) => {
   let arr = []
   if (stories) {
     arr = stories.map((el)=>{
-      console.log(el)
+      // console.log(el)
       let url = `/story/${el._id}`
       return(
         <div className={cx('story')}>
@@ -26,18 +25,18 @@ const StoryList = ({stories}) => {
             </Moment>
           </div>
           
-          <div>{el.content ? renderHTML(el.content) : null}</div>
-          <Link to={url}> {url} </Link>
+          {/* <div>{el.content ? renderHTML(el.content) : null}</div> */}
+          <Link to={url}> detail </Link>
         </div>
       )
     })
   }
+      return (
+        <div className={cx('listContainer')}>
+          {arr.length !== 0 ? arr : <p> 아무것도없는데요??</p>}
+        </div>
+      )
 
-  return (
-    <div className={cx('listContainer')}>
-      {arr}
-    </div>
-  )
 }
 
 export default StoryList

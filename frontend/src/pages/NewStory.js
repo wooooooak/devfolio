@@ -3,16 +3,17 @@ import { PageTemplate, NewStoryTemplate } from 'templates'
 import { HeaderContainer, NewStoryContainer } from "containers"
 
 const NewStory = ({match}) => {
-  console.log(match.params.id)
+  console.log(match.url)
   return (
     <div>
       <HeaderContainer showMenuBg={true} bgColorTransParent={false} isAlwaysShowing/>
       <PageTemplate
-            // header = {<HeaderContainer showMenuBg={true}/>}
             pageRenderingAni = {true}
             >
             <NewStoryTemplate>
-              <NewStoryContainer />
+              <NewStoryContainer 
+                  storyId = {match.params.id ? match.params.id : null}
+              />
             </NewStoryTemplate>
       </PageTemplate>
     </div>

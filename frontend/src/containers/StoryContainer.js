@@ -2,8 +2,10 @@ import React, {Component} from 'react'
 import { connect } from 'react-redux'
 import { bindActionCreators } from "redux"
 import { Redirect } from "react-router-dom"
+import Story from 'components/Story'
 import action from "action"
 import axios from 'axios'
+import config from "jsconfig.json"
 
 class StoryContainer extends Component {
   state = {
@@ -13,9 +15,9 @@ class StoryContainer extends Component {
   componentDidMount () {
     const fectchStoryById = async () => {
       try {
-        const {data} = axios({
+        const {data} = await axios({
           method : 'GET',
-          url: 'http://localhost:8082/api/story/getStory',
+          url: config.serverURL + '/story/getStory',
           params: { 
             storyId: this.props.storyId
           }
@@ -23,7 +25,7 @@ class StoryContainer extends Component {
         this.setState({
           story : data
         })
-        console.log(data)
+        // console.log(data)
       } catch (error) {
         console.log(error)
       }
@@ -32,10 +34,12 @@ class StoryContainer extends Component {
   }
 
   render () {
-    console.log(this.props.storyId)
-    return(
-      <div>{this.props.storyId}</div>
-    )
+    console.log(this.state.story)
+    if(this.state.story){
+      return <Story story={this.state.story} curUserName={this.props.user.displayName}/>
+    }else {
+      return <div>{this.props.storyId}</div>
+    }
   }
 }
 

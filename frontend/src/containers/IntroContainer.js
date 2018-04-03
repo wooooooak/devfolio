@@ -14,18 +14,6 @@ class IntroContainer extends Component {
       move: null
     }
   }
-
-  
-
-  _onClickDownBtn = () => {
-    // console.log(this.introTwo.offsetTop)
-    // this.setState({
-    //   move:this.introTwo.offsetTop
-    // })
-    // window.scrollTo(0,this.introTwo.offsetTop)
-  }
-  
-
   
   render(){
     return(
@@ -35,7 +23,7 @@ class IntroContainer extends Component {
           <IntroTwo></IntroTwo>
         </div>
         <IntroThree></IntroThree>
-        <IntroTwo></IntroTwo>
+        {/* <IntroTwo></IntroTwo> */}
       </div>
     )
   }

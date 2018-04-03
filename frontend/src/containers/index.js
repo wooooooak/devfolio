@@ -4,6 +4,7 @@ import IntroContainer from "./IntroContainer"
 import NewStoryContainer from "./NewStoryContainer"
 import MyStoryContainer from "./MyStoryContainer"
 import StoryContainer from "./StoryContainer"
+import EditPageContainer from "./EditPageContainer"
 
 export {
   HeaderContainer,
@@ -11,5 +12,6 @@ export {
   IntroContainer,
   NewStoryContainer,
   MyStoryContainer,
-  StoryContainer
+  StoryContainer,
+  EditPageContainer
 }
