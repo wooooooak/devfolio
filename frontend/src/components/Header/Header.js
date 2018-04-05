@@ -11,7 +11,7 @@ const cx = classNames.bind(styles)
 const Header = ({isLogin, loginSuccess, isLoginButtonClicked, userName,
                showMenuBg, showModal, onClickModalCancel,
                clickNickname, showSideBar, onClickLogout,
-                isLogout }) => {
+                isLogout, localRegister }) => {
   if(!showSideBar) { //사이드바 버튼을 누르지 않았을 경우.
     return(
       <div>
@@ -30,9 +30,10 @@ const Header = ({isLogin, loginSuccess, isLoginButtonClicked, userName,
             </div>
           </header>
           <Modal isLoginButtonClicked = {isLoginButtonClicked}
-                onClickModalCancle = {onClickModalCancel}
-                loginSuccess = {loginSuccess} //이 함수는 dispatch
-                isLogout = {isLogout}
+                 onClickModalCancle = {onClickModalCancel}
+                 loginSuccess = {loginSuccess} //이 함수는 dispatch
+                 isLogout = {isLogout}
+                 localRegister = {localRegister}
           />
         </div>
     )
@@ -46,17 +47,25 @@ const Header = ({isLogin, loginSuccess, isLoginButtonClicked, userName,
           <header className={cx('base','header',{showBG : showMenuBg})}>
             <div><Logo /></div>
             <div className={cx('sideBarBG')}>
-
               <div className={cx('sideBar')}>
-                <button className={cx('hideSideBarBtn')} onClick={clickNickname}>x</button>
-                <button onClick={onClickLogout}> logout </button>
 
-                <p>search</p>
-                -------------------------------------------------
-                <p><Link exact to="/">Home</Link></p>
-                <p><Link exact to={`/myStories/${userName}`}>your stories</Link></p>
-                <p><Link exact to="/addStory">new story</Link></p>
-                <p><Link exact to="/editProfile">profile</Link></p>
+              {isLogin
+              ? <div> 
+                  <button className={cx('hideSideBarBtn')} onClick={clickNickname}>x</button>
+                  <button onClick={onClickLogout}> logout </button>
+
+                  <p>search</p>
+                  -------------------------------------------------
+                  <p><Link exact to="/">Home</Link></p>
+                  <p><Link exact to={`/myStories/${userName}`}>your stories</Link></p>
+                  <p><Link exact to="/addStory">new story</Link></p>
+                  <p><Link exact to="/editProfile">profile</Link></p>
+                </div>
+              : <div>
+                  <button className={cx('hideSideBarBtn')} onClick={clickNickname}>x</button>
+                  <li className={cx('loginBtn')} onClick={showModal}>Login</li>
+                </div>
+              }
               </div>
             </div>
           </header>
@@ -65,6 +74,7 @@ const Header = ({isLogin, loginSuccess, isLoginButtonClicked, userName,
                 onClickModalCancle = {onClickModalCancel}
                 loginSuccess = {loginSuccess} //이 함수는 dispatch
                 isLogout = {isLogout}
+                localRegister = {localRegister}
           />
         </div>
     )

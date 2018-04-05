@@ -108,6 +108,7 @@ class HeaderContainer extends Component {
         showMenuBg = {this.state.showMenuBg}
         showModal = {this._showModal}
         loginSuccess = {this._loginSuccess}
+        localRegister = {this.props.localRegister}
         onClickLogout = {this._onClickLogout}
         clickNickname = {this._clickNickname}
         onClickModalCancel = {this._onClickModalCancel}
@@ -128,6 +129,7 @@ const mapStateToProps = (state) => {
 const mapDispatchToProps = (dispatch) => {
   return {
     doLogin : bindActionCreators(action.user.do_login, dispatch),
+    localRegister : bindActionCreators(action.user.local_register, dispatch),
     doLogout : bindActionCreators(action.user.do_logout, dispatch),
     redirectHomeTrue : bindActionCreators(action.devfolio.redirect_true, dispatch),
     redirectHomeFalse : bindActionCreators(action.devfolio.redirect_false, dispatch)

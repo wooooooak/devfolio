@@ -5,6 +5,7 @@ import { Redirect } from "react-router-dom"
 import action from "action"
 import RegisterForm from "components/RegisterForm"
 import axios from 'axios'
+import { serverURL } from 'jsconfig.json'
 
 class RegisterContainer extends Component {
   constructor (props) {
@@ -17,10 +18,10 @@ class RegisterContainer extends Component {
   _onClickSubmit = async (submittedValues) => {
     try {
       const {displayName, space, language } = submittedValues
-      this.props.doLogin2(displayName, space, language)
+      this.props.commonRegister(displayName, space, language)
       const { data } = await axios({
         method:'post',
-        url: 'http://localhost:8082/api/auth/register',
+        url: serverURL + '/auth/register',
         data: this.props.user,
         responseType: 'json'
       })
@@ -55,7 +56,7 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    doLogin2 : bindActionCreators(action.user.do_login2, dispatch)
+    commonRegister : bindActionCreators(action.user.common_register, dispatch)
   }
 }
 

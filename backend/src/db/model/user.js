@@ -1,10 +1,11 @@
 const mongoose = require('mongoose')
+const config = require('config.js')
+const crypto =  require('crypto')
 const { Schema } = mongoose
 
 const User = new Schema({
   displayName: String,
   email: String,
-  username: String,
   picture: String,
   space:{},
   language:{},
@@ -12,20 +13,32 @@ const User = new Schema({
     type: Date,
     default: Date.now
   },
+  social : Boolean,
+  password : String,
   stories:[{type: mongoose.Schema.Types.ObjectId, ref: "Story"}],
   follower: [{type: mongoose.Schema.Types.ObjectId, ref: "User"}]
 })
 
 // create new User document
-User.statics.create = function(email,username,displayName,space,language,picture) {
+User.statics.create = function(email,displayName,space,language,picture,social,password) {
+  console.log(password);
+  if(!social && !password){
+    console.log('로컬유저 가입에 비밀번호가 없습니다.')
+    new Error("로컬유저 가입에 비밀번호가 없습니다.")
+  }
+  const encrypted = crypto.createHmac('sha1', config.secret)
+  .update(password)
+  .digest('base64')
+
   const user = new this({
       email,
-      username,
       displayName,
       space,
       language,
       picture,
-      follower:[]
+      follower:[],
+      social,
+      password : encrypted
   })
 
   // return the Promise

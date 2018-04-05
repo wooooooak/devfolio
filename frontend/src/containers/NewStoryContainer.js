@@ -226,7 +226,6 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    doLogin2 : bindActionCreators(action.user.do_login2, dispatch)
   }
 }
 

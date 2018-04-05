@@ -1,6 +1,6 @@
 import actions from '../action/index'
 import { handleActions } from "redux-actions"
-const  { DO_LOGIN, DO_LOGIN2, DO_LOGOUT, CHANGE_PROFILE } = actions.user
+const  { DO_LOGIN, COMMON_REGISTER, DO_LOGOUT, CHANGE_PROFILE, LOCAL_REGISTER } = actions.user
 
 const initUserState = {
   isLogin : false,
@@ -9,12 +9,21 @@ const initUserState = {
   picture: null,
   displayName : null,
   space : null,
-  language : null
+  language : null,
+  password : null
 }
 
 
 //두번째 인자는 switch문의 default로 넘겨주는 디폴드 값인 듯.
 export default handleActions({
+  [LOCAL_REGISTER] : (state = initUserState, action) => {
+    return {
+      ...state,
+      email : action.payload.email,
+      social : action.payload.social,
+      password : action.payload.password
+    }
+  },
   [DO_LOGIN] : (state = initUserState, action) => {
     return {
       ...state,
@@ -24,9 +33,10 @@ export default handleActions({
       picture : action.payload.picture,
       space : action.payload.space,
       language : action.payload.language,
+      social : action.payload.social
     }
   },
-  [DO_LOGIN2] : (state, action) => {
+  [COMMON_REGISTER] : (state, action) => {
     return {
       ...state,
       displayName: action.payload.displayName,

@@ -5,6 +5,7 @@ import reducer from './reducer/index'
 import { BrowserRouter } from "react-router-dom"
 import configureStore  from './store/index'
 import axios from 'axios'
+import config from 'jsconfig.json'
 
 const store = configureStore(reducer)
 
@@ -15,7 +16,7 @@ class Root extends Component {
       const _fetchUserData = async () => {
         const { data } = await axios({
           method : 'GET',
-          url : "http://localhost:8082/api/user/getUserData",
+          url : config.serverURL+"/user/getUserData",
           params: {
             displayName: localStorage.displayName
           }

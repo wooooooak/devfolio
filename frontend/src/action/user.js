@@ -3,9 +3,10 @@ import axios from 'axios'
 import config from "jsconfig.json"
 // action type(명령어)
 const DO_LOGIN = 'DO_LOGIN'
-const DO_LOGIN2 = 'DO_LOGIN2'
+const COMMON_REGISTER = 'COMMON_REGISTER'
 const DO_LOGOUT = 'DO_LOGOUT'
 const CHANGE_PROFILE = 'CHANGE_PROFILE'
+const LOCAL_REGISTER = 'LOCAL_REGISTER'
 
 //액션생성자
 const change_profile = (displayName,space,language) => {
@@ -37,25 +38,36 @@ const change_profile = (displayName,space,language) => {
     }
   }
 }
+const local_register = (email,password) => {
+  return {
+    type : LOCAL_REGISTER,
+    payload: {
+      email : email,
+      password : password,
+      social : false
+    }
+  }
+}
 
 // action creators(액션 메서드)
 //이름을 그냥 saveUserData로 해놓고 업데이트할 때 써도 될듯 
-const do_login = (email, displayName, picture, space, language) => {
+const do_login = (email, picture, social, space, language) => {
   return {
     type: DO_LOGIN,
     payload: {
       isLogin: true,
       email : email,
-      displayName: displayName,
       picture: picture ? picture : null,
       space : space ? space : null,
-      language : language
+      language : language,
+      social : social
     }
   }
 }
-function do_login2 (displayName, space, language) {
+function common_register (displayName, space, language) {
+  console.log(displayName);
   return {
-    type: DO_LOGIN2,
+    type: COMMON_REGISTER,
     payload: {
       displayName: displayName,
       space : space,
@@ -73,11 +85,13 @@ const do_logout = () => {
 export {
   DO_LOGIN,
   do_login,
-  DO_LOGIN2,
-  do_login2,
+  COMMON_REGISTER,
+  common_register,
   DO_LOGOUT,
   do_logout,
   CHANGE_PROFILE,
-  change_profile
+  change_profile,
+  LOCAL_REGISTER,
+  local_register
 
 }
