@@ -20,7 +20,6 @@ exports.register = async (req, res) => {
     if(!user){
       console.log('before!@!@');
         user = await User.create(email, displayName, space, language, picture, social, password)
-        console.log('aasdfsdaf???');
         res.json({
           registerSuccess: true,
           message: "등록 성공",
@@ -33,7 +32,6 @@ exports.register = async (req, res) => {
           registerSuccess: false,
           message: "아마도 email이 중복되거나 아이디가 존재합니다"
         })
-    // onError(error)
   }
 }
 

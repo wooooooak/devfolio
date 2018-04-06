@@ -5,8 +5,6 @@ const bodyParser = require('body-parser')
 const http = require('http')
 const path = require('path')
 const cors = require('cors')
-const mongoose = require('mongoose')
-
 // const socketio = require('socket.io')
 
 const config = require('config')
@@ -28,14 +26,14 @@ app.set('views', path.join(__dirname, '/views'))
 app.set('view engine', 'ejs')
 app.engine('html', require('ejs').renderFile)
 
+app.use(express.static(path.join(__dirname, 'build')))
 app.use(express.static(path.join(__dirname, 'public')))
 
-router.get('/a', (req,res) => {
-  console.log('/ 라우터 요청받음 get')
-  return res.json({text:'/ router get'})
+router.get('/', (req,res) => {
+  res.sendFile(path.join(__dirname, '/build/index.html'))
 })
-app.use('/',router)
 //결국 express인 app에 라우터를 넣어줘야한다. 그부분이다.
+app.use('/',router)
 app.use('/api',api) // 이부분을 빼먹어서 고생했다
 
 app.use(function(req, res, next) {

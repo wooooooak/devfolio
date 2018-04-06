@@ -88,15 +88,6 @@
           }
         }
       
-        // &--full {
-        //   grid-column-end: auto;
-      
-        //   // @media screen and (min-width: 768px) {
-        //   //   grid-column: 1/-1;
-        //   //   grid-row-end: span 2;
-        //   // }
-        // }
-        
         &__details {
           position: relative;
           z-index: 1;
@@ -108,7 +99,6 @@
           color: #828282;
           
           &:before {
-            //content: counter(item-counter); // 게시글숫자
             font-weight: bold;
             font-size: 1.1rem;
             padding-right: 0.5em;

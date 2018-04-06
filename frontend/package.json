@@ -81,7 +81,7 @@
   },
   "scripts": {
     "start": "cross-env NODE_PATH=src node scripts/start.js",
-    "build": "node scripts/build.js",
+    "build": "cross-env NODE_PATH=src node scripts/build.js",
     "test": "node scripts/test.js --env=jsdom"
   },
   "jest": {
@@ -130,3 +130,5 @@
     "animate-sass": "^0.8.2"
   }
 }
+
+

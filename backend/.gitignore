@@ -2,4 +2,10 @@ node_modules/
 
 config.js
 
-src/public/
+src/build
+
+src/public/uploads
+
+package-lock.json
+
+yarn.lock
