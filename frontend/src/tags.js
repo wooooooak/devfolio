@@ -1,8 +1,10 @@
 export const TAGS = [
+  'game',
   'java',
   'c',
   'c++',
   'c#',
+  'Scalar',
   'python',
   'javascript',
   'R',
@@ -145,7 +147,7 @@ export const TAGS = [
   'VR',
   'Angular',
   'Webpack',
-  'Linux',
+  'linux',
   'Ubuntu',
   'Max os',
   'Window',
@@ -198,13 +200,26 @@ export const TAGS = [
   'ajax',
   'bootstrap',
   'ios',
-  'App',
+  'app',
   'BlockChain',
+  'database',
+  'network',
+  'AI',
+  'devOps',
+  'git',
+  'algorithm'
 ]
 
 export const SKILL_TAG = [
+  'algorithm',
+  'git',
+  'devOps',
+  'AI',
+  'network',
+  'database',
+  'game',
   'BlockChain',
-  'App',
+  'app',
   'ios',
   'ajax',
   'bootstrap',
@@ -335,7 +350,7 @@ export const SKILL_TAG = [
   'Vue',
   'Angular',
   'Webpack',
-  'Linux',
+  'linux',
   'Ubuntu',
   'Max os',
   'Window',
@@ -407,5 +422,6 @@ export const LANGUAGE_TAG = [
   'Ruby',
   'lisp',
   'php',
-  'awk'
+  'awk',
+  'Scalar'
 ]

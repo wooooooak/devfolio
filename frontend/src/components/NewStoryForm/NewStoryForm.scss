@@ -65,7 +65,20 @@
   height: 70px;
   width: 100%;
   border-color: transparent;
-  margin-top:50px;
+  margin-top:30px;
+  &:focus{
+    outline: none;
+  }
+}
+
+.inputSubTitle{
+  font-family: 'Bree Serif','Nanum Gothic', sans-serif;
+  color: #2d3436;
+  font-size: 2.2em;
+  font-weight: bold;
+  width: 100%;
+  border-color: transparent;
+  margin-top:10px;
   &:focus{
     outline: none;
   }
@@ -80,7 +93,6 @@
 
 
 .FroalaEditorA {
-
   font-family: 'Roboto Condensed','Nanum Gothic', sans-serif;
   text-align: start;
   font-size: 1.6em;

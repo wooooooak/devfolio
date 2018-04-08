@@ -15,10 +15,10 @@ import 'font-awesome/css/font-awesome.css'
 const cx = classNames.bind(styles)
 
 const Story = ({story,curUserName}) => {
-  console.log(story);
   return(
     <div className={cx('showBox')}>
       <p className={cx('title')}>{story.title}</p>
+      <p className={cx('subTitle')}>{story.subTitle}</p>
       <div className = {cx('FroalaViewerA')}>
         <FroalaEditorView
           model = {story.content}

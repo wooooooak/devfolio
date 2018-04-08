@@ -15,29 +15,9 @@
     color: white;
 }
 
-
-.searchBox{
-    overflow: auto;
-    position: relative;
-    width: 90vw;
-    height: 50px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    input{
-        color: white;
-        background-color: transparent;
-        border: none;
-        &:focus{
-            outline: none;
-        }
-    }
-}
-
-
 .tagsClass{
-    width: 480px;
-    overflow-wrap: break-word;
+    width: 650px;
+    // overflow-wrap: break-word;
     margin-right:5px;
     list-style: none;
     @include media("<=small") {
@@ -48,7 +28,7 @@
         overflow-wrap: break-word;
         width: 580px;
         height : 400px;
-        text-align: center;
+        // text-align: center;
         margin: 0;
         padding : 50px;
         @include media("<=small") {
@@ -58,32 +38,36 @@
         }
         .tagClass{ //선택한 태그들
             overflow-wrap: break-word;
+            text-align : center;
             margin-right:7px;
             font-size : 2rem;
-            color:white;
+            color:black;
             list-style-type: none;
-            // margin-bottom : 100px;
-            padding-bottom : 100px;
+            background-color : #f7d794;
+            margin-bottom : 100px;
+            border-radius : 10px;
         }
         .tagInputFieldClass{ //태그 입력하는 곳
             font-size: 2rem;
-            text-align: center;
-            // color: #8CD790;
-            margin-top : 150px;
-            color:white;
-            background-color: transparent;
+            margin-top : 80px;
+            margin-left : 70px;
+            width : 100%;
             border-color: transparent;
+            box-shadow : 5px 5px 20px #3d3d3d;
             &:focus {
                 outline: none;
             }
         }
     }
     .suggestionsClass { // 아래에 뜨는 단어 추천 부분
-        font-size: 1rem;
-        // background-color: #282c37;
+        font-size: 1.2rem;
+        background-color: #282c37;
+        width : 80%;
+        margin-left : 80px;
         ul {
             text-align: center;
             list-style-type: none;
+            width : 100%;
         }
         li{
             mark{
@@ -96,7 +80,7 @@
     }
     .activeSuggestionClass{
         color: #F16B6F;
-        background-color: transparent;
+        // background-color: transparent;
     }
   }
 
@@ -136,7 +120,13 @@
   .UsersPlace{
       display : flex;
       justify-content : center;
-      .userEmail{
-          margin : 0 15px;
+    //   background-color : gray;
+      .topImage{
+        margin : 0 10px;
+        width : 70px;
+        height : 70px;
+      }
+      p{
+        text-align : center;
       }
   }

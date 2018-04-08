@@ -2,10 +2,10 @@
 
 
 .listContainer {
-  padding-top: 80px;
+  padding-top: 60px;
   -webkit-flex: 1;
   flex: 1;
-  background-color: #FFFFFC;
+  background-color: white;
   @include media("<=small"){
 
   }
@@ -13,25 +13,102 @@
   @include media("<=medium"){
     text-align: start;
   }
+
+  .aboutMe {
+    visibility : hidden;
+    @include media("<=medium"){
+      text-align : center;
+      visibility : visible;
+    }
+  }
 }
 
-.story {
+.storyContainer{
+  display : flex;
+  flex-direction : row;
+}
+.storyContainer_revese{
+  display : flex;
+  flex-direction : row-reverse;
+}
+
+.story_left {
+  display : flex;
+  flex-direction : column;
   height: 45vh;
-  padding-left: 50px;
-  border-bottom-color: black;
-  border-bottom-width: 1px;
-  border-bottom-style: solid;
+  padding-left: 80px;
+  padding-right : 80px;
   .title{
     font-size: 3.6rem;
   }
-  @include media("<=small"){
+  .subTitle{
+    color : #2d3436;
+    font-size: 2.2rem;
+    margin-top : -40px;
+  }
+
+  @include media("<=large"){
+    .title {
+      font-size: 3.4rem;
+    }
+    .subTitle {
+      font-size : 2rem;
+    }
+  }
+
+  @include media("<=medium"){
     padding-left: 25px;
     font-size: 1rem;
     height: 50vh;
     overflow-wrap: break-word;
     .title {
       overflow-wrap: break-word;
-      font-size: 2.7rem;
+      font-size: 2.2rem;
+    }
+    .subTitle {
+      font-size : 1.5rem;
     }
   }
+}
+
+.story_right {
+  display : flex;
+  flex-direction : column;
+  text-align : right;
+  height: 45vh;
+  padding-left: 80px;
+  padding-right: 80px;
+
+  .title{
+    font-size: 3.6rem;
+  }
+  .subTitle{
+    color : #2d3436;
+    font-size: 2.2rem;
+    margin-top : -40px;
+  }
+  @include media("<=large"){
+    .title {
+      font-size: 3.4rem;
+    }
+    .subTitle {
+      font-size : 2rem;
+    }
+  }
+  
+  @include media("<=medium"){
+    padding-left: 25px;
+    font-size: 1rem;
+    height: 50vh;
+    overflow-wrap: break-word;
+    .title {
+      overflow-wrap: break-word;
+      font-size: 2.2rem;
+    }
+    .subTitle {
+      margin-top: 10px;
+      font-size : 1.5rem;
+    }
+  }
+
 }

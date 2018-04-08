@@ -7,11 +7,11 @@ const cx = classNames.bind(styles)
 
 const spaceArr = [
   "web_frontend","web_backend","app","database","game",
-  "mobile_game","network","AI","devOps","linux","git","algorithm"
+  ,"network","AI","devOps","linux","git","algorithm"
 ]
 
 const languageArr = [
-  "C","C#","C++","Java","JavaScript","Python",
+  "C","C#","C++","Java","JavaScript","python",
   "Ruby","Scalar","F#","Swift","R","Go","PHP","Haskell"
 ]
 

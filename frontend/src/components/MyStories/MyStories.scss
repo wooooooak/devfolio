@@ -33,6 +33,48 @@
     background-color: #383A3F;
     overflow-x: hidden;
     
+    
+    .displayName{
+      font-family: 'Yantramanav', sans-serif;
+      text-align: center;
+      color : #FFFFFC;
+      font-size: 1.8rem;
+    }
+    .whatCanIDo {
+      text-align : center;
+      color : #e15f41;
+      font-size : 1.3rem;
+    }
+
+    .spacesBox{
+      font-family:'Fira Sans', sans-serif;
+      font-weight: 200;
+      text-align: center;
+      color : white;
+      .space{
+        margin-bottom: -15px;
+      }
+    }
+    
+    .languagesBox{
+      margin-top: 35px;
+      font-family:'Fira Sans', sans-serif;
+      text-align: center;
+      color : white;
+      .language{
+        margin-bottom: -15px;
+      }
+    }
+    
+    .email{
+      bottom: 20px;
+      text-align: center;
+      color : #FFFFF3;
+      font-family:'Fira Sans', sans-serif;
+      font-size: 1rem;
+      margin-top: 60px;
+    }
+    
     @include media("<=small"){
       font-size: 1rem;
       // margin-top: 50px;
@@ -42,43 +84,6 @@
       display : none;
       width: 0;
     }
-    
-    .displayName{
-      font-family: 'Yantramanav', sans-serif;
-      text-align: center;
-      color : #FFFFFC;
-      font-size: 1.8rem;
-    }
-
-    .spacesBox{
-      font-family:'Nunito Sans', sans-serif;
-      font-weight: 200;
-      text-align: center;
-      color : white;
-      .space{
-        margin-bottom: -15px;
-      }
-    }
-
-    .languagesBox{
-      margin-top: 35px;
-      font-family:'Nunito Sans', sans-serif;
-      font-weight: 200;
-      text-align: center;
-      color : white;
-      .language{
-        margin-bottom: -15px;
-      }
-    }
-    
-    .email{
-      text-align: center;
-      color : #FFFFF3;
-      font-family:'Nunito Sans', sans-serif;
-      font-size: 1rem;
-      margin-top: 60px;
-    }
-
   }
-
+  
 }

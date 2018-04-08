@@ -56,8 +56,12 @@ class SearchDetail extends Component {
     mapToUser = (array) => {
       return array.map((el,i) => {
           return <div>
-                    <p className={cx('userEmail')}>{el.user.email}</p>
-                    <Link to={`/myStories/${el.user.displayName}`}> gogo </Link>
+                    <div>
+                    <Link to={`/myStories/${el.user.displayName}`}>
+                        <img className={cx('topImage')} src={el.user.picture} />
+                    </Link>
+                    <p className={cx('userEmail')}>{el.user.displayName}</p>
+                    </div>
                  </div>
       })
     }
@@ -72,7 +76,8 @@ class SearchDetail extends Component {
                     suggestions={TAGS}
                     handleDelete={this.handleDelete}
                     handleAddition={this.handleAddition}
-                    handleDrag={this.handleDrag} 
+                    handleDrag={this.handleDrag}
+                    placeholder='어떤 기술?'
                     classNames={{
                         tags: cx('tagsClass'),
                         tagInput: cx('tagInputClass'),
@@ -85,8 +90,12 @@ class SearchDetail extends Component {
                       }}
                     />
             {topUsers.length
-            ? <div className={cx('UsersPlace')}>
+            ?<div> 
+                <p>가장 알맞은 개발자들입니다</p>
+                <div className={cx('UsersPlace')}>
                 {this.mapToUser(topUsers)}
+                 ...더보기
+                </div>
               </div>
             : <div>
                 <p>추천 검색어</p>

@@ -31,10 +31,10 @@ exports.uploadImage = async(req,res) => {
     data.link = 'http://localhost:8082/'+data.link
     if (err) {
       console.log(err);
-      return res.send(JSON.stringify(err));
+      return res.send(JSON.stringify(err))
     }
  
-    res.send(data);
+    res.send(data)
   });
 }
 
@@ -57,7 +57,8 @@ exports.getStory = async (req,res) => {
   console.log(storyId)
   try {
     const story = await Story.findById(storyId)
-    console.log(story)
+    story.viewCount++
+    await story.save()
     res.status(200).json(story)
   } catch (error) {
     console.log(error)

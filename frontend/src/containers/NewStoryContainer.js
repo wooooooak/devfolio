@@ -29,13 +29,14 @@ class NewStoryContainer extends Component {
     this.state = {
       title: null,
       content : null,
+      subTitle : null,
       startDate: null,
       endDate : null,
       showModal: false,
       tags: [],
       sourceLink: null,
       redirectMyStory: false,
-      images : []
+      images : [],
     }
   }
 
@@ -54,6 +55,7 @@ class NewStoryContainer extends Component {
             ...this.state,
             title : data.title,
             content : data.content,
+            subTitle : data.subTitle,
             startDate: moment(data.startDate),
             endDate: moment(data.endDate),
             tags : data.tags,
@@ -96,8 +98,6 @@ class NewStoryContainer extends Component {
   }
 
   _addImage = (link) => {
-    console.log(link)
-    console.log(this.state.images);
     let arr = this.state.images
     arr.push(link)
 
@@ -113,9 +113,14 @@ class NewStoryContainer extends Component {
       title: title
     })
   }
+  _onChangeSubTitle = (subTitle) => {
+    this.setState({
+      ...this.state,
+      subTitle: subTitle
+    })
+  }
 
   _onChangeContent = (content) => {
-    console.log(content)
     this.setState({
       ...this.state,
       content: content
@@ -164,26 +169,26 @@ class NewStoryContainer extends Component {
       }
     })
     if (data.status === 200) {
+      console.log(data)
       this.setState({
         ...this.state,
         redirectMyStory: true
       })
     }
-    console.log(data)
   }
 
   render(){
     console.log(this.props.storyId)
     if (this.state.redirectMyStory) {
-      <Redirect path="/myStory" />
+      return <Redirect to={`/myStories/${localStorage.displayName}`} />
     }
 
     return(
           <div style={divStyle}>
             <NewStoryForm 
               onChangeTitle={this._onChangeTitle}
+              onChangeSubTitle={this._onChangeSubTitle}
               onChangeContent={this._onChangeContent}
-              saveStory={this._saveStory}
               onChangeStartDate={this._onChangeStartDate}
               onChangeEndDate={this._onChangeEndDate}
               startDate={this.state.startDate}
@@ -192,7 +197,9 @@ class NewStoryContainer extends Component {
               addImage = {this._addImage}
               model = {this.state.content}
               title = {this.state.title}
+              subTitle = {this.state.subTitle}
               isModify = {this.props.storyId ? true : false}
+              saveStory={this._saveStory}
               />
 
             <StoryInfoModal

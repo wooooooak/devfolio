@@ -52,10 +52,20 @@ class NewStoryForm extends Component {
         <input
           className={cx('inputTitle')}
           value = {this.props.title}
+          wrap="soft"
           onKeyPress={this._handleKeyPress}
-          ref={(input) => { this.nameInput = input; }}
           placeholder = "Title"
           onChange={(e)=>this.props.onChangeTitle(e.target.value)}
+        />
+        <input
+          type='textarea'
+          className={cx('inputSubTitle')}
+          wrap="soft"
+          value = {this.props.subTitle}
+          onKeyPress={this._handleKeyPress}
+          ref={(input) => { this.nameInput = input; }}
+          placeholder = "Sub Title"
+          onChange={(e)=>this.props.onChangeSubTitle(e.target.value)}
         />
         <div className = {cx('FroalaEditorA')}>
           <FroalaEditor
