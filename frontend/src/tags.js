@@ -121,7 +121,6 @@ export const TAGS = [
   'Isogenic Game Engine',
   'Xamarin',
   'Cordova',
-  'Ionic',
   'AML',
   'Azure ML Studio',
   'DMTK',
@@ -195,10 +194,20 @@ export const TAGS = [
   'redux-logger',
   'chrome',
   'chromium',
-  'spring framework'
+  'spring framework',
+  'ajax',
+  'bootstrap',
+  'ios',
+  'App',
+  'BlockChain',
 ]
 
 export const SKILL_TAG = [
+  'BlockChain',
+  'App',
+  'ios',
+  'ajax',
+  'bootstrap',
   'spring framework',
   'sass',
   'scss',

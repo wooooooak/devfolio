@@ -4,11 +4,14 @@ const User = require('db/model/user')
 const crypto =  require('crypto')
 
 exports.register = async (req, res) => {
-  const { email, displayName, space, language, picture, social, password } = req.body
+  let { email, displayName, space, language, picture, social, password } = req.body
   // console.log(req.body);
   // console.log('displayName is ', displayName)
   console.log('register() ------------------------------')
   try {
+      if(!picture) {
+        picture = "http://220.68.54.53:8082/images/programmer.png"
+      }
     if (!email){
       res.json({
         registerSuccess: false,
@@ -119,12 +122,14 @@ const respond = (token,user,res) => {
       message: 'logged in successfully',
       token: token,
       isUser : true,
+      social : user.social,
       displayName: user.displayName,
       email: user.email,
       picture: user.picture,
       space: user.space,
       language: user.language,
-      stories: user.stories
+      stories: user.stories,
+      follower : user.follower
   })
 }
 

@@ -4,18 +4,11 @@
   display: flex;
   position: relative;
   height: 101vh; // 페이지에서 헤더를 제외한 영역 모두 채우기
-  background:url('http://220.68.54.53:8082/images/two.jpg');
-  background-repeat: no-repeat;
-  background-attachment: fixed;
-  // background: #485563;  /* fallback for old browsers */
-  // background: -webkit-linear-gradient(to bottom, #304352, #c0bcb6);  /* Chrome 10-25, Safari 5.1-6 */
-  // background: linear-gradient(to bottom, #304352, #c0bcb6); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
-  background-size:cover;
-
-  @include media("<=medium") {
-    height: 95vh;
-  }
   
+  background:url('http://220.68.54.53:8082/images/three.jpg');
+  background-repeat: no-repeat;
+  // background-attachment: fixed;
+  background-size:cover;
   .textBox{
     flex: 5;
     margin-top: -20px;
@@ -25,13 +18,17 @@
       margin-left: 10vw;
       margin-top: 5vh;
     }
-    @include media("<=medium") {
+    @include media("<=large") {
       margin-left: 0px;
+      // font-size: 1.5rem;
+      flex:10
+    }
+    @include media("<=medium") {
+      margin-left: 10px;
       flex:10
     }
     .textTitle {
       flex: 4;
-      // font-size: 50px;
       font-size:4rem;
       color: white;
       padding-left: 1rem;
@@ -40,6 +37,17 @@
       word-break:keep-all;
       word-wrap:break-word;
       @include media(">huge") {
+      }
+      @include media("<=medium") {
+        margin-top: -1.3rem;
+        font-size: 2.8rem;
+      }
+      @include media("<=small") {
+        margin-top: -2rem;
+        font-size: 2.8rem;
+      }
+      span {
+        color: rgb(223, 58, 58);
       }
     }
     .text {
@@ -56,11 +64,11 @@
       }
       @include media("<=large") {
         padding-left: -1rem;
-        font-size: 1.2em;
+        font-size: 1.5em;
       }
       @include media("<=medium") {
         padding-left: -1rem;
-        font-size: 1.3em;
+        font-size: 1.4em;
       }
     }
   }

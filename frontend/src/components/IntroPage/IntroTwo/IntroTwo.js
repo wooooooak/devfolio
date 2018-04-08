@@ -14,7 +14,6 @@ class IntroTwo extends Component {
   
 
   render(){
-    // console.log('render()')
     return (
       <div className={cx('content')}>
         <h2 className={cx('text')} >this is Two</h2> 

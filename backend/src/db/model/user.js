@@ -21,14 +21,17 @@ const User = new Schema({
 
 // create new User document
 User.statics.create = function(email,displayName,space,language,picture,social,password) {
-  console.log(password);
+  console.log(social);
+  let encrypted = null;
   if(!social && !password){
     console.log('로컬유저 가입에 비밀번호가 없습니다.')
     new Error("로컬유저 가입에 비밀번호가 없습니다.")
   }
-  const encrypted = crypto.createHmac('sha1', config.secret)
-  .update(password)
-  .digest('base64')
+  if(!social){
+    encrypted = crypto.createHmac('sha1', config.secret)
+    .update(password)
+    .digest('base64')
+  }
 
   const user = new this({
       email,

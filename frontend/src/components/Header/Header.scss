@@ -105,6 +105,7 @@ header {
     right: -30%; /* position the left edge of the element at the middle of the parent */
     width: 30vw;
     height: 102vh;
+    background-color: rgb(241, 193, 133);
     animation: showSideBar 0.2s 0s 1 linear forwards;
     box-shadow: -5px -0px 4px rgb(51, 49, 49);
     .hideSideBarBtn {

@@ -3,7 +3,6 @@ import styles from './NewStoryForm.scss'
 import classNames from 'classnames/bind'
 import ThumbsOk from "react-icons/lib/ti/thumbs-ok"
 import FroalaEditor from 'react-froala-wysiwyg'
-import axios from "axios"
 import 'react-datepicker/dist/react-datepicker.css'
 // Require Editor JS files.
 import 'froala-editor/js/froala_editor.pkgd.min.js'

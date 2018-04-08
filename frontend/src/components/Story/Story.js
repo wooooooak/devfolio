@@ -18,12 +18,12 @@ const Story = ({story,curUserName}) => {
   console.log(story);
   return(
     <div className={cx('showBox')}>
-      <p>{curUserName}</p>
       <p className={cx('title')}>{story.title}</p>
-      <FroalaEditorView
-        className={cx('FroalaViewerA')}
-        model = {story.content}
-      />
+      <div className = {cx('FroalaViewerA')}>
+        <FroalaEditorView
+          model = {story.content}
+        />
+      </div>
       {/* 현재유저와 게시글작성자가 일치하면 수정버튼 랜더링 */}
       {story.displayName == curUserName? <Link to={`/newstory/${story._id}`} >수정</Link> : null}
     </div>

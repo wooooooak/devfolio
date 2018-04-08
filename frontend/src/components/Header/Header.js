@@ -38,10 +38,6 @@ const Header = ({isLogin, loginSuccess, isLoginButtonClicked, userName,
         </div>
     )
   }else { //사이드바 버튼을 눌렀을 경우
-    // if(renderHome) {
-    //   console.log('renderHome');
-    //   return <Redirect path="/" />
-    // }
     return(
       <div>
           <header className={cx('base','header',{showBG : showMenuBg})}>

@@ -33,8 +33,9 @@ const MyStories = ({userData,stories}) => {
       <div className={cx('content')}>
         
         <div className={cx('aboutMe')}>
-          <ProfileImg src={userData.picture}/>
+          <ProfileImg userData={userData}/>
           <p className={cx('displayName')}>{userData.displayName}</p>
+          <p>What can i do?</p>
           <div className={cx('spacesBox')}>
             {spaceArr}
           </div>

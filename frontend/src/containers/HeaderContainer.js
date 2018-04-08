@@ -30,7 +30,9 @@ class HeaderContainer extends Component {
 
   _showModal = () => {
     this.setState({
-      isLoginButtonClicked : !this.state.isLoginButtonClicked
+      isLoginButtonClicked : true,
+      isLogout : false
+      // isLoginButtonClicked : !this.state.isLoginButtonClicked
     })
   }
 
@@ -95,7 +97,7 @@ class HeaderContainer extends Component {
       showSideBar: !this.state.showSideBar
     })
     this.props.doLogout()
-    this.props.redirectHomeTrue()
+    // this.props.redirectHomeTrue()
   }
   
   render() {
@@ -109,6 +111,7 @@ class HeaderContainer extends Component {
         showModal = {this._showModal}
         loginSuccess = {this._loginSuccess}
         localRegister = {this.props.localRegister}
+        localLogin = {this.props.localLogin}
         onClickLogout = {this._onClickLogout}
         clickNickname = {this._clickNickname}
         onClickModalCancel = {this._onClickModalCancel}
@@ -129,10 +132,9 @@ const mapStateToProps = (state) => {
 const mapDispatchToProps = (dispatch) => {
   return {
     doLogin : bindActionCreators(action.user.do_login, dispatch),
-    localRegister : bindActionCreators(action.user.local_register, dispatch),
     doLogout : bindActionCreators(action.user.do_logout, dispatch),
-    redirectHomeTrue : bindActionCreators(action.devfolio.redirect_true, dispatch),
-    redirectHomeFalse : bindActionCreators(action.devfolio.redirect_false, dispatch)
+    localRegister : bindActionCreators(action.user.local_register, dispatch),
+    localLogin : bindActionCreators(action.user.local_login, dispatch),
   }
 }
 

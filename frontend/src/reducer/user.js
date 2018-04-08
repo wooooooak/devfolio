@@ -1,6 +1,6 @@
 import actions from '../action/index'
 import { handleActions } from "redux-actions"
-const  { DO_LOGIN, COMMON_REGISTER, DO_LOGOUT, CHANGE_PROFILE, LOCAL_REGISTER } = actions.user
+const  { DO_LOGIN, COMMON_REGISTER, DO_LOGOUT, CHANGE_PROFILE, LOCAL_REGISTER, LOGIN_ERROR, ADD_FOLLOWER } = actions.user
 
 const initUserState = {
   isLogin : false,
@@ -10,7 +10,9 @@ const initUserState = {
   displayName : null,
   space : null,
   language : null,
-  password : null
+  password : null,
+  follower : [],
+  error : false
 }
 
 
@@ -26,14 +28,16 @@ export default handleActions({
   },
   [DO_LOGIN] : (state = initUserState, action) => {
     return {
-      ...state,
+      // ...state,
       isLogin: action.payload.isLogin,
       email : action.payload.email,
       displayName : action.payload.displayName,
       picture : action.payload.picture,
       space : action.payload.space,
+      error : false,
       language : action.payload.language,
-      social : action.payload.social
+      social : action.payload.social,
+      follower : action.payload.follower
     }
   },
   [COMMON_REGISTER] : (state, action) => {
@@ -52,48 +56,21 @@ export default handleActions({
       language: action.payload.language
     }
   },
+  [ADD_FOLLOWER] : (state, action) => {
+    return {
+      ...state,
+      follower : action.payload.follower
+    }
+  },
   [DO_LOGOUT] : (state, action) => {
     return {
 
     }
+  },
+  [LOGIN_ERROR] : (state, action) => {
+    return {
+      // ...state,
+      error : true
+    }
   }
 }, initUserState)
-
-
-
-// const user = (state = initUserState, action) => {
-//   switch (action.type) {
-//     case DO_LOGIN:
-//       return {
-//         ...state,
-//         isLogin: action.payload.isLogin,
-//         email : action.payload.email,
-//         displayName : action.payload.displayName,
-//         picture : action.payload.picture,
-//         space : action.payload.space,
-//         language : action.payload.language,
-
-//       }
-//     case DO_LOGIN2:
-//       return {
-//         ...state,
-//         displayName: action.payload.displayName,
-//         space: action.payload.space,
-//         language: action.payload.language
-//       }
-//     case CHANGE_PROFILE:
-//       return {
-//         ...state,
-//         space: action.payload.space,
-//         language: action.payload.language
-//       }
-//     case DO_LOGOUT:
-//       return {
-        
-//       }
-//     default:
-//       return state
-//   }
-// }
-
-// export default user

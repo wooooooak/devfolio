@@ -27,7 +27,6 @@ class Root extends Component {
             type:'DO_LOGIN',
             payload: data
           })
-          console.log('root에서 로그인')
         }
       }
       _fetchUserData()
@@ -35,7 +34,6 @@ class Root extends Component {
   }
 
   render() {
-    console.log('root render')
     return (
       <Provider store={store}>
         <BrowserRouter>

@@ -1,0 +1,142 @@
+@import 'utils';
+
+.content{
+    margin-top: 45px;
+    background-size:cover;
+    background:url('http://220.68.54.53:8082/images/three.jpg');
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    // position: relative;
+    height: 101vh; // 페이지에서 헤더를 제외한 영역 모두 채우기
+    background-size:cover;
+    color: white;
+}
+
+
+.searchBox{
+    overflow: auto;
+    position: relative;
+    width: 90vw;
+    height: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    input{
+        color: white;
+        background-color: transparent;
+        border: none;
+        &:focus{
+            outline: none;
+        }
+    }
+}
+
+
+.tagsClass{
+    width: 480px;
+    overflow-wrap: break-word;
+    margin-right:5px;
+    list-style: none;
+    @include media("<=small") {
+      width : 100vw;
+      overflow-wrap: break-word;
+    }
+    .selectedClass{
+        overflow-wrap: break-word;
+        width: 580px;
+        height : 400px;
+        text-align: center;
+        margin: 0;
+        padding : 50px;
+        @include media("<=small") {
+            margin-left: -15px;
+            width : 100vw;
+            overflow-wrap: break-word;
+        }
+        .tagClass{ //선택한 태그들
+            overflow-wrap: break-word;
+            margin-right:7px;
+            font-size : 2rem;
+            color:white;
+            list-style-type: none;
+            // margin-bottom : 100px;
+            padding-bottom : 100px;
+        }
+        .tagInputFieldClass{ //태그 입력하는 곳
+            font-size: 2rem;
+            text-align: center;
+            // color: #8CD790;
+            margin-top : 150px;
+            color:white;
+            background-color: transparent;
+            border-color: transparent;
+            &:focus {
+                outline: none;
+            }
+        }
+    }
+    .suggestionsClass { // 아래에 뜨는 단어 추천 부분
+        font-size: 1rem;
+        // background-color: #282c37;
+        ul {
+            text-align: center;
+            list-style-type: none;
+        }
+        li{
+            mark{
+                text-decoration: underline;
+                background: none;
+                font-weight: 400;
+                color:#8CD790;
+            }
+        }
+    }
+    .activeSuggestionClass{
+        color: #F16B6F;
+        background-color: transparent;
+    }
+  }
+
+  .poplurSkill{
+    display : flex;
+    // width : 85vw;
+    .pop1{
+        background: url('https://www.shareicon.net/data/256x256/2016/07/10/119874_apps_512x512.png');
+        width:150px;
+        height: 150px;
+        margin : 0 15px 0 15px;
+        background-size : cover;
+    }
+    .pop2{
+        background: url('https://upload.wikimedia.org/wikipedia/commons/c/cb/Python_for_iOS_App_Icon.png');
+        width:150px;
+        height: 150px;
+        margin : 0 15px 0 15px;
+        background-size : cover;
+    }
+    .pop3{
+        background: url('https://icon-icons.com/icons2/478/PNG/512/Bitcoin_46999.png');
+        width:150px;
+        height: 150px;
+        margin : 0 15px 0 15px;
+        background-size : cover;
+    }
+    .pop4{
+        background: url('https://cdn.iconscout.com/public/images/icon/free/png-512/nodejs-logo-36559ec903b263f5-512x512.png');
+        width: 150px;
+        height: 150px;
+        margin : 0 15px 0 15px;
+        background-size : cover;
+    }
+  }
+
+  .UsersPlace{
+      display : flex;
+      justify-content : center;
+      .userEmail{
+          margin : 0 15px;
+      }
+  }

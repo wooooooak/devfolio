@@ -1,5 +1,8 @@
 import React, { Component } from 'react'
 import Modal from "react-modal"
+import { connect } from 'react-redux'
+import { bindActionCreators } from "redux"
+import action from "action"
 import styles from "./LoginModal.scss"
 import classNames from "classnames/bind"
 import TiTimes from 'react-icons/lib/ti/times'
@@ -26,9 +29,38 @@ class LoginModal extends Component {
     isEmailExist : false,
     passwd : null,
     passwdConfirm : false,
-    passwdConfimMessgae : ''
+    passwdConfimMessgae : '',
+    localEmail : null,
+    localPasswd : null
    }
    
+   _onChangeLocalEmail = (e) => {
+     let email = e.target.value
+     this.setState({
+       ...this.state,
+       localEmail : email
+     })
+   }
+   _onChangeLocalPasswd = (e) => {
+     let localPasswd = e.target.value
+     this.setState({
+       ...this.state,
+       localPasswd : localPasswd
+     })
+   }
+   _onCilckLocalLogin = async () => {
+     try {
+        await this.props.localLogin(this.state.localEmail, this.state.localPasswd)
+        let err = this.props.user.error
+        console.log(err)
+        if (!err) {
+          this._closeModal()
+        }
+     } catch (error) {
+       
+     }
+   }
+
    componentWillReceiveProps(nextProps) {
      this.setState({
        showModal: nextProps.isLoginButtonClicked
@@ -44,7 +76,6 @@ class LoginModal extends Component {
         scope: 'basic, email, photos'
       })
       let json = await hellojs('google').api('me')
-      console.log(json)
       const { data } = await axios({
         method: 'POST',
         url: serverURL+'/auth/login',
@@ -55,13 +86,12 @@ class LoginModal extends Component {
         responseType: 'json'
       })
       if (!data.isUser) { // 소셜로그인 한 유저가 우리 유저가 아닐경우 
-        this.props.loginSuccess(json.email, json.picture, true)
+        this.props.loginSuccess(json.email, null, json.picture, true)
         this.setState({
           ...this.state,
           redirectRegister: true
         })
       } else { //소셜로그인 한 유저가 우리 유저일 경우
-        console.log(data)
         //서버에서 로그인 요청이 정상적으로 되었다면
         localStorage.devfolio_token = data.token
         localStorage.email = data.email
@@ -70,7 +100,7 @@ class LoginModal extends Component {
         this.props.loginSuccess(data.email, data.displayName, data.picture, data.space, data.language, )
         this.setState({
           ...this.state,
-          redirectHome: true
+          redirectHome: !this.state.redirectHome
         })
       }
       this._closeModal()
@@ -96,7 +126,7 @@ class LoginModal extends Component {
         responseType: 'json'
       })
       if (!data.isUser) { // 소셜로그인 한 유저가 우리 유저가 아닐경우 
-        this.props.loginSuccess(json.email, json.picture, true)
+        this.props.loginSuccess(json.email, null, json.picture, true)
         this.setState({
           ...this.state,
           redirectRegister: true
@@ -111,7 +141,7 @@ class LoginModal extends Component {
         this.props.loginSuccess(data.email, data.displayName, data.picture, true, data.space, data.language )
         this.setState({
           ...this.state,
-          redirectHome: true
+          redirectHome: !this.state.redirectHome
         })
       }
       this._closeModal()
@@ -155,7 +185,6 @@ class LoginModal extends Component {
       })
     }else{
       this.props.localRegister(this.state.registerEmail, this.state.passwd)
-      // this.props.loginSuccess(this.state.registerEmail)
       this.setState({
         ...this.state,
         isEmailExist : isExist,
@@ -166,7 +195,6 @@ class LoginModal extends Component {
   }
 
   _onChangeRegisterEmail = (e) => {
-    console.log(e.target.value)
     this.setState({
       ...this.state,
       registerEmail : e.target.value
@@ -174,7 +202,6 @@ class LoginModal extends Component {
   }
 
   _onChangePwd = (e) => {
-    console.log(e.target.value);
     this.setState({
       ...this.state,
       passwd : e.target.value
@@ -199,14 +226,11 @@ class LoginModal extends Component {
   }
     
   render() {
-    // console.log(this.state);
     let { redirectRegister, redirectHome ,registerMode } =  this.state
+    let { error } = this.props.user
+    console.log(error)
     if (redirectRegister) {
       return <Redirect to="/register"/>
-    }
-    if (redirectHome) {
-      console.log('리다이렉트 홈');
-      return <Redirect to="/"/>
     }
     if(this.props.isLogout) {
       console.log('리다이렉트 홈 by logout')
@@ -228,12 +252,12 @@ class LoginModal extends Component {
               <h1>Login Here</h1>
               <i className="icon-aperture animate-spin"></i>
 
-              <h2>User Name</h2>
-              <input type = "text" className={cx('inputype')} placeholder="Enter User Name" />
+              <h2>Email</h2>
+              <input type = "text" onChange ={this._onChangeLocalEmail} className={cx('inputype')} placeholder="Enter email" />
               <h2>Password</h2>
-              <input type = "password" className={cx('inputype')} placeholder="Enter Password" />
-              <button className={cx('submitB')}> Login </button>
-              
+              <input type = "password" onChange = {this._onChangeLocalPasswd} className={cx('inputype')} placeholder="Enter Password" />
+              <button onClick = {this._onCilckLocalLogin} className={cx('submitB')}> Login </button>
+              {error ? <p>login error!!</p> : null}
               <p><a href="#"> Lost your password? </a> <br></br>
               <a href="#" onClick={this._onClickRegisterOrLogin}> Don't have an account? </a></p>
 
@@ -291,4 +315,18 @@ class LoginModal extends Component {
 
 }
 
-export default LoginModal
+const mapStateToProps = (state) => {
+  const {user} = state
+  return {
+    user
+  }
+}
+
+const mapDispatchToProps = (dispatch) => {
+  return {
+    localLogin : bindActionCreators(action.user.local_login, dispatch)
+  }
+}
+
+
+export default connect(mapStateToProps,mapDispatchToProps)(LoginModal)

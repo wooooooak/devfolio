@@ -3,7 +3,6 @@ const jwt = require('jsonwebtoken')
 const User = require('db/model/user')
 
 exports.getUserData = async (req,res) => {
-  console.log(req.query);
   try {
     const displayName = req.query.displayName
     const user = await User.findOne({displayName:displayName}).populate('stories')
@@ -16,7 +15,6 @@ exports.getUserData = async (req,res) => {
 
 exports.updateData = async (req,res) => {
   console.log('update')
-  console.log(req.body)
   const email = req.decoded.email
   try {
     const updatedUser = await User.update({email: email}, {$set : req.body})
@@ -41,12 +39,49 @@ exports.leaveDevfolio = async (req,res) => {
   }
 }
 
+exports.findByTags = async (req,res) => {
+  const tags =  req.body.tags
+  let selectedUser = {}
+  let users = await User.find()
+  users.forEach(user => {
+    for (let i=0; i < tags.length; i++){
+      if(user.space){
+        if (user.space[tags[i].text]) {
+          if (selectedUser[user.email]) {
+            selectedUser[user.email] = {user, count: ++selectedUser[user.email].count}
+          } else {
+            selectedUser[user.email] = {user, count:1}
+          }
+        }
+      }
+      if(user.language){
+        if (user.language[tags[i].text]) {
+          if (selectedUser[user.email]) {
+            selectedUser[user.email] = {user, count: ++selectedUser[user.email].count}
+          } else {
+            selectedUser[user.email] = {user, count:1}
+          }
+        }
+      }
+    }
+  })
+  
+  const arr = Object.keys(selectedUser).map((el,i)=>{
+    return ({count : selectedUser[el].count, user: selectedUser[el].user})
+  })
+  arr.sort((a,b)=>{return b.count - a.count})
+  console.log(arr);
+  res.status(200).json({
+    users : arr
+  })
+}
+
 exports.addfollow = async (req,res) => {
-  console.log('addfollow')
-  const followedEamil = req.body.followedEamil
+  const followedEmail = req.body.followedEmail
   const userEmail = req.decoded.email
+  console.log(followedEmail, userEmail);
   try {
-    const followedUser = await User.findOne({email : followedEamil})
+    const followedUser = await User.findOne({email : followedEmail})
     const user = await User.findOne({email : userEmail})
     console.log(user);
     //중복된 팔로잉 방지
@@ -63,6 +98,7 @@ exports.addfollow = async (req,res) => {
     })
     const followedUserId = followedUser._id
     user.follower.push(followedUserId)
+    user.save()
     // user.save()
     res.status(200).json({
       messgage : "follow ok",
@@ -70,7 +106,6 @@ exports.addfollow = async (req,res) => {
 
     })
   } catch (error) {
-    console.log(error)
     res.status(500).json({
       message : "follow faild",
       error  : error
