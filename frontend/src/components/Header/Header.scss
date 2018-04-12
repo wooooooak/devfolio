@@ -86,7 +86,7 @@ header {
       animation: as 1s 0s 1 linear forwards;
     }
     @include media("<=small") {
-      margin-left: 30px;
+      margin-left: 50px;
     }
     
     @keyframes as {

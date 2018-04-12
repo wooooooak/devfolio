@@ -5,6 +5,7 @@ import action from "action"
 import IntroOne from "components/IntroPage/IntroOne"
 import IntroTwo from "components/IntroPage/IntroTwo"
 import IntroThree from "components/IntroPage/IntroThree"
+// import IntroFour from "components/IntroPage/IntroFour"
 
 class IntroContainer extends Component {
   constructor (props) {

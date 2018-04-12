@@ -8,15 +8,10 @@ class IntroTwo extends Component {
   state = {
   }
 
-  componentDidMount() {
-
-  }
-  
-
   render(){
     return (
       <div className={cx('content')}>
-        <h2 className={cx('text')} >this is Two</h2> 
+        <h2 className={cx('text')} >Our Recommendation</h2> 
 
         <div className={cx('grid')}>
             <div className={cx('item')}> 

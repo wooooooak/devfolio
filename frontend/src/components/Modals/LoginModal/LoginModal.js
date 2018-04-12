@@ -31,7 +31,10 @@ class LoginModal extends Component {
     passwdConfirm : false,
     passwdConfimMessgae : '',
     localEmail : null,
-    localPasswd : null
+    localPasswd : null,
+    class : {
+      alertEmailInput : false
+    }
    }
    
    _onChangeLocalEmail = (e) => {
@@ -167,7 +170,10 @@ class LoginModal extends Component {
   }
 
   _emailCheck = async () => {
-    console.log('emailCheck')
+    if(this.state.class.alertEmailInput || this.state.emailErrorMsg){
+      alert('삐~')
+      return
+    }
     const { data } = await axios({
       method : 'GET',
       url : serverURL+'/auth/emailCheck',
@@ -175,7 +181,6 @@ class LoginModal extends Component {
         email : this.state.registerEmail 
       }
     })
-    console.log(data)
     const {message,isExist} = data
     if(isExist){
       this.setState({
@@ -195,6 +200,7 @@ class LoginModal extends Component {
   }
 
   _onChangeRegisterEmail = (e) => {
+    if (e.target.value)
     this.setState({
       ...this.state,
       registerEmail : e.target.value
@@ -225,6 +231,25 @@ class LoginModal extends Component {
     }
   }
     
+  _emailValidation = (e) => {
+    let email = e.target.value
+    console.log(email)
+    if(!email.includes("@") || !email.includes(".")) {
+      this.setState({
+        ...this.state,
+        class : {
+          alertEmailInput : true
+        }
+      })
+    }else {
+        this.setState({
+          ...this.state,
+          class : {
+            alertEmailInput : false
+          }
+        })
+    }
+  }
   render() {
     let { redirectRegister, redirectHome ,registerMode } =  this.state
     let { error } = this.props.user
@@ -253,7 +278,13 @@ class LoginModal extends Component {
               <i className="icon-aperture animate-spin"></i>
 
               <h2>Email</h2>
-              <input type = "text" onChange ={this._onChangeLocalEmail} className={cx('inputype')} placeholder="Enter email" />
+              <input type = "text" 
+                  onChange ={this._onChangeLocalEmail} 
+                  className={cx('inputype',{inputAlert : this.state.class.alertEmailInput})} 
+                  placeholder="Enter email" 
+                  onBlur = {this._emailValidation}
+                  />
+              {this.state.class.alertEmailInput ? <span>이메일형식x</span> : null}
               <h2>Password</h2>
               <input type = "password" onChange = {this._onChangeLocalPasswd} className={cx('inputype')} placeholder="Enter Password" />
               <button onClick = {this._onCilckLocalLogin} className={cx('submitB')}> Login </button>
@@ -284,10 +315,12 @@ class LoginModal extends Component {
           
             <h1>Register</h1>
             <i className="icon-aperture animate-spin"></i>
-
+            
             <h2>Email</h2>
             <input type = "text" className={cx('inputype')} 
                     onChange = {this._onChangeRegisterEmail}
+                    className={cx('inputype',{inputAlert : this.state.class.alertEmailInput})}
+                    onBlur = {this._emailValidation}
                     placeholder="Enter Email"
                      />
             {this.state.isEmailExist ? <p>{this.state.emailErrorMsg}</p> : null }

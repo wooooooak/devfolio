@@ -6,7 +6,7 @@ import StoryList from 'components/StoryList'
 
 const cx = classNames.bind(styles)
 
-const MyStories = ({userData,stories}) => {
+const MyStories = ({userData, stories, chartData}) => {
   const spaces = userData.space
   const languages = userData.language
   let Sarr = []
@@ -28,7 +28,7 @@ const MyStories = ({userData,stories}) => {
   let languageArr = Larr.map((el)=>{
     return <p className={cx('language')}>{el}</p>
   })
-
+  console.log(chartData);
     return (
       <div className={cx('content')}>
         
@@ -47,7 +47,9 @@ const MyStories = ({userData,stories}) => {
 
         {/* 반응형을 위한 가짜 공간 */}
         <div className={cx('fakeAboutMe')}></div>
-        <StoryList stories={stories}/>
+        <StoryList stories = {stories}
+                  chartData = {chartData}
+        />
       </div>
     )
 }

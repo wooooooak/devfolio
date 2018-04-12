@@ -16,7 +16,13 @@ const User = new Schema({
   social : Boolean,
   password : String,
   stories:[{type: mongoose.Schema.Types.ObjectId, ref: "Story"}],
-  follower: [{type: mongoose.Schema.Types.ObjectId, ref: "User"}]
+  follower: [{type: mongoose.Schema.Types.ObjectId, ref: "User"}],
+  totalSkillAndLang:[{
+    name : String,
+    children: [
+      { name : String, size : Number }
+    ]
+  }]
 })
 
 // create new User document
@@ -41,7 +47,8 @@ User.statics.create = function(email,displayName,space,language,picture,social,p
       picture,
       follower:[],
       social,
-      password : encrypted
+      password : encrypted,
+      totalSkillAndLang : []
   })
 
   // return the Promise

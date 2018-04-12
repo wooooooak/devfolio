@@ -1,0 +1,18 @@
+@import 'utils';
+
+.skillChartContent {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+
+    .barChart {
+
+    }
+    @include media('<=medium') {
+        width: 90vw;
+        .barChart{
+            width: 60vw;
+        }
+    }
+}

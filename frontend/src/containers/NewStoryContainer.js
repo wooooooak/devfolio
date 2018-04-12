@@ -1,11 +1,9 @@
 import React, {Component} from 'react'
 import { connect } from 'react-redux'
-import { bindActionCreators } from "redux"
 import { Redirect } from "react-router-dom"
-import action from "action"
 import NewStoryForm from "components/NewStoryForm"
+import Sample from 'components/Sample'
 import StoryInfoModal from "components/Modals/StoryInfoModal/StoryInfoModal"
-import { WithContext as ReactTags } from 'react-tag-input'
 import moment from 'moment'
 
 import axios from 'axios'
@@ -178,28 +176,28 @@ class NewStoryContainer extends Component {
   }
 
   render(){
-    console.log(this.props.storyId)
     if (this.state.redirectMyStory) {
       return <Redirect to={`/myStories/${localStorage.displayName}`} />
     }
-
+    console.log('this.props.storyId 는 : 아래')
+    console.log(this.props.storyId)
     return(
           <div style={divStyle}>
-            <NewStoryForm 
-              onChangeTitle={this._onChangeTitle}
-              onChangeSubTitle={this._onChangeSubTitle}
-              onChangeContent={this._onChangeContent}
-              onChangeStartDate={this._onChangeStartDate}
-              onChangeEndDate={this._onChangeEndDate}
-              startDate={this.state.startDate}
-              endDate={this.state.endDate}
-              onClickshowModal = {this._showModal}
-              addImage = {this._addImage}
-              model = {this.state.content}
-              title = {this.state.title}
-              subTitle = {this.state.subTitle}
-              isModify = {this.props.storyId ? true : false}
-              saveStory={this._saveStory}
+              <NewStoryForm 
+                onChangeTitle={this._onChangeTitle}
+                onChangeSubTitle={this._onChangeSubTitle}
+                onChangeContent={this._onChangeContent}
+                onChangeStartDate={this._onChangeStartDate}
+                onChangeEndDate={this._onChangeEndDate}
+                startDate={this.state.startDate}
+                endDate={this.state.endDate}
+                onClickshowModal = {this._showModal}
+                addImage = {this._addImage}
+                model = {this.state.content}
+                title = {this.state.title}
+                subTitle = {this.state.subTitle}
+                isModify = {this.props.storyId ? true : false}
+                saveStory={this._saveStory}
               />
 
             <StoryInfoModal
@@ -231,10 +229,5 @@ const mapStateToProps = (state) => {
   }
 }
 
-const mapDispatchToProps = (dispatch) => {
-  return {
-  }
-}
 
-
-export default connect(mapStateToProps,mapDispatchToProps)(NewStoryContainer)
+export default connect(mapStateToProps,null)(NewStoryContainer)

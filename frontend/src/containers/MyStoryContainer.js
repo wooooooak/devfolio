@@ -10,17 +10,34 @@ class MyStoryContainer extends Component {
     super(props)
     this.state = {
       stories : null,
-      userData : null
+      userData : null,
+      chartData : null
     }
   }
   
   componentDidMount() {
     const fetchUserStoriesAndUserData = async () => {
+      let charData = {}
       const data = await getUserDataByDisplayName(this.props.displayName)
+      data.stories.forEach((story) => {
+        if (story.tags.length !==0) {
+          story.tags.forEach((tag) => {
+            if (!charData[tag.text]) {
+              charData[tag.text] = {name : tag.text, project : 1}
+            }else {
+              charData[tag.text].project++
+            }
+          })
+        }
+      })
+      const Data = Object.keys(charData).map((key) => {
+        return { name : key, project : charData[key].project}
+      })
       if(data){
          this.setState({
            stories: data.stories,
-           userData: data
+           userData: data,
+           chartData : Data
          })
        }
      }
@@ -33,6 +50,7 @@ class MyStoryContainer extends Component {
         <MyStories 
             userData = {this.state.userData}
             stories = {this.state.stories}
+            chartData = {this.state.chartData}
           />
       )
     }else {

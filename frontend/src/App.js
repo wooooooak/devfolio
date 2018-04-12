@@ -9,10 +9,10 @@ class App extends Component {
       <div id="main">
         <Switch>
           <Route exact path="/" component={Home}/>
-          <Route path="/about" component={About}/>
+          {/* <Route path="/about" component={About}/> */}
           <Route path="/register" component={Register}/>
           <Route exact path="/Story/:id" component={Story}/>
-          <Route exact path="/addStory/" component={NewStory}/>
+          <Route exact path="/addStory" component={NewStory}/>
           <Route exact path="/newStory/:id" component={NewStory}/>
           <Route exact path="/myStories/:displayName" component={MyStory}/>
           <Route exact path="/editProfile" component={EditProfile}/>

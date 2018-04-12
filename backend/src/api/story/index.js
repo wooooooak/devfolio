@@ -11,5 +11,8 @@ story.post('/addStory',storyCtrl.addStory)
 story.get('/getStories',storyCtrl.getStories)
 story.get('/getStory',storyCtrl.getStory)
 story.post('/uploadImage',storyCtrl.uploadImage)
+story.delete('/:id',jwtMiddleware)
+story.delete('/:id',storyCtrl.deleteStory)
+
 
 module.exports = story

@@ -32,7 +32,6 @@ class NewStoryForm extends Component {
   }
 
   _handleKeyPress = (e) => {
-    console.log("key press")
     if (e.key === 'Enter') {
       console.dir(this.editor.$element[0])
       e.target.nextSibling.focus()
@@ -41,11 +40,12 @@ class NewStoryForm extends Component {
 
 
   render() {
+    console.log('newStoryForm');
     return(
       <div>
         <p className = {cx('infoInputBtnContainer')}>
           <button 
-            className = {cx('infoInputBtn')}
+            className = {cx('infoInputBtn')}  
             onClick={this.props.onClickshowModal}>project info
           </button>
         </p>
@@ -86,7 +86,7 @@ class NewStoryForm extends Component {
                     console.log(response.link)
                     //insert함수의 첫번째 인자는 이미지가 저장된 경로여야 한다.
                     //src에 들어갈 이미지 경로인데 그 이미지를 찾지못하면 something went wrong이 뜬다
-                    editor.image.insert(response.link, true, null, editor.image.get(),response)
+                    editor.image.insert(response.link, true, null, editor.image.get(), response)
                     this.props.addImage(response.link)
                   }
                 },

@@ -1,5 +1,5 @@
 import React from 'react'
-import { Link,Redirect } from 'react-router-dom'
+import { Link } from 'react-router-dom'
 import styles from './Header.scss'
 import classNames from 'classnames/bind'
 import Modal from "components/Modals/LoginModal/LoginModal"
@@ -20,7 +20,7 @@ const Header = ({isLogin, loginSuccess, isLoginButtonClicked, userName,
             <div className={cx('header-wrapper')}>
               <ul>
                 <li><Link exact to="/">Home</Link></li>
-                <li><Link exact to="/about">what</Link></li>
+                {/* <li><Link exact to="/about">what</Link></li> */}
                 {isLogin
                  ? <li><button onClick={clickNickname} className={cx('userBtn')}>{userName}</button>
                     </li>

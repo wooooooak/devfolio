@@ -58,6 +58,10 @@
       padding-left: 1rem;
       p{
         font-size: 1.2rem;
+        a{
+          color: green;
+          font-weight: 900;
+        }
       }
       @include media("<=large") {
         padding-left: -1rem;

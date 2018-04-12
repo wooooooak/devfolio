@@ -49,6 +49,7 @@ export default handleActions({
     }
   },
   [CHANGE_PROFILE] : (state, action) => {
+    localStorage.displayName = action.payload.displayName
     return {
       ...state,
       displayName : action.payload.displayName,

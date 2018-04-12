@@ -14,7 +14,7 @@ import 'font-awesome/css/font-awesome.css'
 
 const cx = classNames.bind(styles)
 
-const Story = ({story,curUserName}) => {
+const Story = ({story, curUserEmail ,deleteStory}) => {
   return(
     <div className={cx('showBox')}>
       <p className={cx('title')}>{story.title}</p>
@@ -25,7 +25,12 @@ const Story = ({story,curUserName}) => {
         />
       </div>
       {/* 현재유저와 게시글작성자가 일치하면 수정버튼 랜더링 */}
-      {story.displayName == curUserName? <Link to={`/newstory/${story._id}`} >수정</Link> : null}
+      {story.author == curUserEmail
+      ? <div>
+          <Link to={`/newstory/${story._id}`} >수정</Link> 
+          <button onClick = {deleteStory} value={story._id}> 삭제 </button>
+        </div> 
+      : null}
     </div>
   )
 }

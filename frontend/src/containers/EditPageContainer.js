@@ -3,7 +3,6 @@ import { connect } from 'react-redux'
 import { bindActionCreators } from "redux"
 import action from "action"
 import EditProfile from "components/EditProfile"
-import EditSpace from "components/EditSpace"
 
 // import {SKILL_TAG} from "tags"
 // import {LANGUAGE_TAG} from "tags"
