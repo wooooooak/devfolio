@@ -96,15 +96,25 @@ class NewStoryForm extends Component {
             />
         </div>
 
-        {this.props.isModify ? 
-        <button>수정ok</button> : 
-        <ThumbsOk
-          onClick = {this.props.saveStory}
-          className={cx('ThumbsOkIcon')}
-          size={50}
-        />}
-        
-
+        {
+          this.props.isModify 
+          ? <button>수정ok</button>
+          : <button 
+                  onClick = {this.props.saveStory}
+                  className={cx('sumbitBtn')}>
+                  완료
+            </button>
+          // <ThumbsOk
+          //     onClick = {this.props.saveStory}
+          //     className={cx('ThumbsOkIcon')}
+          //     size={50}
+          //   />
+        }
+        {
+          this.props.submitBtnStatus
+          ? null
+          : <span>제목, 부제목, 태그, 링크는 필수입니다.</span>
+        }
       </div>
     )
   }

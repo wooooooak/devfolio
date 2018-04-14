@@ -1,6 +1,6 @@
 @import 'utils';
 
-.content{
+.content {
     margin-top: 45px;
     background-size:cover;
     background:url('http://220.68.54.53:8082/images/three.jpg');
@@ -13,50 +13,74 @@
     height: 101vh; // 페이지에서 헤더를 제외한 영역 모두 채우기
     background-size:cover;
     color: white;
+
+    .backBtn {
+        &:hover{
+            animation: BtnHover1 0.7s 0s 1 linear forwards;
+        }
+    }
+}
+
+@keyframes BtnHover1 {
+    0% {
+        // -moz-box-shadow: 0 0 0 0 rgba(204,169,44, 0.4);
+        box-shadow: 0 0 0 0 rgba(204,169,44, 0.4);
+      }
+    60% {
+        transform: scale(2);
+        background-color: #F16B6F;
+        border-radius: 40px;
+        // -webkit-box-shadow: 0 0 0 10px rgba(204,169,44, 0);
+    }
+    100% {
+        -webkit-box-shadow: 0 0 0 0 rgba(204,169,44, 0);
+    }
 }
 
 .tagsClass{
     width: 650px;
     // overflow-wrap: break-word;
-    margin-right:5px;
+    // margin-right:5px;
     list-style: none;
     @include media("<=small") {
       width : 100vw;
       overflow-wrap: break-word;
     }
     .selectedClass{
-        overflow-wrap: break-word;
+        // overflow-wrap: break-word;
         width: 580px;
         height : 400px;
         // text-align: center;
         margin: 0;
         padding : 50px;
-        @include media("<=small") {
-            margin-left: -15px;
-            width : 100vw;
-            overflow-wrap: break-word;
-        }
         .tagClass{ //선택한 태그들
             overflow-wrap: break-word;
             text-align : center;
             margin-right:7px;
-            font-size : 2rem;
+            font-size : 1.8rem;
             color:black;
             list-style-type: none;
             background-color : #f7d794;
             margin-bottom : 100px;
             border-radius : 10px;
         }
-        .tagInputFieldClass{ //태그 입력하는 곳
+        .tagInputFieldClass{ //태그 입력하는 곳 
+            background-color : black;
+            color: white;
             font-size: 2rem;
             margin-top : 80px;
-            margin-left : 70px;
-            width : 100%;
+            margin-left : 60px;
+            width : 90%;
             border-color: transparent;
-            box-shadow : 5px 5px 20px #3d3d3d;
+            // box-shadow : 5px 5px 20px #3d3d3d;
             &:focus {
                 outline: none;
             }
+        }
+        @include media("<=small") {
+            margin-left: -15px;
+            width : 100vw;
+            overflow-wrap: break-word;
         }
     }
     .suggestionsClass { // 아래에 뜨는 단어 추천 부분

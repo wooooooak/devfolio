@@ -35,6 +35,9 @@ class NewStoryContainer extends Component {
       sourceLink: null,
       redirectMyStory: false,
       images : [],
+      status : {
+        submitBtnStatus : true
+      }
     }
   }
 
@@ -68,18 +71,15 @@ class NewStoryContainer extends Component {
       fectchStoryById()
     }
   }
-
   _tagHandleDelete = (i) => {
     this.setState({
       tags: this.state.tags.filter((tag, index) => index !== i),
     });
   }
-
   _tagHandleAddition = (tag) => {
     let { tags } = this.state
     this.setState({ tags: [...tags, { id: tags.length + 1, text: tag }] })
   }
-
   _tagHandleDrag = (tag, currPos, newPos) => {
     const tags = [...this.state.tags]
 
@@ -90,11 +90,9 @@ class NewStoryContainer extends Component {
     // re-render
     this.setState({ tags })
   }
-
   _tagHandleTagClick = (index) => {
     console.log('The tag at index ' + index + ' was clicked')
   }
-
   _addImage = (link) => {
     let arr = this.state.images
     arr.push(link)
@@ -104,7 +102,6 @@ class NewStoryContainer extends Component {
       images : arr
     })
   }
-
   _onChangeTitle = (title) => {
     this.setState({
       ...this.state,
@@ -117,14 +114,12 @@ class NewStoryContainer extends Component {
       subTitle: subTitle
     })
   }
-
   _onChangeContent = (content) => {
     this.setState({
       ...this.state,
       content: content
     })
   }
-
   _onChangeStartDate = (date) => {
     this.setState({
       ...this.state,
@@ -137,7 +132,6 @@ class NewStoryContainer extends Component {
       endDate: date
     })
   }
-  
   _showModal = () => {
     this.setState({
       ...this.state,
@@ -151,13 +145,34 @@ class NewStoryContainer extends Component {
     })
   }
   _onAddLink = (link) => {
+    let sourceLink = link.target.value
+
     this.setState({
       ...this.state,
-      sourceLink: link.target.value
+      sourceLink: sourceLink
     })
   }
 
   _saveStory = async () => {
+    const {title, subTitle, tags, sourceLink} = this.state
+    if(!title || !subTitle || !tags || !sourceLink){
+      this.setState({
+        ...this.state,
+        status : {
+          ...this.state.status,
+          submitBtnStatus : false
+        }
+      })
+      return
+    }else {
+          this.setState({
+            ...this.state,
+            status : {
+              ...this.state.status,
+              submitBtnStatus : true
+            }
+          })
+    }
     const data = await axios({
       method: 'POST',
       url: config.serverURL+'/story/addStory',
@@ -167,7 +182,6 @@ class NewStoryContainer extends Component {
       }
     })
     if (data.status === 200) {
-      console.log(data)
       this.setState({
         ...this.state,
         redirectMyStory: true
@@ -176,6 +190,7 @@ class NewStoryContainer extends Component {
   }
 
   render(){
+    const { submitBtnStatus } = this.state.status
     if (this.state.redirectMyStory) {
       return <Redirect to={`/myStories/${localStorage.displayName}`} />
     }
@@ -198,6 +213,7 @@ class NewStoryContainer extends Component {
                 subTitle = {this.state.subTitle}
                 isModify = {this.props.storyId ? true : false}
                 saveStory={this._saveStory}
+                submitBtnStatus= {submitBtnStatus}
               />
 
             <StoryInfoModal

@@ -77,7 +77,64 @@
         font-size: 1.2em;
       }
     }
+    .searchBox{
+      display : flex;
+      align-items : 'center';
+      ::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
+        color: rgb(172, 172, 172);
+        opacity: 1; /* Firefox */
+      }
+      
+      :-ms-input-placeholder { /* Internet Explorer 10-11 */
+          color: rgb(172, 172, 172);
+      }
+      
+      ::-ms-input-placeholder { /* Microsoft Edge */
+          color: rgb(172, 172, 172);
+      }
+      .searchBtn{
+        margin-left: 10px;
+      }
+      .searchByName {
+        margin-left: 15px;
+        font-size: 1.1rem;
+        height: 30px;
+        color: white;
+        width : 250px;
+        background-color: black;
+        border: transparent;
+        &:focus {
+          outline: none;
+        }
+      }
+    }
+
+    .detailSearch{
+      width: 250px;
+      height : 30px;
+      margin-left: 55px;
+      margin-top: 10px;
+      background: tomato;
+      border: none;
+      &:focus{
+        outline: none;
+      }
+      &:hover{
+        animation: detailBtnHover 0.3s 0s 1 linear forwards;
+      }
+    }
   }
+
+  @keyframes detailBtnHover {
+    0% {
+      }
+    60% {
+    }
+    100% {
+      transform: translateY(-2px);
+      box-shadow: 3px 3px 5px black;
+    }
+}
   
   .sampleBox {
     border-radius: 20px;

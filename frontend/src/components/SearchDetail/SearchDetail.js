@@ -3,6 +3,7 @@ import styles from './SearchDetail.scss'
 import { Link, Redirect } from "react-router-dom"
 import classNames from 'classnames/bind'
 import { WithContext as ReactTags } from 'react-tag-input'
+import Ionicon from 'react-ionicons'
 import { TAGS } from "tags.js"
 import axios from 'axios'
 import config from 'jsconfig.json'
@@ -71,13 +72,21 @@ class SearchDetail extends Component {
       console.log(topUsers);
     return (
     <div className={cx('content')}>
+        <Ionicon icon="ios-arrow-round-back"
+            className={cx('backBtn')}
+            onClick={this.props.onClickDetailSearch}
+            rotate={true} 
+            fontSize="70px" 
+            color="rgb(125, 176, 24)"
+            />
         <div className={'animated zoomIn'}>
+        
             <ReactTags tags={this.state.tags}
                     suggestions={TAGS}
                     handleDelete={this.handleDelete}
                     handleAddition={this.handleAddition}
                     handleDrag={this.handleDrag}
-                    placeholder='어떤 기술?'
+                    placeholder=' java, C, ....'
                     classNames={{
                         tags: cx('tagsClass'),
                         tagInput: cx('tagInputClass'),
@@ -98,24 +107,24 @@ class SearchDetail extends Component {
                 </div>
               </div>
             : <div>
-                <p>추천 검색어</p>
+                <p style={{'textAlign' : 'center'}}>What about these?</p>
                 <div className={cx('poplurSkill')}>
                     <div className={cx('pop1')}>
-
+                        react
                     </div>
                     <div className={cx('pop2')}>
-                        
+                        python
                     </div>
                     <div className={cx('pop3')}>
-                        
+                        block chain
                     </div>
                     <div className={cx('pop4')}>
-                        
+                        nodejs
                     </div>
                 </div>
               </div> 
             }
-            <button onClick={this.props.onClickDetailSearch}>돌아가기</button>
+            
         </div>
     </div>
     )

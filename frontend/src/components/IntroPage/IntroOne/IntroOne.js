@@ -3,6 +3,7 @@ import styles from './IntroOne.scss'
 import { Redirect } from "react-router-dom"
 import classNames from 'classnames/bind'
 import SearchDetail from "components/SearchDetail"
+import Ionicon from 'react-ionicons'
 
 const cx = classNames.bind(styles)
 
@@ -53,20 +54,33 @@ class IntroOne extends Component {
               <p>단, 당신의 code를 열람할 수 있는 <a href="https://www.github.com" target="blank">github</a>
                또는 <a target="blank" href="https://gist.github.com/">gist</a>링크가 필요합니다.</p>
             </p>
-            <input type="text" placeholder="닉네임으로 찾기" onChange = {this._onChangeSearch} onKeyPress = {this._onKeyPress} />
-            <p style={{color : "white"}} onClick = {this._onClickDetailSearch}>자세히 찾아보기</p>
+            <div className={cx('searchBox')}>
+              <Ionicon icon="md-search"
+                className={cx('searchBtn')}
+                rotate={true} 
+                fontSize="30px" 
+                color="#ff6b6b"
+                />
+              <input 
+                    className={cx('searchByName')}
+                    type="text" 
+                    placeholder="  닉네임으로 포트폴리오 보기"  
+                    onChange = {this._onChangeSearch} 
+                    onKeyPress = {this._onKeyPress} 
+                    />
+            </div>
+            {/* <p>or</p> */}
+            <button
+              className={cx('detailSearch')}
+              onClick = {this._onClickDetailSearch}>자세히 찾아보기
+            </button>
           </div>
-          {/* <div className={cx('sampleBox')}>
-            
-          </div> */}
         </div>
       )
     }else {
       return (
         <div>
           <SearchDetail onClickDetailSearch = {this._onClickDetailSearch} />
-          
-
         </div>
       )
     }

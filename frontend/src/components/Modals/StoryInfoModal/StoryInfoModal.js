@@ -12,9 +12,9 @@ const StoryInfoModal = ({
                           showModal,onClickCloseModal,onChangeStartDate,
                           onChangeEndDate, startDate, endDate, tags,
                           suggestions,tagHandleDelete,tagHandleAddition,
-                          tagHandleDrag,tagHandleTagClick,addLink,sourceLink
+                          tagHandleDrag,tagHandleTagClick,addLink,sourceLink,
+                          
                         }) => {
-    console.log(showModal)
     return(
       <div>
         <Modal
