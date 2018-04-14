@@ -65,7 +65,7 @@
     outline: none;
   }
   &:hover{
-    animation: BtnHover1 1.5s 0s 1 linear forwards;
+    animation: BtnHover1 0.2s 0s 1 linear forwards;
   }
 
 }
@@ -75,7 +75,7 @@
       box-shadow: 2px 2px 2px black;
     }
   60% {
-    // transform: scale(1.5);
+    transform: scale(1.2);
     font-size: 1.1rem;
     border-radius: 30px;
   }

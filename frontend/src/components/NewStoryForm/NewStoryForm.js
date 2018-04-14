@@ -104,16 +104,11 @@ class NewStoryForm extends Component {
                   className={cx('sumbitBtn')}>
                   완료
             </button>
-          // <ThumbsOk
-          //     onClick = {this.props.saveStory}
-          //     className={cx('ThumbsOkIcon')}
-          //     size={50}
-          //   />
         }
         {
           this.props.submitBtnStatus
           ? null
-          : <span>제목, 부제목, 태그, 링크는 필수입니다.</span>
+          : <span>제목, 태그, 링크는 필수입니다.</span>
         }
       </div>
     )

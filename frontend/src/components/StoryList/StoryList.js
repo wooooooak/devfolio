@@ -11,6 +11,9 @@ const StoryList = ({stories , chartData}) => {
   let arr = []
   if (stories) {
     arr = stories.map((el, i)=>{
+      let hash = el.tags.map(tag => {
+        return <span>#{tag.text} </span>
+      })
       let url = `/story/${el._id}`
       let storyDirection = 'story_left'
       let storyContainer = 'storyContainer'
@@ -32,7 +35,8 @@ const StoryList = ({stories , chartData}) => {
                   {el.endDate}
               </Moment>
             </div>
-            <a href = {`${el.sourceLink}`} target='blank'>See the source</a>
+            <span>{hash}</span>
+            <a href = {`${el.sourceLink}`} target='blank'>source</a>
           </div>
         </div>
       )

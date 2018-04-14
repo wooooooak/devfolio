@@ -13,6 +13,7 @@ story.get('/getStory',storyCtrl.getStory)
 story.post('/uploadImage',storyCtrl.uploadImage)
 story.delete('/:id',jwtMiddleware)
 story.delete('/:id',storyCtrl.deleteStory)
+story.get('/viewCount/:count',storyCtrl.getLimitedStory)
 
 
 module.exports = story

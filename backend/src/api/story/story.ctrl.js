@@ -108,3 +108,15 @@ exports.deleteStory = async (req, res) => {
     res.status(500).json(error)
   }
 }
+
+exports.getLimitedStory = async (req, res) => {
+  let count = parseInt(req.params.count)
+  console.log(count);
+  try {
+    let stories = await Story.find().sort({viewCount : -1}).limit(count)
+    console.log(stories)
+    res.status(200).json(stories)
+  } catch (err) {
+    res.status(500).json(err)
+  }
+}

@@ -11,7 +11,7 @@
   background-size:cover;
   .textBox{
     flex: 5;
-    margin-top: -20px;
+    margin-top: -40px;
     margin-left: 40px;
     font-family: 'Nanum Gothic', sans-serif;
     @include media(">huge") {
@@ -114,7 +114,7 @@
       height : 30px;
       margin-left: 55px;
       margin-top: 10px;
-      background: tomato;
+      background: #576574;
       border: none;
       &:focus{
         outline: none;

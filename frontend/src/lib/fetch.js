@@ -13,3 +13,12 @@ export const getUserDataByDisplayName = async (displayName) => {
   console.log(data)
   return data
 } 
+
+export const getHItStory = async (count) => {
+  const { data } = await axios({
+    method: "GET",
+    url : config.serverURL+"/story/viewCount/"+count
+  })
+  console.log(data)
+  return data
+}

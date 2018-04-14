@@ -155,7 +155,7 @@ class NewStoryContainer extends Component {
 
   _saveStory = async () => {
     const {title, subTitle, tags, sourceLink} = this.state
-    if(!title || !subTitle || !tags || !sourceLink){
+    if(!title || !tags || !sourceLink){
       this.setState({
         ...this.state,
         status : {
