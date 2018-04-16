@@ -4,9 +4,7 @@ import { PageTemplate, BasicTemplate } from 'templates'
 import { HeaderContainer, MyStoryContainer } from "containers"
 
 class MyStory extends Component {
-  
   render(){
-
     const displayName = this.props.match.params.displayName
     return (
       <div>

@@ -337,7 +337,7 @@ class LoginModal extends Component {
 
             <button 
               onClick={()=>{this._googleLogin()}}
-              className={cx('googleLogin ')}>Google Login</button>
+              className={cx('googleLogin')}>Google Login</button>
             <button 
               onClick={()=>{this._facebookLogin()}}
               className={cx('facebookLogin')}>Facebook Login</button>

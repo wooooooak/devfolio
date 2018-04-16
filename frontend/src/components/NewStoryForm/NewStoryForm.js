@@ -40,7 +40,7 @@ class NewStoryForm extends Component {
 
 
   render() {
-    console.log('newStoryForm');
+    console.log(this.props.id);
     return(
       <div>
         <p className = {cx('infoInputBtnContainer')}>
@@ -97,9 +97,13 @@ class NewStoryForm extends Component {
         </div>
 
         {
-          this.props.isModify 
-          ? <button>수정ok</button>
-          : <button 
+          this.props.isModify
+          ? <button 
+                value = {this.props.id}
+                onClick = {this.props.updateStory}>
+                수정ok
+            </button>
+          : <button
                   onClick = {this.props.saveStory}
                   className={cx('sumbitBtn')}>
                   완료

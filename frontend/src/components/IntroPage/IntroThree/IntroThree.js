@@ -52,6 +52,7 @@ class IntroThree extends Component {
     if (this.state.languageRank) {
       return (
       <div className={cx('content')}>
+        {/* <p className={cx('line')}></p> */}
         <p className={cx('chartP')} >
           <RadialChart
             height = {300}

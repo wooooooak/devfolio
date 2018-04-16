@@ -1,33 +1,34 @@
 @import 'utils';
 .content{
     position: relative;
-    margin-top:0px;
-    height: 70vh; // 페이지에서 헤더를 제외한 영역 모두 채우기
-    background:url('http://220.68.54.53:8082/images/two.jpg');
-    background-attachment: fixed;
+    margin-top:-15px;
+    height: 80vh; // 페이지에서 헤더를 제외한 영역 모두 채우기
+    // background:url('http://220.68.54.53:8082/images/two.jpg');
+    // background-attachment: fixed;
+    background-color: #EFFFE9;
     background-size:cover;
-
     @include media("<=medium") {
       height: 102vh;
     }
-
-  .chartP{
-    display : flex;
-    justify-content: center;
-    text-align : center;
-    .chart {
-      margin-top: 150px;
-      // height : 700px;
-      // width : 700px;
-      font-size : 1.7rem;
-      color: white;
+    
+    .chartP{
+      display : flex;
+      justify-content: center;
+      text-align : center;
+      .chart {
+        margin-top: 150px;
+        // height : 700px;
+        // width : 700px;
+        font-size : 1.7rem;
+        color: #011627;
+      }
     }
-  }
+    
 }
 
 .text {
   font-size: 40px;
-  color: white; 
+  color: #011627; 
   padding: 1rem;
   padding-top: 0rem;
   text-align:center;

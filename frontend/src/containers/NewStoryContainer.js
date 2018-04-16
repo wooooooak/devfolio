@@ -153,8 +153,29 @@ class NewStoryContainer extends Component {
     })
   }
 
-  _saveStory = async () => {
-    const {title, subTitle, tags, sourceLink} = this.state
+  _updateStory = async (e) => {
+    const storyId = e.target.value
+    this.storyValidation(this.state)
+    console.log(this.state)
+    const data = await axios({
+      method: 'PUT',
+      url: config.serverURL+'/story/'+storyId,
+      headers: {'x-access-token':localStorage.devfolio_token},
+      data: {
+        storyInfo : this.state,
+        storyId : storyId
+      }
+    })
+    if (data.status === 200) {
+      this.setState({
+        ...this.state,
+        redirectMyStory: true
+      })
+    }
+  }
+
+  storyValidation = (state) => {
+    const {title, subTitle, tags, sourceLink} = state
     if(!title || !tags || !sourceLink){
       this.setState({
         ...this.state,
@@ -173,6 +194,10 @@ class NewStoryContainer extends Component {
             }
           })
     }
+  }
+
+  _saveStory = async () => {
+    this.storyValidation(this.state)
     const data = await axios({
       method: 'POST',
       url: config.serverURL+'/story/addStory',
@@ -194,8 +219,6 @@ class NewStoryContainer extends Component {
     if (this.state.redirectMyStory) {
       return <Redirect to={`/myStories/${localStorage.displayName}`} />
     }
-    console.log('this.props.storyId 는 : 아래')
-    console.log(this.props.storyId)
     return(
           <div style={divStyle}>
               <NewStoryForm 
@@ -214,6 +237,8 @@ class NewStoryContainer extends Component {
                 isModify = {this.props.storyId ? true : false}
                 saveStory={this._saveStory}
                 submitBtnStatus= {submitBtnStatus}
+                id = {this.props.storyId}
+                updateStory = {this._updateStory}
               />
 
             <StoryInfoModal

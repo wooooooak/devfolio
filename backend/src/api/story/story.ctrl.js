@@ -10,9 +10,9 @@ exports.addStory = async (req,res) => {
     const email = req.decoded.email
     const displayName = req.decoded.displayName
     const storyInfo = req.body.storyInfo
-    console.log(chalk.blue(req.body));
+    console.log(chalk.blue(req.body))
     let user = await User.findOneByEmail(email)
-    let story = await Story.create(storyInfo, email, displayName)
+    let story = await Story.create(storyInfo, email, displayName, user._id)
     user.stories.push(story._id)
     // if(user.totalSkillAndLang.length !== 0){
     //   user.totalSkillAndLang.forEach((element,idxUser) => {
@@ -113,10 +113,22 @@ exports.getLimitedStory = async (req, res) => {
   let count = parseInt(req.params.count)
   console.log(count);
   try {
-    let stories = await Story.find().sort({viewCount : -1}).limit(count)
+    let stories = await Story.find().sort({viewCount : -1}).limit(count).populate('authorObject')
     console.log(stories)
     res.status(200).json(stories)
   } catch (err) {
     res.status(500).json(err)
+  }
+}
+
+exports.updateStory = async (req, res) => {
+  const { storyInfo, storyId } = req.body
+  try {
+    const story = await Story.findOneAndUpdate({id : storyInfo._id}, {$set: storyInfo})
+    console.log(story)
+    res.status(200).json(story)
+  } catch (error) {
+    console.log(error)
+    res.status(500).json(error)
   }
 }

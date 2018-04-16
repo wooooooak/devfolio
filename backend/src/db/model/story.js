@@ -9,13 +9,14 @@ const Story = new Schema({
   endDate: Date,
   sourceLink: String,
   tags:[{}],
+  authorObject :{type: mongoose.Schema.Types.ObjectId, ref: "User"},
   author:{type: String},
   displayName:{type: String},
   images : [],
   viewCount : Number
 })
 
-Story.statics.create = function(storyInfo, author, displayName) {
+Story.statics.create = function(storyInfo, author, displayName, authorObject) {
   const { title, subTitle, content, startDate, endDate, sourceLink, tags, images } = storyInfo
   const story = new this({
     title : title,
@@ -28,7 +29,8 @@ Story.statics.create = function(storyInfo, author, displayName) {
     author,
     displayName,
     images,
-    viewCount : 0
+    viewCount : 0,
+    authorObject
   })
 
   return story.save()

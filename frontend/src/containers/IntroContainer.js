@@ -5,7 +5,7 @@ import action from "action"
 import IntroOne from "components/IntroPage/IntroOne"
 import IntroTwo from "components/IntroPage/IntroTwo"
 import IntroThree from "components/IntroPage/IntroThree"
-// import IntroFour from "components/IntroPage/IntroFour"
+import Footer from "components/Footer"
 
 class IntroContainer extends Component {
   constructor (props) {
@@ -24,7 +24,7 @@ class IntroContainer extends Component {
           <IntroTwo></IntroTwo>
         </div>
         <IntroThree></IntroThree>
-        {/* <IntroTwo></IntroTwo> */}
+        <Footer></Footer>
       </div>
     )
   }

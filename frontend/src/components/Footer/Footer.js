@@ -1,17 +1,19 @@
 import React, {Component} from 'react'
-import styles from './Sample.scss'
+import styles from './Footer.scss'
 import { Redirect } from "react-router-dom"
 import classNames from 'classnames/bind'
 
 const cx = classNames.bind(styles)
 
-class Sample extends Component {
+class Footer extends Component {
   state = {  }
   render() {
     return (
-      <div></div>
+      <div className={cx('content')}>
+        sssss
+      </div>
     )
   }
 }
 
-export default Sample;
+export default Footer;

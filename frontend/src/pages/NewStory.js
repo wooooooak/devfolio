@@ -4,8 +4,6 @@ import { HeaderContainer, NewStoryContainer } from "containers"
 
 class NewStory extends Component {
   render() {
-    console.log(this.props.match.params.id)
-    console.log('newStory 실행')
     return (
       <div>
         {/* <div>afaefsdfasefsdafaewfasf</div> */}

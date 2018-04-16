@@ -8,7 +8,6 @@ import { BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, Legend, Cell } fro
 const cx = classNames.bind(styles)
 
 const SkillChart = ({chartData}) => {
-    console.log(chartData);
     return (
         <div className={cx('skillChartContent')}>
             <p>종합</p>
