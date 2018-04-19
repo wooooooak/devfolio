@@ -154,7 +154,7 @@ class NewStoryContainer extends Component {
   }
 
   _updateStory = async (e) => {
-    const storyId = e.target.value
+    const storyId = this.props.storyId
     this.storyValidation(this.state)
     console.log(this.state)
     const data = await axios({
@@ -175,8 +175,37 @@ class NewStoryContainer extends Component {
   }
 
   storyValidation = (state) => {
-    const {title, subTitle, tags, sourceLink} = state
+    const {title, tags, sourceLink} = state
     if(!title || !tags || !sourceLink){
+      console.log("필수 없음")
+      return false
+    }else {
+      return true
+    }
+  }
+
+  _saveStory = async () => {
+    const bool = this.storyValidation(this.state)
+    if (bool) {
+      const data = await axios({
+        method: 'POST',
+        url: config.serverURL+'/story/addStory',
+        headers: {'x-access-token':localStorage.devfolio_token},
+        data: {
+          storyInfo : this.state
+        }
+      })
+      if (data.status === 200) {
+        this.setState({
+          ...this.state,
+          redirectMyStory: true,
+          status : {
+            ...this.state.status,
+            submitBtnStatus : true
+          }
+        })
+      }
+    } else {
       this.setState({
         ...this.state,
         status : {
@@ -184,39 +213,13 @@ class NewStoryContainer extends Component {
           submitBtnStatus : false
         }
       })
-      return
-    }else {
-          this.setState({
-            ...this.state,
-            status : {
-              ...this.state.status,
-              submitBtnStatus : true
-            }
-          })
-    }
-  }
-
-  _saveStory = async () => {
-    this.storyValidation(this.state)
-    const data = await axios({
-      method: 'POST',
-      url: config.serverURL+'/story/addStory',
-      headers: {'x-access-token':localStorage.devfolio_token},
-      data: {
-        storyInfo : this.state
-      }
-    })
-    if (data.status === 200) {
-      this.setState({
-        ...this.state,
-        redirectMyStory: true
-      })
     }
   }
 
   render(){
     const { submitBtnStatus } = this.state.status
     if (this.state.redirectMyStory) {
+      console.log(submitBtnStatus)
       return <Redirect to={`/myStories/${localStorage.displayName}`} />
     }
     return(

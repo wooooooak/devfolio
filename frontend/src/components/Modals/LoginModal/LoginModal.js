@@ -89,6 +89,7 @@ class LoginModal extends Component {
         responseType: 'json'
       })
       if (!data.isUser) { // 소셜로그인 한 유저가 우리 유저가 아닐경우 
+        console.log('소셜로그인 한 유저가 우리 유저가 아닐경우')
         this.props.loginSuccess(json.email, null, json.picture, true)
         this.setState({
           ...this.state,
@@ -100,7 +101,8 @@ class LoginModal extends Component {
         localStorage.email = data.email
         localStorage.displayName = data.displayName
         // 위의 두가지 값은 로그아웃시 깨끗이 없애주어야 한다
-        this.props.loginSuccess(data.email, data.displayName, data.picture, data.space, data.language, )
+        console.log(data)
+        this.props.loginSuccess(data.email, data.displayName, data.picture, true, data.space, data.language, data.follower )
         this.setState({
           ...this.state,
           redirectHome: !this.state.redirectHome
@@ -141,7 +143,7 @@ class LoginModal extends Component {
         localStorage.email = data.email
         localStorage.displayName = data.displayName
         // 위의 두가지 값은 로그아웃시 깨끗이 없애주어야 한다
-        this.props.loginSuccess(data.email, data.displayName, data.picture, true, data.space, data.language )
+        this.props.loginSuccess(data.email, data.displayName, data.picture, true, data.space, data.language, data.follower )
         this.setState({
           ...this.state,
           redirectHome: !this.state.redirectHome
@@ -270,13 +272,11 @@ class LoginModal extends Component {
             className={cx('content')}
             contentLabel="Minimal Modal Example"
           >   
-              <button className={cx('closeBtn')}
+            <button className={cx('closeBtn')}
                     onClick={() => {this._closeModal()}}><TiTimes size={32} /></button>
             <div className={cx('loginBox')}>
             
               <h1>Login Here</h1>
-              <i className="icon-aperture animate-spin"></i>
-
               <h2>Email</h2>
               <input type = "text" 
                   onChange ={this._onChangeLocalEmail} 
@@ -285,12 +285,15 @@ class LoginModal extends Component {
                   onBlur = {this._emailValidation}
                   />
               {this.state.class.alertEmailInput ? <span>이메일형식x</span> : null}
-              <h2>Password</h2>
-              <input type = "password" onChange = {this._onChangeLocalPasswd} className={cx('inputype')} placeholder="Enter Password" />
-              <button onClick = {this._onCilckLocalLogin} className={cx('submitB')}> Login </button>
-              {error ? <p>login error!!</p> : null}
-              <p><a href="#"> Lost your password? </a> <br></br>
-              <a href="#" onClick={this._onClickRegisterOrLogin}> Don't have an account? </a></p>
+                <h2>Password</h2>
+              <div className={cx('loginPasswordBox')}>
+                <input type = "password" onChange = {this._onChangeLocalPasswd} className={cx('inputype')} placeholder="Enter Password" />
+                <button onClick = {this._onCilckLocalLogin} className={cx('')}> Login </button>
+                {error ? <p>login error!!</p> : null}
+              </div>
+              <br/>
+              <p onClick={this._onClickRegisterOrLogin}> Don't have an account? </p>
+              
 
               <button 
                 onClick={()=>{this._googleLogin()}}
@@ -324,16 +327,16 @@ class LoginModal extends Component {
                     placeholder="Enter Email"
                      />
             {this.state.isEmailExist ? <p>{this.state.emailErrorMsg}</p> : null }
-            <h2>Password</h2>
-            <input type = "password" onChange={this._onChangePwd} className={cx('inputype')} placeholder="Enter Password" /> 
-            <input type = "password" onChange={this._onChangePwd2} className={cx('inputype')} placeholder="Confirm Password" /> 
-            {this.state.passwdConfirm ? <p>{this.state.passwdConfimMessgae}</p> : <p>{this.state.passwdConfimMessgae}</p> }
-            <input type = "submit" className={cx('submitB')} onClick={this._emailCheck} value="regist"/>
-            
-            <p>
-              {/* <a href="#"> Lost your password? </a> <br></br> */}
-              <a href="#" onClick={this._onClickRegisterOrLogin}> already have an account? </a>
-            </p>
+              <h2>Password</h2>
+            <div className={cx('passwordBox')}>
+              <input type = "password" onChange={this._onChangePwd} className={cx('inputype')} placeholder="Enter Password" /> 
+              <input type = "password" onChange={this._onChangePwd2} className={cx('inputype')} placeholder="Confirm Password" /> 
+              <p>
+               <button className={cx('')} onClick={this._emailCheck} >Register</button>
+              </p>
+              {this.state.passwdConfirm ? <p>{this.state.passwdConfimMessgae}</p> : <p>{this.state.passwdConfimMessgae}</p> }
+            </div>
+            <p onClick={this._onClickRegisterOrLogin}> already have an account? </p>
 
             <button 
               onClick={()=>{this._googleLogin()}}

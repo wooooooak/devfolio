@@ -16,9 +16,13 @@ class MyStoryContainer extends Component {
   }
   
   componentDidMount() {
-    const fetchUserStoriesAndUserData = async () => {
-      let charData = {}
-      const data = await getUserDataByDisplayName(this.props.displayName)
+    console.log(this.props.user);
+    this.fetchUserStoriesAndUserData(this.props)
+  }
+
+  fetchUserStoriesAndUserData = async (state) => {
+    let charData = {}
+      const data = await getUserDataByDisplayName(state.displayName)
       data.stories.forEach((story) => {
         if (story.tags.length !==0) {
           story.tags.forEach((tag) => {
@@ -40,11 +44,15 @@ class MyStoryContainer extends Component {
            chartData : Data
          })
        }
-     }
-     fetchUserStoriesAndUserData()
+  }
+
+  componentWillReceiveProps(nextProps){
+    console.log('props qkedma')
+     this.fetchUserStoriesAndUserData(nextProps)
   }
   
   render() {
+    console.log(this.state.userData)
     if(this.state.userData){
       return (
         <MyStories 

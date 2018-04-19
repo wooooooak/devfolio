@@ -3,7 +3,7 @@
 .content {
     margin-top: 45px;
     background-size:cover;
-    background:url('http://220.68.54.53:8082/images/three.jpg');
+    background:url('http://localhost:8082/images/three.jpg');
     width: 100%;
     display: flex;
     justify-content: center;
@@ -15,25 +15,23 @@
     color: white;
 
     .backBtn {
+        cursor: pointer;
         &:hover{
-            animation: BtnHover1 0.7s 0s 1 linear forwards;
+            animation: BtnHover1 0.25s 0s 1 linear forwards;
         }
     }
 }
 
 @keyframes BtnHover1 {
     0% {
-        // -moz-box-shadow: 0 0 0 0 rgba(204,169,44, 0.4);
         box-shadow: 0 0 0 0 rgba(204,169,44, 0.4);
       }
-    60% {
+    50% {
+    }
+    100% {
         transform: scale(2);
         background-color: #F16B6F;
         border-radius: 40px;
-        // -webkit-box-shadow: 0 0 0 10px rgba(204,169,44, 0);
-    }
-    100% {
-        -webkit-box-shadow: 0 0 0 0 rgba(204,169,44, 0);
     }
 }
 

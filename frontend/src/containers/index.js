@@ -5,6 +5,7 @@ import NewStoryContainer from "./NewStoryContainer"
 import MyStoryContainer from "./MyStoryContainer"
 import StoryContainer from "./StoryContainer"
 import EditPageContainer from "./EditPageContainer"
+import WatchContainer from "./WatchContainer"
 
 export {
   HeaderContainer,
@@ -13,5 +14,6 @@ export {
   NewStoryContainer,
   MyStoryContainer,
   StoryContainer,
-  EditPageContainer
+  EditPageContainer,
+  WatchContainer
 }

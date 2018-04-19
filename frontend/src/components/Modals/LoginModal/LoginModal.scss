@@ -1,28 +1,11 @@
 @import 'utils';
 
-.loginbox {
-  width : 320px;
-  height : 420px;
-  background: #000;
-  color : #fff;
-  top : 50%;
-  left : 50%;
-  position : absolute;
-  transform : translate(-50%,-50%);
-  box-sizing : border-box;
-  padding : 70px 30px;
-  background-image: url('https://t4.ftcdn.net/jpg/01/06/38/05/240_F_106380549_JbyCOsSJ8F9X6qaVw9JXUMLoPpjItCr2.jpg');
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  margin-top : 100px;
+.loginBox {
   border-radius: 30px;
-  height : 10rem; 
 
   h1 {
     margin : 0;
-    padding : 0 0 20px;
+    padding : 0 0 0px;
     text-align : center;
     font-size : 30px;
     font-family: 'Maven Pro';
@@ -34,19 +17,19 @@
   }
   
   p {
-    // text-align : center;
+    text-align: center;
+    cursor: pointer;
   }
 
   input {
-    width : 100%;
-    margin-bottom : 20px;
+    width : 60%;
+    margin-bottom : 10px;
   }
 
   a:hover
   {
     color : #ffc107;
   }
-
   .inputype // 로그인창 스타일
   {
     border : none;
@@ -56,23 +39,50 @@
     text-align : center;
     outline : none;
     height : 40px;
-    color : #fff;
+    color: black;
     font-size : 16px;
     font-family: 'Maven Pro';
   }
 
-  .submitB // 로그인 버튼
-  {
-    border : none;
-    outline : none;
-    height : 40px;
-    width : 150px;
-    background: #f02525;
-    color : #fff;
-    font-size: 15px;
-    border-radius : 20px;
-    font-family: 'Maven Pro';
+  .loginPasswordBox{
+    display: inline;
+    input {
+      width: 60%;
+      // margin-left: 25px;
+    }
+    button {
+      border : none;
+      outline : none;
+      height: 1.5rem;
+      border-radius : 20px;
+      cursor: pointer;
+      width: 30%;
+      background: #f02525;
+    }
   }
+
+  .passwordBox{
+    display: inline;
+    text-align: center;
+    input {
+      width: 40%;
+      margin-left: 25px;
+    }
+    p{
+      text-align: center;
+      button{
+        border : none;
+        outline : none;
+        height: 1.5rem;
+        width: 30%;
+        border-radius : 20px;
+        cursor: pointer;
+        background: #f02525;
+      }
+    }
+  }
+  
+  
   a {
     text-decoration : none;
     font-size : 12px;
@@ -103,11 +113,6 @@
     transition : all 1s; 
   }
 
-  background-image : hover {
-    -webkit-filter : grayscale(100%) blur(1px);
-    -o-filter: grayscale(100%) blur(1px);
-    filter: grayscale(100%) blur(1px);
-  }
   box-shadow: 3px 5px 10px $oc-gray-6;
   display: flex;
   flex-direction: column;
@@ -185,89 +190,3 @@
   bottom: 0;
   }
 
-  /*Animation*/
-  /*
-   Animation example, for spinners
-*/
-.animate-spin {
-  -moz-animation: spin 2s infinite linear;
-  -o-animation: spin 2s infinite linear;
-  -webkit-animation: spin 2s infinite linear;
-  animation: spin 2s infinite linear;
-  display: inline-block;
-}
-@-moz-keyframes spin {
-  0% {
-    -moz-transform: rotate(0deg);
-    -o-transform: rotate(0deg);
-    -webkit-transform: rotate(0deg);
-    transform: rotate(0deg);
-  }
-
-  100% {
-    -moz-transform: rotate(359deg);
-    -o-transform: rotate(359deg);
-    -webkit-transform: rotate(359deg);
-    transform: rotate(359deg);
-  }
-}
-@-webkit-keyframes spin {
-  0% {
-    -moz-transform: rotate(0deg);
-    -o-transform: rotate(0deg);
-    -webkit-transform: rotate(0deg);
-    transform: rotate(0deg);
-  }
-
-  100% {
-    -moz-transform: rotate(359deg);
-    -o-transform: rotate(359deg);
-    -webkit-transform: rotate(359deg);
-    transform: rotate(359deg);
-  }
-}
-@-o-keyframes spin {
-  0% {
-    -moz-transform: rotate(0deg);
-    -o-transform: rotate(0deg);
-    -webkit-transform: rotate(0deg);
-    transform: rotate(0deg);
-  }
-
-  100% {
-    -moz-transform: rotate(359deg);
-    -o-transform: rotate(359deg);
-    -webkit-transform: rotate(359deg);
-    transform: rotate(359deg);
-  }
-}
-@-ms-keyframes spin {
-  0% {
-    -moz-transform: rotate(0deg);
-    -o-transform: rotate(0deg);
-    -webkit-transform: rotate(0deg);
-    transform: rotate(0deg);
-  }
-
-  100% {
-    -moz-transform: rotate(359deg);
-    -o-transform: rotate(359deg);
-    -webkit-transform: rotate(359deg);
-    transform: rotate(359deg);
-  }
-}
-@keyframes spin {
-  0% {
-    -moz-transform: rotate(0deg);
-    -o-transform: rotate(0deg);
-    -webkit-transform: rotate(0deg);
-    transform: rotate(0deg);
-  }
-
-  100% {
-    -moz-transform: rotate(359deg);
-    -o-transform: rotate(359deg);
-    -webkit-transform: rotate(359deg);
-    transform: rotate(359deg);
-  }
-}

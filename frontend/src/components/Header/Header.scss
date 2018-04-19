@@ -105,21 +105,64 @@ header {
     right: -30%; /* position the left edge of the element at the middle of the parent */
     width: 30vw;
     height: 102vh;
-    background-color: rgb(241, 193, 133);
+    background-color: #383A3F;
     animation: showSideBar 0.2s 0s 1 linear forwards;
-    box-shadow: -5px -0px 4px rgb(51, 49, 49);
-    .hideSideBarBtn {
-      background-color: transparent;
-      animation: jello 1s 0.5s 1;
-      transform-origin: center
+    box-shadow: -5px -0px 4px rgb(27, 27, 27);
+    color: white;
+    a{
+      &:visited{
+        color: white;
+      }
     }
-    p{
-      z-index: 999;
+    .hideSideBarBtn {
+      width: 100%;
+      margin-top: 30px;
+      margin-left: -0px;
+      cursor: pointer;
+    }
+    .configBtn{
+      margin-right: 15px;
+    }
+    .pictureBox {
+      margin-top: 50px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      img {
+        border-radius: 60px;
+        width: 120px;
+        height: auto;
+      }
+      .logoutBtn{
+        margin-left: 15px;
+        background-color: transparent;
+        border : none;
+        cursor: pointer;
+      }
+    }
+    .list{
+      text-align: center;
+      margin-left: -40px;
+      margin-top: 40px;
+      li{
+        list-style: none;
+        font-weight: 50;
+        margin-bottom: 30px;
+        &:hover{
+          animation: commonHover 0.2s 0s 1 linear forwards;
+          color: tomato;
+        }
+        a{
+          &:visited{
+            color: white;
+          }
+        }
+      }
     }
     @include media("<=medium") {
       width: 90vw;
-      overflow: scroll;
-      font-size: 1.5rem;
+        overflow: scroll;
+        font-size: 1.5rem;
     }
   }
 

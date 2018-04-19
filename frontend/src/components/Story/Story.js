@@ -27,8 +27,17 @@ const Story = ({story, curUserEmail ,deleteStory}) => {
       {/* 현재유저와 게시글작성자가 일치하면 수정버튼 랜더링 */}
       {story.author == curUserEmail
       ? <div>
-          <Link to={`/newstory/${story._id}`} >수정</Link> 
-          <button onClick = {deleteStory} value={story._id}> 삭제 </button>
+          <Link to={`/newstory/${story._id}`}>
+            <button className={cx('modifyBtn')}>
+            수정
+            </button>
+          </Link>
+          <button 
+            className = {cx('deleteBtn')}
+            onClick = {deleteStory} 
+            value={story._id}>
+              삭제 
+          </button>
         </div> 
       : null}
     </div>

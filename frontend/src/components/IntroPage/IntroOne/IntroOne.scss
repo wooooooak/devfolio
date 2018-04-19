@@ -5,16 +5,21 @@
   position: relative;
   height: 101vh; // 페이지에서 헤더를 제외한 영역 모두 채우기
   
-  background:url('http://220.68.54.53:8082/images/three.jpg');
+  // background:url('http://39.127.80.142:8082/images/three.jpg');
+  background:url('http://localhost:8082/images/two.jpg');
   background-repeat: no-repeat;
   // background-attachment: fixed;
   background-size:cover;
   .textBox{
     flex: 5;
-    margin-top: -40px;
-    margin-left: 40px;
+    margin-top: 180px;
+    margin-left: 70px;
     font-family: 'Nanum Gothic', sans-serif;
-    @include media(">huge") {
+
+    @include media("<=ultra") {
+      margin-top: 100px;
+    }
+    @include media("<=huge") {
       margin-left: 10vw;
       margin-top: 5vh;
     }
@@ -26,12 +31,18 @@
       margin-left: 10px;
       flex:10
     }
+    @include media("<=small") {
+      margin-top: 180px;
+      // margin-left: 10px;
+      flex:10
+    }
+    
     .textTitle {
       flex: 4;
       font-size:4rem;
       color: white;
       padding-left: 1rem;
-      padding-top: 10rem;
+      // padding-top: 10rem;
       //단어 줄바꿈에 관한 속성들
       word-break:keep-all;
       word-wrap:break-word;
@@ -125,16 +136,6 @@
     }
   }
 
-  @keyframes detailBtnHover {
-    0% {
-      }
-    60% {
-    }
-    100% {
-      transform: translateY(-2px);
-      box-shadow: 3px 3px 5px black;
-    }
-}
   
   .sampleBox {
     border-radius: 20px;

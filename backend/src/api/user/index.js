@@ -16,5 +16,6 @@ user.delete('/:email', jwtMiddleware)
 user.delete('/:email', userCtrl.updateData)
 
 user.post('/tag',userCtrl.findByTags)
+user.post('/followedUsers',userCtrl.followedUsers)
 
 module.exports = user

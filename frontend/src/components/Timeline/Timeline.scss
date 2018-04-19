@@ -1,0 +1,193 @@
+@import 'utils';
+
+.content {
+  margin-top: -100px;
+  padding: 140px 20px 0 20px;
+  font-family: Helvetica, sans-serif;
+  background: #25303B;
+  padding-bottom: 200px;
+  section#timeline {
+    width: 80%;
+    margin: 20px auto;
+    position: relative;
+    &:before {
+      content: '';
+      display: block;
+      position: absolute;
+      left: 50%;
+      top: 0;
+      margin: 0 0 0 -1px;
+      width: 2px;
+      height: 100%;
+      background: rgba(255, 255, 255, 0.2);
+    }
+    article {
+      width: 100%;
+      margin: 0 0 20px 0;
+      position: relative;
+      &:after {
+        content: '';
+        display: block;
+        clear: both;
+      }
+      div.inner {
+        width: 40%;
+        float: left;
+        margin: 5px 0 0 0;
+        border-radius: 6px;
+        cursor: pointer;
+
+        span.date {
+          display: block;
+          width: 60px;
+          height: 50px;
+          padding: 5px 0;
+          position: absolute;
+          top: 0;
+          left: 50%;
+          margin: 0 0 0 -32px;
+          border-radius: 100%;
+          font-size: 12px;
+          font-weight: 900;
+          text-transform: uppercase;
+          background: #25303B;
+          color: rgba(255, 255, 255, 0.5);
+          border: 2px solid rgba(255, 255, 255, 0.2);
+          box-shadow: 0 0 0 7px #25303B;
+          span {
+            display: block;
+            text-align: center;
+            &.day {
+              font-size: 10px;
+            }
+            &.month {
+              font-size: 18px;
+            }
+            &.year {
+              font-size: 10px;
+            }
+          }
+        }
+        h2 {
+          padding: 15px;
+          margin: 0;
+          color: #fff;
+          font-size: 20px;
+          text-transform: uppercase;
+          letter-spacing: -1px;
+          border-radius: 6px 6px 0 0;
+          position: relative;
+          &:after {
+            content: '';
+            position: absolute;
+            top: 20px;
+            right: -5px;
+            width: 10px;
+            height: 10px;
+            -webkit-transform: rotate(-45deg);
+          }
+        }
+        .card {
+          &:hover{
+            animation: detailBtnHover2 0.2s 0s 1 linear forwards;
+          }
+          h2 {
+            text-align: center;
+            &:hover {
+              font-weight: 700;
+              color: rgb(250, 240, 228);
+            }
+          }
+          div {
+            padding: 15px;
+            margin: 0;
+            font-size: 14px;
+            background: #fff;
+            color: #656565;
+            border-radius: 0 0 6px 6px;
+            .title{
+              font-size: 1.4rem;
+              font-weight: 600;
+              color: black;
+            }
+            .subTitle{
+              font-size: 1.1rem;
+            }
+          }
+
+        }
+      }
+      &:nth-child(2n+2) div.inner {
+        float: right;
+        h2:after {
+          left: -5px;
+        }
+      }
+      &:nth-child(1) div.inner h2 {
+        background: #e74c3c;
+        &:after {
+          background: #e74c3c;
+        }
+      }
+      &:nth-child(2) div.inner h2 {
+        background: #2ecc71;
+        &:after {
+          background: #2ecc71;
+        }
+      }
+      &:nth-child(3) div.inner h2 {
+        background: #e67e22;
+        &:after {
+          background: #e67e22;
+        }
+      }
+      &:nth-child(4) div.inner h2 {
+        background: #1abc9c;
+        &:after {
+          background: #1abc9c;
+        }
+      }
+      &:nth-child(5) div.inner h2 {
+        background: #9b59b6;
+        &:after {
+          background: #9b59b6;
+        }
+      }
+      &:nth-child(6) div.inner h2 {
+        background: #2c3e50;
+        &:after {
+          background: #2c3e50;
+        }
+      }
+      &:nth-child(7) div.inner h2 {
+        background: #e67e22;
+        &:after {
+          background: #e67e22;
+        }
+      }
+      &:nth-child(8) div.inner h2 {
+        background: #9b59b6;
+        &:after {
+          background: #9b59b6;
+        }
+      }
+      &:nth-child(9) div.inner h2 {
+        background: #e74c3c;
+        &:after {
+          background: #e74c3c;
+        }
+      }
+      &:nth-child(10) div.inner h2 {
+        background: #16a085;
+        &:after {
+          background: #16a085;
+        }
+      }
+
+    }
+  }
+
+  @include media('<=small'){
+    margin-bottom: -50px;
+  }
+}

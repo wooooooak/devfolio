@@ -10,7 +10,9 @@ class Footer extends Component {
   render() {
     return (
       <div className={cx('content')}>
-        sssss
+        <p className={cx('logo')}>devfolio</p>
+        <p className={cx('call')}><span>call : </span>010-3248-2227</p>
+        <p>개인정보처리방침</p>
       </div>
     )
   }

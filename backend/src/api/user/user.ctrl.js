@@ -1,6 +1,7 @@
 const chalk = require('chalk')
 const jwt = require('jsonwebtoken')
 const User = require('db/model/user')
+const Story = require('db/model/story')
 
 exports.getUserData = async (req,res) => {
   try {
@@ -111,4 +112,33 @@ exports.addfollow = async (req,res) => {
       error  : error
     })
   }
+}
+
+exports.followedUsers = async (req,res) => {
+  const { idArr } = req.body
+  let dataArr = []
+  try {
+    let users = await User.find({_id : { $in : idArr}}).populate('stories')
+    // console.log(users)
+    users.forEach(users => {
+      users.stories.forEach(story => {
+        if(story.createdAt){
+          console.log('createAt 있음')
+          // dataArr.push({storyId : story._id, createdAt : story.createdAt})
+          dataArr.push(story._id)
+        }
+      })
+    })
+    console.log(dataArr)
+    const stories = await Story.find({_id : { $in : dataArr}}).sort({createdAt : -1}).limit(10).populate('authorObject')
+    console.log(stories)
+    res.status(200).json({
+      users : users,
+      stories : stories
+    })
+    
+  } catch (error) {
+    res.status(500).json(error)
+  }
+
 }

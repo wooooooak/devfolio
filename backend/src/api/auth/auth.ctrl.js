@@ -3,6 +3,8 @@ const jwt = require('jsonwebtoken')
 const User = require('db/model/user')
 const crypto =  require('crypto')
 
+const config = require('config.js')
+
 exports.register = async (req, res) => {
   let { email, displayName, space, language, picture, social, password } = req.body
   // console.log(req.body);
@@ -10,7 +12,7 @@ exports.register = async (req, res) => {
   console.log('register() ------------------------------')
   try {
       if(!picture) {
-        picture = "http://220.68.54.53:8082/images/programmer.png"
+        picture = config.url + "images/programmer.png"
       }
     if (!email){
       res.json({
@@ -117,7 +119,7 @@ exports.socaiLogin = async (req, res) => {
 
   // respond the token 
 const respond = (token,user,res) => {
-  console.log(chalk.white(user));
+  console.log(chalk.white(user))
   res.json({
       message: 'logged in successfully',
       token: token,

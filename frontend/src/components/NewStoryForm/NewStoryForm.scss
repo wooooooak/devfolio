@@ -70,21 +70,7 @@
 
 }
 
-@keyframes BtnHover1 {
-  0% {
-      box-shadow: 2px 2px 2px black;
-    }
-  60% {
-    transform: scale(1.2);
-    font-size: 1.1rem;
-    border-radius: 30px;
-  }
-  100% {
-    font-size: 1.1rem;
-    box-shadow: 2px 2px 2px black;
-    border-radius: 30px;
-  }
-}
+
 
 .inputTitle {
   font-family: 'Bree Serif','Nanum Gothic', sans-serif;
@@ -103,7 +89,7 @@
 .inputSubTitle{
   font-family: 'Bree Serif','Nanum Gothic', sans-serif;
   color: #2d3436;
-  font-size: 2.2em;
+  font-size: 1.9em;
   font-weight: bold;
   width: 100%;
   border-color: transparent;
@@ -127,4 +113,9 @@
   font-size: 1.6em;
   margin-top: 15px;
   color: rgb(7, 7, 7);
+}
+
+.fr-box {
+  background-color: tomato;
+  
 }

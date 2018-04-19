@@ -33,14 +33,12 @@ class NewStoryForm extends Component {
 
   _handleKeyPress = (e) => {
     if (e.key === 'Enter') {
-      console.dir(this.editor.$element[0])
       e.target.nextSibling.focus()
     }
   }
 
 
   render() {
-    console.log(this.props.id);
     return(
       <div>
         <p className = {cx('infoInputBtnContainer')}>
@@ -100,13 +98,14 @@ class NewStoryForm extends Component {
           this.props.isModify
           ? <button 
                 value = {this.props.id}
-                onClick = {this.props.updateStory}>
+                onClick = {this.props.updateStory}
+                className={cx('sumbitBtn')}>
                 수정ok
             </button>
           : <button
-                  onClick = {this.props.saveStory}
-                  className={cx('sumbitBtn')}>
-                  완료
+                onClick = {this.props.saveStory}
+                className={cx('sumbitBtn')}>
+                완료
             </button>
         }
         {

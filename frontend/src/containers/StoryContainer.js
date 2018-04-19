@@ -1,6 +1,7 @@
 import React, {Component} from 'react'
 import { connect } from 'react-redux'
 import { bindActionCreators } from "redux"
+import { Redirect } from "react-router-dom"
 import Story from 'components/Story'
 import action from "action"
 import axios from 'axios'
@@ -8,13 +9,16 @@ import config from "jsconfig.json"
 
 class StoryContainer extends Component {
   state = {
-    story : null
+    story : null,
+    status : {
+      deleteStatus : false
+    }
   }
 
   componentDidMount () {
     const fectchStoryById = async () => {
       try {
-        const {data} = await axios({
+        const { data } = await axios({
           method : 'GET',
           url: config.serverURL + '/story/getStory',
           params: { 
@@ -22,9 +26,8 @@ class StoryContainer extends Component {
           }
         })
         this.setState({
-          story : data
+          story : data,
         })
-        console.log(data)
       } catch (error) {
         console.log(error)
       }
@@ -33,21 +36,28 @@ class StoryContainer extends Component {
   }
 
   _deleteStory = async (e) => {
-    const storyId = e.target.value;
-    console.dir(storyId)
+    const storyId = e.target.value
     try {
       const data = await axios({
         method : 'DELETE',
         url: config.serverURL + '/story/'+storyId,
         headers: {'x-access-token': localStorage.devfolio_token}
       })
-      console.log(data)
+      this.setState({
+        ...this.state,
+        status : {
+          deleteStatus : true
+        }
+      })
     } catch (error) {
       console.log(error)
     }
   }
 
   render () {
+    if(this.state.status.deleteStatus) {
+      return <Redirect to={`/myStories/${localStorage.displayName}`}> </Redirect>
+    }
     if(this.state.story){
       return <Story story={this.state.story} 
                   curUserEmail={this.props.user.email}

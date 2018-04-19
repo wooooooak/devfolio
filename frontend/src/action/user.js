@@ -10,6 +10,7 @@ const CHANGE_PROFILE = 'CHANGE_PROFILE'
 const LOCAL_REGISTER = 'LOCAL_REGISTER'
 const LOGIN_ERROR = 'LOGIN_ERROR'
 const ADD_FOLLOWER = 'ADD_FOLLOWER'
+const AUTO_LOGIN = 'AUTO_LOGIN'
 
 //액션생성자
 const change_profile = (displayName,space,language) => {
@@ -74,7 +75,7 @@ const local_login = (email, passwd) => dispatch =>  {
             }
           }).then(
             response => {
-              console.log(response);
+              console.log(response)
               localStorage.devfolio_token = response.data.token
               localStorage.email = response.data.email
               localStorage.displayName = response.data.displayName
@@ -107,7 +108,10 @@ const local_register = (email,password) => {
 
 // action creators(액션 메서드)
 //이름을 그냥 saveUserData로 해놓고 업데이트할 때 써도 될듯 
-const do_login = (email, displayName ,picture, social, space, language) => {
+const do_login = (email, displayName ,picture, social, space, language, follower) => {
+  console.log('ddd')
+  console.log(email)
+  console.log(follower)
   return {
     type: DO_LOGIN,
     payload: {
@@ -117,10 +121,19 @@ const do_login = (email, displayName ,picture, social, space, language) => {
       picture: picture ? picture : null,
       space : space ? space : null,
       language : language,
+      follower : follower,
       social : social
     }
   }
 }
+
+const auto_login = (payload) => {
+  return {
+    type : AUTO_LOGIN,
+    payload : payload
+  }
+}
+
 function common_register (displayName, space, language) {
   return {
     type: COMMON_REGISTER,
@@ -153,6 +166,8 @@ export {
   LOCAL_LOGIN,
   LOGIN_ERROR,
   ADD_FOLLOWER,
-  add_follower
+  add_follower,
+  AUTO_LOGIN,
+  auto_login
 
 }

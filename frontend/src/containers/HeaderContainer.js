@@ -61,8 +61,8 @@ class HeaderContainer extends Component {
     }
   }
   
-  _loginSuccess = (email, name, picture, space, language) => {
-    this.props.doLogin(email, name, picture, space, language)
+  _loginSuccess = (email, displayName, picture, social, space, language, follower) => {
+    this.props.doLogin(email, displayName, picture, social, space, language, follower)
     this.setState({
       ...this.state,
       userName: localStorage.displayName
@@ -116,16 +116,16 @@ class HeaderContainer extends Component {
         clickNickname = {this._clickNickname}
         onClickModalCancel = {this._onClickModalCancel}
         showSideBar = {this.state.showSideBar}
+        user = {this.props.user}
         />
     )
   }
 }
 
 const mapStateToProps = (state) => {
-  const { user, devfolio } = state
+  const { user } = state
   return {
-    user,
-    devfolio
+    user
   }
 }
 

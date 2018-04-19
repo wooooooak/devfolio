@@ -1,0 +1,52 @@
+@import 'utils';
+
+.content {
+  display: flex;
+  align-items: center;
+  height: 300px;
+  background-color: #25303B;
+  .profile{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    color: white;
+    img {
+      width: 100px;
+      height: auto;
+      margin:0 30px;
+      margin-bottom: 5px;
+    }
+  }
+  .card {
+    display: flex;
+    flex-direction: column;
+    margin-right: 30px;
+    background-color: $oc-gray-2;
+    border-radius: 20px;
+    padding : 5px 20px;
+    max-width: 500px;
+    a{
+      color: black;
+      &:visited {
+        color: black;
+      }
+    }
+    &:hover{
+      animation: detailBtnHover2 0.2s 0s 1 linear forwards;
+    }
+  }
+  @include media('<=small'){
+    flex-direction: column;
+    height: fit-content;
+     width: 100vw;
+     .profile {
+       display: inline;
+     }
+     .card {
+       display: inline-block;
+       width: 100vw;
+       height: fit-content;
+       margin: 0px;
+     }
+  }
+}

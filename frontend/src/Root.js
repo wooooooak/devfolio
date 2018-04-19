@@ -12,6 +12,7 @@ const store = configureStore(reducer)
 class Root extends Component {
   constructor(props) {
     super(props)
+    console.log('root')
     if (!store.getState().user.isLogin && localStorage.displayName) {
       const _fetchUserData = async () => {
         const { data } = await axios({
@@ -21,10 +22,10 @@ class Root extends Component {
             displayName: localStorage.displayName
           }
         })
-        // console.log(data)
+        console.log(data)
         if (data) {
           store.dispatch({
-            type:'DO_LOGIN',
+            type:'AUTO_LOGIN',
             payload: data
           })
         }

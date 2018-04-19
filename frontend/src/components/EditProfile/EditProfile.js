@@ -92,12 +92,12 @@ class EditProfile extends Component {
   render() {
     console.log(this.state)
     return (
-      <div>
-        <p><img src={`${this.props.user.picture}`} /></p>
-        <p><input type='text' value={this.state.displayName} 
+      <div className={cx('content')}>
+        <img src={`${this.props.user.picture}`} />
+        <input type='text' value={this.state.displayName} 
             onChange={e=>this.setState({displayName: e.target.value})}
-        /></p>
-        <p style={{marginLeft:'100px'}}>space</p>
+        />
+        <p>space</p>
         <ReactTags
               tags={this.state.skillTags}
               suggestions={SKILL_TAG}
@@ -116,7 +116,7 @@ class EditProfile extends Component {
                 activeSuggestion: cx('activeSuggestionClass')
               }}
             />
-            <p style={{marginLeft:'100px'}}>language </p>
+        <p>language</p>
         <ReactTags
               tags={this.state.languageTags}
               suggestions={LANGUAGE_TAG}
@@ -135,7 +135,9 @@ class EditProfile extends Component {
                 activeSuggestion: cx('activeSuggestionClass')
               }}
             />
-            <button onClick={this._onSubmit}>submit</button>
+            <button 
+              className={cx('submitBtn')}
+              onClick={this._onSubmit}>submit</button>
       </div>
     );
   }

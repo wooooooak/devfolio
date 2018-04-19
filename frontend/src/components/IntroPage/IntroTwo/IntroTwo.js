@@ -21,7 +21,7 @@ class IntroTwo extends Component {
         stories : data
       })
     }
-    getHItStory()
+    getHItStory(9)
   }
 
   mapToCard = () => {
@@ -38,14 +38,16 @@ class IntroTwo extends Component {
       })
       return(
         <div className={cx('item')}
-        style={{backgroundImage : bg}}> 
+          style={{backgroundImage : bg}}> 
         <Link exact to={`/story/${story._id}`}>
           <div className={cx('item__details')}> 
-          <a href = "#">{story.title}</a>
+          <div>{story.title}</div>
           <br/>
           {tags}
           <br/>
-          <Link exact to={`/myStories/${story.authorObject.displayName}`}>{story.authorObject.displayName}</Link>
+          <Link 
+            className={cx('linkByName')}
+            exact to={`/myStories/${story.authorObject.displayName}`}>{story.authorObject.displayName}</Link>
           </div>
         </Link>
         </div>

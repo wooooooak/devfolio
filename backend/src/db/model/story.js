@@ -13,7 +13,8 @@ const Story = new Schema({
   author:{type: String},
   displayName:{type: String},
   images : [],
-  viewCount : Number
+  viewCount : Number,
+  createdAt : {type : Date, default : Date.now}
 })
 
 Story.statics.create = function(storyInfo, author, displayName, authorObject) {

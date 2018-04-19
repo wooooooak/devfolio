@@ -4,8 +4,13 @@ import { PageTemplate, BasicTemplate } from 'templates'
 import { HeaderContainer, MyStoryContainer } from "containers"
 
 class MyStory extends Component {
+  // shouldComponentUpdate(nextProps, nextState) {
+  //   console.log(nextProps)
+  //   console.log(nextState)
+  // }
   render(){
     const displayName = this.props.match.params.displayName
+    // console.log(displayName)
     return (
       <div>
       <HeaderContainer showMenuBg={false} bgColorTransParent={true} isAlwaysShowing={true}/>
@@ -13,7 +18,7 @@ class MyStory extends Component {
             pageRenderingAni = {true}
             >
             <BasicTemplate>
-            <MyStoryContainer displayName = {displayName}/>
+              <MyStoryContainer displayName = {displayName}/>
             </BasicTemplate>
       </PageTemplate>
     </div>

@@ -4,10 +4,23 @@
     position: relative;
     margin-top:0px;
     height: 35vh; // 페이지에서 헤더를 제외한 영역 모두 채우기
-    background:url('http://220.68.54.53:8082/images/two.jpg');
+    // background:url('http://localhost:8082/images/two.jpg');
+    background-color: #011627;
     background-attachment: fixed;
     background-size:cover;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    color: white;
 
+    .logo {
+      font-size: 1.5rem;
+    }
+    .call {
+      font-size: 0.8rem;
+      margin-bottom: -5px;
+    }
     @include media("<=medium") {
       height: 102vh;
     }

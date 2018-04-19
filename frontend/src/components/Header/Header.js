@@ -5,13 +5,16 @@ import classNames from 'classnames/bind'
 import Modal from "components/Modals/LoginModal/LoginModal"
 import HambergerIcon from 'react-icons/lib/fa/align-right'
 import Logo from "components/Logo"
+import FaUnlock from "react-icons/lib/fa/unlock"
+import FaClose from "react-icons/lib/fa/close"
+import FaCog from "react-icons/lib/fa/cog"
 
 const cx = classNames.bind(styles)
 
 const Header = ({isLogin, loginSuccess, isLoginButtonClicked, userName,
                showMenuBg, showModal, onClickModalCancel,
                clickNickname, showSideBar, onClickLogout,
-                isLogout, localRegister }) => {
+                isLogout, localRegister,user }) => {
   if(!showSideBar) { //사이드바 버튼을 누르지 않았을 경우.
     return(
       <div>
@@ -20,7 +23,7 @@ const Header = ({isLogin, loginSuccess, isLoginButtonClicked, userName,
             <div className={cx('header-wrapper')}>
               <ul>
                 <li><Link exact to="/">Home</Link></li>
-                {/* <li><Link exact to="/about">what</Link></li> */}
+                <li><Link exact to="/watch">Watch</Link></li>
                 {isLogin
                  ? <li><button onClick={clickNickname} className={cx('userBtn')}>{userName}</button>
                     </li>
@@ -47,15 +50,21 @@ const Header = ({isLogin, loginSuccess, isLoginButtonClicked, userName,
 
               {isLogin
               ? <div> 
-                  <button className={cx('hideSideBarBtn')} onClick={clickNickname}>x</button>
-                  <button onClick={onClickLogout}> logout </button>
-
-                  <p>search</p>
-                  -------------------------------------------------
-                  <p><Link exact to="/">Home</Link></p>
-                  <p><Link exact to={`/myStories/${userName}`}>your stories</Link></p>
-                  <p><Link exact to="/addStory">new story</Link></p>
-                  <p><Link exact to="/editProfile">profile</Link></p>
+                  <FaClose size={30} className={cx('hideSideBarBtn')} onClick={clickNickname}/>
+                  <div className={cx('pictureBox')}>
+                    <Link exact to="/editProfile">
+                        <FaCog size={30} className={cx('configBtn')} onClick={clickNickname}/>
+                    </Link>
+                    <img src={user.picture}/>
+                    <FaUnlock size={25} className={cx('logoutBtn')} onClick={onClickLogout}/>
+                    {/* <button className={cx('logoutBtn')} onClick={onClickLogout}> logout </button> */}
+                  </div>
+                  <ul className={cx('list')}>
+                    <li><Link exact to="/">Home</Link></li>
+                    <li><Link exact to="/watch">Watch</Link></li>
+                    <li><Link exact to={`/myStories/${userName}`}>your stories</Link></li>
+                    <li><Link exact to="/addStory">new story</Link></li>
+                  </ul>
                 </div>
               : <div>
                   <button className={cx('hideSideBarBtn')} onClick={clickNickname}>x</button>

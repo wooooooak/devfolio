@@ -15,7 +15,8 @@ $breakpoints: (
   small: 420px, //phone
   medium: 738px, //tablet
   large: 1024px, //desktop
-  huge: 1200px
+  huge: 1200px,
+  ultra : 1600px
 );
 
 @mixin gradient($direction, $list) { 

@@ -1,6 +1,8 @@
 import actions from '../action/index'
 import { handleActions } from "redux-actions"
-const  { DO_LOGIN, COMMON_REGISTER, DO_LOGOUT, CHANGE_PROFILE, LOCAL_REGISTER, LOGIN_ERROR, ADD_FOLLOWER } = actions.user
+const  { DO_LOGIN, COMMON_REGISTER, AUTO_LOGIN,
+   DO_LOGOUT, CHANGE_PROFILE, LOCAL_REGISTER,
+    LOGIN_ERROR, ADD_FOLLOWER } = actions.user
 
 const initUserState = {
   isLogin : false,
@@ -29,6 +31,19 @@ export default handleActions({
   [DO_LOGIN] : (state = initUserState, action) => {
     return {
       // ...state,
+      isLogin: action.payload.isLogin,
+      email : action.payload.email,
+      displayName : action.payload.displayName,
+      picture : action.payload.picture,
+      space : action.payload.space,
+      error : false,
+      language : action.payload.language,
+      social : action.payload.social,
+      follower : action.payload.follower
+    }
+  },
+  [AUTO_LOGIN] : (state = initUserState, action) =>{
+    return {
       isLogin: action.payload.isLogin,
       email : action.payload.email,
       displayName : action.payload.displayName,

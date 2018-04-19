@@ -28,7 +28,6 @@ const MyStories = ({userData, stories, chartData}) => {
   let languageArr = Larr.map((el)=>{
     return <p className={cx('language')}>{el}</p>
   })
-  console.log(chartData);
     return (
       <div className={cx('content')}>
         

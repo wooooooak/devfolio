@@ -42,12 +42,12 @@
   padding-left: 80px;
   padding-right : 80px;
   .title{
-    font-size: 3.6rem;
+    font-size: 2.9rem;
     color: black;
   }
   .subTitle{
     color : #2d3436;
-    font-size: 2.2rem;
+    font-size: 1.8rem;
     margin-top : -40px;
   }
 
@@ -84,12 +84,12 @@
   padding-right: 80px;
 
   .title{
-    font-size: 3.6rem;
+    font-size: 2.9rem;
     color: black;
   }
   .subTitle{
     color : #2d3436;
-    font-size: 2.2rem;
+    font-size: 1.8rem;
     margin-top : -40px;
   }
   @include media("<=large"){
