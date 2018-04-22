@@ -25,7 +25,6 @@ class RegisterContainer extends Component {
         data: this.props.user,
         responseType: 'json'
       })
-      console.log(data)
       if(data.registerSuccess){
         this.setState({registerSuccess: true})
       }

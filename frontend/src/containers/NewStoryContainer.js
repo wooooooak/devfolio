@@ -47,7 +47,7 @@ class NewStoryContainer extends Component {
         try {
           const { data } = await axios({
             method : 'GET',
-            url: config.serverURL + '/story/getStory',
+            url: config.serverURL + '/story/story',
             params: { 
               storyId: this.props.storyId
             }

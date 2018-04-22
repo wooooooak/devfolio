@@ -4,6 +4,8 @@ const User = require('db/model/user')
 const Story = require('db/model/story')
 
 exports.getUserData = async (req,res) => {
+  console.log('getUserData')
+  // console.log(req)
   try {
     const displayName = req.query.displayName
     const user = await User.findOne({displayName:displayName}).populate('stories')
@@ -46,7 +48,7 @@ exports.findByTags = async (req,res) => {
   let users = await User.find()
   users.forEach(user => {
     for (let i=0; i < tags.length; i++){
-      if(user.space){
+      if (user.space) {
         if (user.space[tags[i].text]) {
           if (selectedUser[user.email]) {
             selectedUser[user.email] = {user, count: ++selectedUser[user.email].count}
@@ -55,7 +57,7 @@ exports.findByTags = async (req,res) => {
           }
         }
       }
-      if(user.language){
+      if (user.language) {
         if (user.language[tags[i].text]) {
           if (selectedUser[user.email]) {
             selectedUser[user.email] = {user, count: ++selectedUser[user.email].count}
@@ -80,11 +82,11 @@ exports.findByTags = async (req,res) => {
 exports.addfollow = async (req,res) => {
   const followedEmail = req.body.followedEmail
   const userEmail = req.decoded.email
-  console.log(followedEmail, userEmail);
+  // console.log(followedEmail, userEmail)
   try {
     const followedUser = await User.findOne({email : followedEmail})
     const user = await User.findOne({email : userEmail})
-    console.log(user);
+    // console.log(user)
     //중복된 팔로잉 방지
     //서버에서도 막긴 하지만 클라이언트에서부터 막자
     user.follower.forEach(followId => {
@@ -100,7 +102,6 @@ exports.addfollow = async (req,res) => {
     const followedUserId = followedUser._id
     user.follower.push(followedUserId)
     user.save()
-    // user.save()
     res.status(200).json({
       messgage : "follow ok",
       user :  user,
@@ -123,7 +124,7 @@ exports.followedUsers = async (req,res) => {
     users.forEach(users => {
       users.stories.forEach(story => {
         if(story.createdAt){
-          console.log('createAt 있음')
+          // console.log('createAt 있음')
           // dataArr.push({storyId : story._id, createdAt : story.createdAt})
           dataArr.push(story._id)
         }
