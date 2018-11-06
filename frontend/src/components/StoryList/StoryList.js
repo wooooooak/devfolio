@@ -44,7 +44,7 @@ const StoryList = ({stories , chartData}) => {
   }
       return (
         <div className={cx('listContainer')}>
-          <div className={cx('aboutMe')}> 태블릿 이하일때 보여주자 </div>
+          {/* <div className={cx('aboutMe')}> 태블릿 이하일때 보여주자 </div> */}
           <SkillChart chartData = {chartData}/>
           {arr.length !== 0 ? arr : <p> 아무것도없는데요??</p>}
         </div>

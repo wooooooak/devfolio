@@ -1,88 +1,83 @@
-import React, {Component} from 'react'
-import { connect } from 'react-redux'
-import { bindActionCreators } from "redux"
-import action from "action"
-import MyStories from "components/MyStories"
-import { getUserDataByDisplayName } from "lib/fetch"
+import React, { Component } from "react";
+import { connect } from "react-redux";
+import { bindActionCreators } from "redux";
+import action from "action";
+import MyStories from "components/MyStories";
+import { getUserDataByDisplayName } from "lib/fetch";
 
 class MyStoryContainer extends Component {
-  constructor(props) {
-    super(props)
+  constructor (props) {
+    super(props);
     this.state = {
-      stories : null,
-      userData : null,
-      chartData : null
-    }
+      stories: null,
+      userData: null,
+      chartData: null
+    };
   }
-  
-  componentDidMount() {
-    console.log(this.props.user);
-    this.fetchUserStoriesAndUserData(this.props)
+
+  componentDidMount () {
+    this.fetchUserStoriesAndUserData(this.props);
   }
 
   fetchUserStoriesAndUserData = async (state) => {
-    let charData = {}
-      const data = await getUserDataByDisplayName(state.displayName)
-      data.stories.forEach((story) => {
-        if (story.tags.length !==0) {
-          story.tags.forEach((tag) => {
-            if (!charData[tag.text]) {
-              charData[tag.text] = {name : tag.text, project : 1}
-            }else {
-              charData[tag.text].project++
-            }
-          })
-        }
-      })
-      const Data = Object.keys(charData).map((key) => {
-        return { name : key, project : charData[key].project}
-      })
-      if(data){
-         this.setState({
-           stories: data.stories,
-           userData: data,
-           chartData : Data
-         })
-       }
+    let charData = {};
+    const data = await getUserDataByDisplayName(state.displayName);
+    data.stories.forEach((story) => {
+      if (story.tags.length !== 0) {
+        story.tags.forEach((tag) => {
+          if (!charData[tag.text]) {
+            charData[tag.text] = { name: tag.text, project: 1 };
+          } else {
+            charData[tag.text].project++;
+          }
+        });
+      }
+    });
+    const Data = Object.keys(charData).map((key) => {
+      return { name: key, project: charData[key].project };
+    });
+    if (data) {
+      this.setState({
+        stories: data.stories,
+        userData: data,
+        chartData: Data
+      });
+    }
+  };
+
+  componentWillReceiveProps (nextProps) {
+    this.fetchUserStoriesAndUserData(nextProps);
   }
 
-  componentWillReceiveProps(nextProps){
-    console.log('props qkedma')
-     this.fetchUserStoriesAndUserData(nextProps)
-  }
-  
-  render() {
-    console.log(this.state.userData)
-    if(this.state.userData){
+  render () {
+    if (this.state.userData) {
       return (
-        <MyStories 
-            userData = {this.state.userData}
-            stories = {this.state.stories}
-            chartData = {this.state.chartData}
-          />
-      )
-    }else {
-      return(
-        <div>그런 사람 없는데요????</div>
-      )
+        <MyStories
+          userData={this.state.userData}
+          stories={this.state.stories}
+          chartData={this.state.chartData}
+        />
+      );
+    } else {
+      return <div>그런 사람 없는데요????</div>;
     }
   }
 }
 
 const mapStateToProps = (state) => {
-  const { user } = state
+  const { user } = state;
   return {
     user
-  }
-}
+  };
+};
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    doLogin : bindActionCreators(action.user.do_login, dispatch),
-    doLogout : bindActionCreators(action.user.do_logout, dispatch),
-    redirectHomeTrue : bindActionCreators(action.devfolio.redirect_true, dispatch),
-    redirectHomeFalse : bindActionCreators(action.devfolio.redirect_false, dispatch)
-  }
-}
+    doLogin: bindActionCreators(action.user.do_login, dispatch),
+    doLogout: bindActionCreators(action.user.do_logout, dispatch),
+    redirectHomeTrue: bindActionCreators(action.devfolio.redirect_true, dispatch),
+    redirectHomeFalse: bindActionCreators(action.devfolio.redirect_false, dispatch)
+  };
+};
 
-export default connect(mapStateToProps,mapDispatchToProps)(MyStoryContainer)
+export default connect(mapStateToProps, mapDispatchToProps)(MyStoryContainer);

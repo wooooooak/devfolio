@@ -5,7 +5,6 @@ const Story = require('db/model/story')
 
 exports.getUserData = async (req,res) => {
   console.log('getUserData')
-  // console.log(req)
   try {
     const displayName = req.query.displayName
     const user = await User.findOne({displayName:displayName}).populate('stories')
@@ -142,4 +141,13 @@ exports.followedUsers = async (req,res) => {
     res.status(500).json(error)
   }
 
+}
+
+exports.test = (req, res) => {
+  console.log('test!!!!!!!!!!!!!!!!!!!!!!!!')
+  console.log(req.query)
+  res.json({
+    qeury : req.query,
+    params : req.params
+  })
 }

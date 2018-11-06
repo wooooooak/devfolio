@@ -16,12 +16,12 @@ class Timeline extends Component {
         <article>
           <div className={cx("inner")}>
             <span className={cx("date")}>
-                  <span className={cx("day")}>{a.date()+1}<sup>th</sup></span>
-                  <span className={cx("month")}>{a.month()}월</span>
+                  <span className={cx("day")}>{a.date()}<sup>th</sup></span>
+                  <span className={cx("month")}>{a.month()+1}월</span>
                   <span className={cx("year")}>{a.year()}</span>
             </span>
             <div className={cx('card')}>
-              <Link exact to={`/story/${story.authorObject.displayName}`}><h2>{story.authorObject.displayName}</h2></Link>
+              <Link exact to={`/myStories/${story.authorObject.displayName}`}><h2>{story.authorObject.displayName}</h2></Link>
               <Link exact to={`/story/${story._id}`}>
               <div>
                 <p className={cx('title')}>{story.title}</p>

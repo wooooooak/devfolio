@@ -2,12 +2,16 @@
 
 .showBox {
   width: 768px;
+  text-align: center;
   .title {
     font-family: 'Bree Serif','Nanum Gothic', sans-serif;
     font-size: 3.3em;
     font-weight: bold;
     // height: 70px;
     width: 100%;
+    @include media('<=small'){
+      font-size: 2.6rem;
+    }
   }
   .subTitle {
     font-family: 'Bree Serif','Nanum Gothic', sans-serif;
@@ -17,13 +21,38 @@
     color : #121221;
     height: 70px;
     width: 100%;
+    @include media('<=small'){
+      font-size: 2rem;
+    }
+  }
+  .info {
+    text-align: right;
+    font-size: 1rem;
+    margin-top: -20px;
+    @include media('<=small'){
+      width: 85vw;
+    }
+    .name{
+      font-size: 1.2rem;
+    }
+    a{
+      color : black;
+      text-decoration: underline;
+      :visited{
+        color: black;
+      }
+    }
   }
   .FroalaViewerA {
     font-family: 'Roboto Condensed','Nanum Gothic', sans-serif;
     text-align: start;
     font-size: 1.6em;
-    margin-top: 15px;
+    margin-top: 35px;
     color: rgb(7, 7, 7);
+    @include media('<=small'){
+      padding: 0px 15px;
+      font-size: 1.2rem;
+    }
   }
   .modifyBtn {
     margin-top: 80px;
@@ -36,6 +65,10 @@
     border-color: transparent;
     &:hover{
       animation: BtnHover3 0.2s 0s 1 linear forwards;
+    }
+    @include media('<=small'){
+      width: 115px;
+      margin-left: 10px;
     }
   }
 
@@ -50,6 +83,10 @@
     border-color: transparent;
     &:hover{
       animation: BtnHover2 0.2s 0s 1 linear forwards;
+    }
+    @include media('<=small'){
+      width: 115px;
+      margin-left: 20px;
     }
   }
 }
